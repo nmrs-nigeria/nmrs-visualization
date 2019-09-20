@@ -11,8 +11,13 @@ package org.openmrs.module.visualization.page.controller;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.openmrs.module.visualization.Model.BarChartModel;
+import org.openmrs.module.visualization.Utility.DbPatientUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.ArrayList;
 
 /**
  * This class configured as controller using annotation and mapped with the URL of
@@ -29,10 +34,5 @@ public class HtsPageController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public void get() {
-	}
-	
-	@RequestMapping(method = RequestMethod.GET)
-	public String showForm() {
-		return "hts";
 	}
 }
