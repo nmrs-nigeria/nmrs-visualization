@@ -1,0 +1,6 @@
+/home/test/IdeaProjects/visualization/api/src/main/java/org/openmrs/module/visualization/Item.java
+/home/test/IdeaProjects/visualization/api/src/main/java/org/openmrs/module/visualization/VisualizationConfig.java
+/home/test/IdeaProjects/visualization/api/src/main/java/org/openmrs/module/visualization/api/dao/VisualizationDao.java
+/home/test/IdeaProjects/visualization/api/src/main/java/org/openmrs/module/visualization/api/impl/VisualizationServiceImpl.java
+/home/test/IdeaProjects/visualization/api/src/main/java/org/openmrs/module/visualization/api/VisualizationService.java
+/home/test/IdeaProjects/visualization/api/src/main/java/org/openmrs/module/visualization/VisualizationActivator.java
