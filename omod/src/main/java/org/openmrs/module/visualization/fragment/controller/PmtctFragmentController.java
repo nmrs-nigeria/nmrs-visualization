@@ -29,7 +29,7 @@ public class PmtctFragmentController
 	public void controller(FragmentModel model, @SpringBean("userService") UserService service) {
 		model.addAttribute("users", service.getAllUsers());
 	}
-	
+
 	public @ResponseBody
 	ArrayList<ChartModel> getAncPmtctArt()
 	{
