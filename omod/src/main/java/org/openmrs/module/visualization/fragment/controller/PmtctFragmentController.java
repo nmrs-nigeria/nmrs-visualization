@@ -11,11 +11,16 @@ package org.openmrs.module.visualization.fragment.controller;
 
 import org.openmrs.api.UserService;
 import org.openmrs.module.visualization.Model.BarChartModel;
+import org.openmrs.module.visualization.Model.ChartModel;
 import org.openmrs.module.visualization.Utility.DbPatientUtils;
+import org.openmrs.ui.framework.SimpleObject;
 import org.openmrs.ui.framework.annotation.SpringBean;
 import org.openmrs.ui.framework.fragment.FragmentModel;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -27,9 +32,14 @@ public class PmtctFragmentController {
 		model.addAttribute("users", service.getAllUsers());
 	}
 	
-	public Set<BarChartModel> getPmtctData() {
+	public @ResponseBody
+	ArrayList<BarChartModel> getPmtctData() {
 		DbPatientUtils utils = new DbPatientUtils();
 		
 		return utils.getHtsCascadeBar();
+	}
+	
+	public int getPmtctData2() {
+		return 1;
 	}
 }

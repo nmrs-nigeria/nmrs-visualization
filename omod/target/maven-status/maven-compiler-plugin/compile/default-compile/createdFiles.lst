@@ -3,6 +3,7 @@ org/openmrs/module/visualization/fragment/controller/LineListFragmentController.
 org/openmrs/module/visualization/page/controller/HtsPageController.class
 org/openmrs/module/visualization/fragment/controller/HtsFragmentController.class
 org/openmrs/module/visualization/Model/BarChartModel.class
+org/openmrs/module/visualization/Model/HtsCharts.class
 org/openmrs/module/visualization/Model/ChartModel.class
 org/openmrs/module/visualization/fragment/controller/PmtctFragmentController.class
 org/openmrs/module/visualization/Utility/DbPatientUtils.class

@@ -2,19 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60c1f400-7d02-4114-b362-38af6d13cabf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/HtsCharts.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/target/maven-java-formatter-cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/maven-java-formatter-cache.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/target/visualization-api-1.0.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/visualization-api-1.0.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPatientUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPatientUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/PmtctFragmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/PmtctFragmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/page/controller/HtsPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/page/controller/HtsPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/src/main/webapp/fragments/pmtct.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/webapp/fragments/pmtct.gsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/omod/src/main/webapp/pages/Hts.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/webapp/pages/Hts.gsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/omod/target/classes/org/openmrs/module/visualization/Utility/DbPatientUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/classes/org/openmrs/module/visualization/Utility/DbPatientUtils.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/omod/target/classes/org/openmrs/module/visualization/fragment/controller/PmtctFragmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/classes/org/openmrs/module/visualization/fragment/controller/PmtctFragmentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/classes/org/openmrs/module/visualization/page/controller/HtsPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/classes/org/openmrs/module/visualization/page/controller/HtsPageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/classes/web/module/fragments/pmtct.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/classes/web/module/fragments/pmtct.gsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/omod/target/classes/web/module/pages/Hts.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/classes/web/module/pages/Hts.gsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/omod/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/omod/target/maven-java-formatter-cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/maven-java-formatter-cache.properties" afterDir="false" />
@@ -25,10 +22,7 @@
       <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/lib/visualization-api-1.0.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/lib/visualization-api-1.0.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/Utility/DbPatientUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/Utility/DbPatientUtils.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/fragment/controller/PmtctFragmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/fragment/controller/PmtctFragmentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/page/controller/HtsPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/page/controller/HtsPageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/web/module/fragments/pmtct.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/web/module/fragments/pmtct.gsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/web/module/pages/Hts.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/web/module/pages/Hts.gsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/visualization.iml" beforeDir="false" afterPath="$PROJECT_DIR$/visualization.iml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -131,7 +125,7 @@
       <workItem from="1568916481554" duration="26085000" />
       <workItem from="1568988732005" duration="247000" />
       <workItem from="1568989008251" duration="15265000" />
-      <workItem from="1569006549699" duration="678000" />
+      <workItem from="1569006549699" duration="19530000" />
     </task>
     <task id="LOCAL-00001" summary="Added highchart scripts">
       <created>1568936871117</created>
@@ -154,7 +148,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568986223461</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Started quering">
+      <created>1569007280853</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1569007280853</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -200,11 +201,6 @@
           <url>file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/LineListFragmentController.java</url>
           <line>27</line>
           <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/HtsFragmentController.java</url>
-          <line>31</line>
-          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

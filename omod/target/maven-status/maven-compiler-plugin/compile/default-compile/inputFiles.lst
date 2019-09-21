@@ -2,6 +2,7 @@
 /home/test/IdeaProjects/visualization/omod/src/main/java/org/openmrs/module/visualization/page/controller/LineListPageController.java
 /home/test/IdeaProjects/visualization/omod/src/main/java/org/openmrs/module/visualization/page/controller/PmtctPageController.java
 /home/test/IdeaProjects/visualization/omod/src/main/java/org/openmrs/module/visualization/extension/html/AdminList.java
+/home/test/IdeaProjects/visualization/omod/src/main/java/org/openmrs/module/visualization/Model/HtsCharts.java
 /home/test/IdeaProjects/visualization/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/UsersFragmentController.java
 /home/test/IdeaProjects/visualization/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPatientUtils.java
 /home/test/IdeaProjects/visualization/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/HtsFragmentController.java

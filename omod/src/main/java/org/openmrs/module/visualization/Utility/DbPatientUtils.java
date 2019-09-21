@@ -5,7 +5,9 @@ import org.openmrs.ConceptName;
 import org.openmrs.Patient;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.visualization.Model.BarChartModel;
+import org.openmrs.module.visualization.Model.ChartModel;
 import org.openmrs.module.visualization.Model.DBConnection;
+import org.openmrs.module.visualization.Model.HtsCharts;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -17,6 +19,13 @@ public class DbPatientUtils {
 	
 	public void getPositivePatients() {
 		List<Patient> patients = Context.getPatientService().getAllPatients();
+	}
+	
+	public HtsCharts getHtsCharts() {
+		HtsCharts htsCharts = new HtsCharts();
+		htsCharts.setBarChartModels(getHtsCascadeBar());
+		htsCharts.setChartModel(getHtsStackBar());
+		return htsCharts;
 	}
 	
 	public ArrayList<BarChartModel> getHtsCascadeBar() {
@@ -41,8 +50,35 @@ public class DbPatientUtils {
 			if (result.next()) {
 				barChartModels = buildChartData(result);
 			} else {}
-			
+			connection.close();
 			return barChartModels;
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public ChartModel getHtsStackBar() {
+		try {
+			DBConnection connResult = DbUtil.getNmrsConnectionDetails();
+			
+			ChartModel chartModels = new ChartModel();
+			
+			Connection connection = DriverManager.getConnection(connResult.getUrl(), connResult.getUsername(),
+			    connResult.getPassword());
+			Statement statement = connection.createStatement();
+			String sql = "SELECT * FROM ((SELECT COUNT(DISTINCT person_id) AS new_positive FROM obs WHERE concept_id = 165843 AND value_coded = 703 AND MONTH(CURDATE())) AS a CROSS JOIN "
+			        + "(SELECT COUNT(DISTINCT person_id) AS started_art_in FROM obs WHERE concept_id = 160540 AND value_coded IN (160542,160536,160539,160541,160546,160538,160545,5622) AND MONTH(CURDATE())) AS b CROSS JOIN "
+			        + "(SELECT COUNT(DISTINCT(pid.identifier)) AS started_art_out FROM patient_identifier pid  JOIN encounter e ON pid.patient_id = e.patient_id JOIN obs ob ON e.encounter_id = ob.encounter_id  WHERE (pid.identifier_type = 8) AND e.encounter_type = 22 AND ob.concept_id IN (165508,165501) AND MONTH(CURDATE())) AS c)";
+			String sqlStatement = (sql);
+			ResultSet result = statement.executeQuery(sqlStatement);
+			if (result.next()) {
+				chartModels = buildStackData(result);
+			} else {}
+			
+			connection.close();
+			return chartModels;
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -60,6 +96,7 @@ public class DbPatientUtils {
 			//
 			barChartModel = new BarChartModel();
 			barChartModel.setY(result.getInt("risk_assessment_done"));
+			//barChartModel.setY(20);
 			barChartModel.setName("Risk assessment");
 			barChartModels.add(barChartModel);
 			//
@@ -87,5 +124,21 @@ public class DbPatientUtils {
 			e.printStackTrace();
 		}
 		return barChartModels;
+	}
+	
+	private ChartModel buildStackData(ResultSet result) {
+		ChartModel chartModel = new ChartModel();
+		try {
+			chartModel.setPos_name("New HIV Positive Client");
+			chartModel.setPos_count(result.getInt("new_positive"));
+			chartModel.setStart_art_in("Started on ART within the facility");
+			chartModel.setStart_art_out("Started on ART outside the facility");
+			chartModel.setIn_count(result.getInt("started_art_in"));
+			chartModel.setOut_count(result.getInt("started_art_out"));
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return chartModel;
 	}
 }
