@@ -16,3 +16,4 @@ org/openmrs/module/visualization/Model/DBConnection.class
 org/openmrs/module/visualization/Utility/DbUtil.class
 org/openmrs/module/visualization/fragment/controller/UsersFragmentController.class
 org/openmrs/module/visualization/extension/html/AdminList.class
+org/openmrs/module/visualization/Model/ViralSuppressionModel.class

@@ -16,3 +16,4 @@
 /home/test/IdeaProjects/visualization/omod/src/main/java/org/openmrs/module/visualization/web/controller/VisualizationController.java
 /home/test/IdeaProjects/visualization/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/ChildFragmentController.java
 /home/test/IdeaProjects/visualization/omod/src/main/java/org/openmrs/module/visualization/Model/PmtctCohortRetentiModel.java
+/home/test/IdeaProjects/visualization/omod/src/main/java/org/openmrs/module/visualization/Model/ViralSuppressionModel.java

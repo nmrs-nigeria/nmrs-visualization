@@ -27,7 +27,7 @@
     });
 
     function PlotHtsChart(data) {
-        var colors = ['#030508', '#7cacc2', '#4e2b86', '#80699B', '#3D96AE', '#DB843D'];
+        var colors = ['#030508', '#7cacc2', '#80699B', '#ff4344', '#ff741e', '#cc7a34'];
         var columnData = data.barChartModels;
         var category = [];
         var values = [];
@@ -76,6 +76,7 @@
             series: [ theSeries ]
         });
         var fac_model = data.chartModel;
+        var colors = ['#030508', '#7cacc2', '#80699B'];
         Highcharts.chart('facility', {
             chart: {
                 type: 'column'
@@ -98,9 +99,11 @@
             },
             plotOptions: {
                 column: {
-                    stacking: 'percent'
+                    stacking: 'percent',
+                    colorByPoint: true
                 }
             },
+            colors: colors,
             series: [{
                 name: fac_model.pos_name,
                 data: [fac_model.pos_count,0]
