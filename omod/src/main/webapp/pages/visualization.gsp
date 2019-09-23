@@ -10,6 +10,10 @@
                 <i class="icon-medical"></i>
                 HTS Charts
             </a>
+            <a class="button big" href="/openmrs/visualization/LineList.page">
+                <i class="icon-medical"></i>
+                Line List Charts
+            </a>
         </div>
     </div>
 </div>

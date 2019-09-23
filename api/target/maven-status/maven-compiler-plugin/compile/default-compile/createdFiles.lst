@@ -1,6 +1,6 @@
-org\openmrs\module\visualization\api\VisualizationService.class
-org\openmrs\module\visualization\api\dao\VisualizationDao.class
-org\openmrs\module\visualization\Item.class
-org\openmrs\module\visualization\VisualizationActivator.class
-org\openmrs\module\visualization\VisualizationConfig.class
-org\openmrs\module\visualization\api\impl\VisualizationServiceImpl.class
+org/openmrs/module/visualization/api/VisualizationService.class
+org/openmrs/module/visualization/Item.class
+org/openmrs/module/visualization/VisualizationConfig.class
+org/openmrs/module/visualization/VisualizationActivator.class
+org/openmrs/module/visualization/api/impl/VisualizationServiceImpl.class
+org/openmrs/module/visualization/api/dao/VisualizationDao.class
