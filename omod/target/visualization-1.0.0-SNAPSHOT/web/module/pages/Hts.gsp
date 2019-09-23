@@ -95,7 +95,7 @@
                 },
                 series: [ theSeries ]
             });
-
+            debugger;
             var fac_model = data.chartModel;
             Highcharts.chart('facility', {
                 chart: {

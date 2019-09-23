@@ -2,13 +2,12 @@ package org.openmrs.module.visualization.Model;
 
 import java.util.ArrayList;
 
-public class ChartModel
-{
-
+public class ChartModel {
+	
 	private String name;
-
+	
 	private float value;
-
+	
 	private String pos_name;
 	
 	private int pos_count;
@@ -78,21 +77,20 @@ public class ChartModel
 	public void setPercentage(int percentage) {
 		this.percentage = percentage;
 	}
-
+	
 	public String getName() {
 		return name;
 	}
-
+	
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 	public float getValue() {
 		return value;
 	}
-
-	public void setValue(float value)
-	{
+	
+	public void setValue(float value) {
 		this.value = value;
 	}
 }

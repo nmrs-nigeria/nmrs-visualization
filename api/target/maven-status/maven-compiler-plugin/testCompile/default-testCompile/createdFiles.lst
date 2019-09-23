@@ -1,0 +1,2 @@
+org\openmrs\module\visualization\api\VisualizationServiceTest.class
+org\openmrs\module\visualization\api\dao\VisualizationDaoTest.class

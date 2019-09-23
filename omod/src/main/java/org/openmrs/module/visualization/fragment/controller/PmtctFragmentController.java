@@ -12,6 +12,7 @@ package org.openmrs.module.visualization.fragment.controller;
 import org.openmrs.api.UserService;
 import org.openmrs.module.visualization.Model.BarChartModel;
 import org.openmrs.module.visualization.Model.ChartModel;
+import org.openmrs.module.visualization.Model.PmtctCohortRetentiModel;
 import org.openmrs.module.visualization.Utility.DbPatientUtils;
 import org.openmrs.module.visualization.Utility.DbPmtctUtils;
 import org.openmrs.ui.framework.SimpleObject;
@@ -20,20 +21,25 @@ import org.openmrs.ui.framework.fragment.FragmentModel;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
+
 /**
  *  * Controller for a fragment that shows all users  
  */
-public class PmtctFragmentController
-{
+public class PmtctFragmentController {
 	
 	public void controller(FragmentModel model, @SpringBean("userService") UserService service) {
 		model.addAttribute("users", service.getAllUsers());
 	}
-
+	
 	public @ResponseBody
-	ArrayList<ChartModel> getAncPmtctArt()
-	{
+	ArrayList<ChartModel> getAncPmtctArt() {
 		DbPmtctUtils utils = new DbPmtctUtils();
 		return utils.getAncPmtctArt();
+	}
+	
+	public @ResponseBody
+	ArrayList<PmtctCohortRetentiModel> getPmtctCohortRetention() {
+		DbPmtctUtils utils = new DbPmtctUtils();
+		return utils.getPmtctCohortRetention();
 	}
 }
