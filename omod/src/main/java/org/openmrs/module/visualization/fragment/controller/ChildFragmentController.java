@@ -34,9 +34,9 @@ public class ChildFragmentController {
 		return "success";
 	}
 	
-	public @ResponseBody
+	/*public @ResponseBody
 	ArrayList<ChartModel> getPmtctFo() {
 		DbPatientUtils utils = new DbPatientUtils();
 		return utils.getPmtctFollowUp();
-	}
+	}*/
 }
