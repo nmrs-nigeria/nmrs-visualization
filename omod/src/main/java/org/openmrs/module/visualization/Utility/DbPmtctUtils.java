@@ -137,7 +137,7 @@ public class DbPmtctUtils {
 	
 	public static List<LocalDate> getMonths(LocalDate startDate, LocalDate endDate)
 	{
-		long numOfMonthsBetween = ChronoUnit.MONTHS.between(startDate, endDate);
+		long numOfMonthsBetween = ChronoUnit.MONTHS.between(startDate, endDate) + 1;
 		return IntStream.iterate(0, i -> i + 1)
 				.limit(numOfMonthsBetween)
 				.mapToObj(i -> startDate.plusMonths(i))
@@ -162,12 +162,24 @@ public class DbPmtctUtils {
 			        + "from\n"
 			        + "((select count(distinct(pmtct.patient_id)) active_0\n"
 			        + "\tfrom\n"
-			        + "\t(select patient_id, encounter_datetime  FROM encounter WHERE (encounter_type = 10  AND form_id = 16) and (year(encounter_datetime) = year(date(cast(" + dateString + " as datetime))) and month(encounter_datetime) = month(date(cast(" + dateString + " as datetime))))) pmtct\n"
+			        + "\t(select patient_id, encounter_datetime  FROM encounter WHERE (encounter_type = 10  AND form_id = 16) and (year(encounter_datetime) = year(date(cast("
+			        + dateString
+			        + " as datetime))) and month(encounter_datetime) = month(date(cast("
+			        + dateString
+			        + " as datetime))))) pmtct\n"
 			        + "\tjoin\n"
-			        + "\t(SELECT patient_id, encounter_datetime  FROM encounter WHERE (encounter_type = 14 AND form_id = 23) and (year(encounter_datetime) = year(date(cast(" + dateString + " as datetime))) and month(encounter_datetime) = month(date(cast(" + dateString + " as datetime))))) art on pmtct.patient_id = art.patient_id\n"
+			        + "\t(SELECT patient_id, encounter_datetime  FROM encounter WHERE (encounter_type = 14 AND form_id = 23) and (year(encounter_datetime) = year(date(cast("
+			        + dateString
+			        + " as datetime))) and month(encounter_datetime) = month(date(cast("
+			        + dateString
+			        + " as datetime))))) art on pmtct.patient_id = art.patient_id\n"
 			        + "\tjoin\n"
 			        + "\t(SELECT patient_id, encounter_datetime FROM encounter WHERE (encounter_type = 13 AND form_id = 27) and\n"
-			        + "\t(month(encounter_datetime) = month(date(cast(" + dateString + " as datetime))) and year(encounter_datetime) = year(date(cast(" + dateString + " as datetime))))\n"
+			        + "\t(month(encounter_datetime) = month(date(cast("
+			        + dateString
+			        + " as datetime))) and year(encounter_datetime) = year(date(cast("
+			        + dateString
+			        + " as datetime))))\n"
 			        + "\t) pof on pmtct.patient_id = pof.patient_id\n"
 			        + ") active_0\n"
 			        + "\n"
@@ -175,12 +187,24 @@ public class DbPmtctUtils {
 			        + "\n"
 			        + "(select count(distinct(pmtct.patient_id)) active_3\n"
 			        + "\tfrom\n"
-			        + "\t(select patient_id, encounter_datetime  FROM encounter WHERE (encounter_type = 10  AND form_id = 16) and (year(encounter_datetime) = year(date(cast(" + dateString + " as datetime))) and month(encounter_datetime) = month(date(cast(" + dateString + " as datetime))))) pmtct\n"
+			        + "\t(select patient_id, encounter_datetime  FROM encounter WHERE (encounter_type = 10  AND form_id = 16) and (year(encounter_datetime) = year(date(cast("
+			        + dateString
+			        + " as datetime))) and month(encounter_datetime) = month(date(cast("
+			        + dateString
+			        + " as datetime))))) pmtct\n"
 			        + "\tjoin\n"
-			        + "\t(SELECT patient_id, encounter_datetime  FROM encounter WHERE (encounter_type = 14 AND form_id = 23) and (year(encounter_datetime) = year(date(cast(" + dateString + " as datetime))) and month(encounter_datetime) = month(date(cast(" + dateString + " as datetime))))) art on pmtct.patient_id = art.patient_id\n"
+			        + "\t(SELECT patient_id, encounter_datetime  FROM encounter WHERE (encounter_type = 14 AND form_id = 23) and (year(encounter_datetime) = year(date(cast("
+			        + dateString
+			        + " as datetime))) and month(encounter_datetime) = month(date(cast("
+			        + dateString
+			        + " as datetime))))) art on pmtct.patient_id = art.patient_id\n"
 			        + "\tjoin\n"
 			        + "\t(SELECT patient_id, encounter_datetime FROM encounter WHERE (encounter_type = 13 AND form_id = 27) and\n"
-			        + "\t(date(encounter_datetime) >= date(DATE_ADD(date(cast(" + dateString + " as datetime)), INTERVAL 1 month)) and date(encounter_datetime) <= date(DATE_ADD(date(cast(" + dateString + " as datetime)), INTERVAL 3 month)))\n"
+			        + "\t(date(encounter_datetime) >= date(DATE_ADD(date(cast("
+			        + dateString
+			        + " as datetime)), INTERVAL 1 month)) and date(encounter_datetime) <= date(DATE_ADD(date(cast("
+			        + dateString
+			        + " as datetime)), INTERVAL 3 month)))\n"
 			        + "\t) pof on pmtct.patient_id = pof.patient_id\n"
 			        + ")active_3\n"
 			        + "\n"
@@ -188,12 +212,24 @@ public class DbPmtctUtils {
 			        + "\n"
 			        + "(select count(distinct(pmtct.patient_id)) active_6\n"
 			        + "\tfrom\n"
-			        + "\t(select patient_id, encounter_datetime  FROM encounter WHERE (encounter_type = 10  AND form_id = 16) and (year(encounter_datetime) = year(date(cast(" + dateString + " as datetime))) and month(encounter_datetime) = month(date(cast(" + dateString + " as datetime))))) pmtct\n"
+			        + "\t(select patient_id, encounter_datetime  FROM encounter WHERE (encounter_type = 10  AND form_id = 16) and (year(encounter_datetime) = year(date(cast("
+			        + dateString
+			        + " as datetime))) and month(encounter_datetime) = month(date(cast("
+			        + dateString
+			        + " as datetime))))) pmtct\n"
 			        + "\tjoin\n"
-			        + "\t(SELECT patient_id, encounter_datetime  FROM encounter WHERE (encounter_type = 14 AND form_id = 23) and (year(encounter_datetime) = year(date(cast(" + dateString + " as datetime))) and month(encounter_datetime) = month(date(cast(" + dateString + " as datetime))))) art on pmtct.patient_id = art.patient_id\n"
+			        + "\t(SELECT patient_id, encounter_datetime  FROM encounter WHERE (encounter_type = 14 AND form_id = 23) and (year(encounter_datetime) = year(date(cast("
+			        + dateString
+			        + " as datetime))) and month(encounter_datetime) = month(date(cast("
+			        + dateString
+			        + " as datetime))))) art on pmtct.patient_id = art.patient_id\n"
 			        + "\tjoin\n"
 			        + "\t(SELECT patient_id, encounter_datetime FROM encounter WHERE (encounter_type = 13 AND form_id = 27) and\n"
-			        + "\t(date(encounter_datetime) > date(DATE_ADD(date(cast(" + dateString + " as datetime)), INTERVAL 3 month)) and date(encounter_datetime <= DATE_ADD(date(cast(" + dateString + " as datetime)), INTERVAL 6 month)))\n"
+			        + "\t(date(encounter_datetime) > date(DATE_ADD(date(cast("
+			        + dateString
+			        + " as datetime)), INTERVAL 3 month)) and date(encounter_datetime <= DATE_ADD(date(cast("
+			        + dateString
+			        + " as datetime)), INTERVAL 6 month)))\n"
 			        + "\t) pof on pmtct.patient_id = pof.patient_id\n"
 			        + ")active_6\n"
 			        + "\n"
@@ -201,12 +237,24 @@ public class DbPmtctUtils {
 			        + "\n"
 			        + "(select count(distinct(pmtct.patient_id)) active_12\n"
 			        + "\tfrom\n"
-			        + "\t(select patient_id, encounter_datetime  FROM encounter WHERE (encounter_type = 10  AND form_id = 16) and (year(encounter_datetime) = year(date(cast(" + dateString + " as datetime))) and month(encounter_datetime) = month(date(cast(" + dateString + " as datetime))))) pmtct\n"
+			        + "\t(select patient_id, encounter_datetime  FROM encounter WHERE (encounter_type = 10  AND form_id = 16) and (year(encounter_datetime) = year(date(cast("
+			        + dateString
+			        + " as datetime))) and month(encounter_datetime) = month(date(cast("
+			        + dateString
+			        + " as datetime))))) pmtct\n"
 			        + "\tjoin\n"
-			        + "\t(SELECT patient_id, encounter_datetime  FROM encounter WHERE (encounter_type = 14 AND form_id = 23) and (year(encounter_datetime) = year(date(cast(" + dateString + " as datetime))) and month(encounter_datetime) = month(date(cast(" + dateString + " as datetime))))) art on pmtct.patient_id = art.patient_id\n"
+			        + "\t(SELECT patient_id, encounter_datetime  FROM encounter WHERE (encounter_type = 14 AND form_id = 23) and (year(encounter_datetime) = year(date(cast("
+			        + dateString
+			        + " as datetime))) and month(encounter_datetime) = month(date(cast("
+			        + dateString
+			        + " as datetime))))) art on pmtct.patient_id = art.patient_id\n"
 			        + "\tjoin\n"
 			        + "\t(SELECT patient_id, encounter_datetime FROM encounter WHERE (encounter_type = 13 AND form_id = 27) and\n"
-			        + "\t(date(encounter_datetime) > date(DATE_ADD(date(cast(" + dateString + " as datetime)), INTERVAL 6 month)) and date(encounter_datetime) <= date(DATE_ADD(date(cast(" + dateString + " as datetime)), INTERVAL 12 month)))\n"
+			        + "\t(date(encounter_datetime) > date(DATE_ADD(date(cast("
+			        + dateString
+			        + " as datetime)), INTERVAL 6 month)) and date(encounter_datetime) <= date(DATE_ADD(date(cast("
+			        + dateString
+			        + " as datetime)), INTERVAL 12 month)))\n"
 			        + "\t) pof on pmtct.patient_id = pof.patient_id\n" + ")active_12)";
 			
 			ResultSet result = statement.executeQuery(str);

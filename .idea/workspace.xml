@@ -2,77 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60c1f400-7d02-4114-b362-38af6d13cabf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/PmtctCohortRetentiModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/org/openmrs/module/visualization/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/org/openmrs/module/visualization/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/org/openmrs/module/visualization/VisualizationActivator.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/org/openmrs/module/visualization/VisualizationActivator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/org/openmrs/module/visualization/VisualizationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/org/openmrs/module/visualization/VisualizationConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/org/openmrs/module/visualization/api/VisualizationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/org/openmrs/module/visualization/api/VisualizationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/org/openmrs/module/visualization/api/dao/VisualizationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/org/openmrs/module/visualization/api/dao/VisualizationDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/org/openmrs/module/visualization/api/impl/VisualizationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/org/openmrs/module/visualization/api/impl/VisualizationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/test/java/org/openmrs/module/visualization/VisualizationServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/test/java/org/openmrs/module/visualization/VisualizationServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/test/java/org/openmrs/module/visualization/dao/VisualizationDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/test/java/org/openmrs/module/visualization/dao/VisualizationDaoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/target/maven-java-formatter-cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/maven-java-formatter-cache.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/api/target/visualization-api-1.0.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/visualization-api-1.0.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/omod/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/BarChartModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/BarChartModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/ChartModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/ChartModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/DBConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/HtsCharts.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/HtsCharts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPatientUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPatientUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPmtctUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPmtctUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/extension/html/AdminList.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/extension/html/AdminList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/HtsFragmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/HtsFragmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/LineListFragmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/LineListFragmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/PmtctFragmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/PmtctFragmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/UsersFragmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/UsersFragmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/page/controller/HtsPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/page/controller/HtsPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/page/controller/LineListPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/page/controller/LineListPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/page/controller/PmtctPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/page/controller/PmtctPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/web/controller/VisualizationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/web/controller/VisualizationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/src/main/webapp/fragments/pmtct.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/webapp/fragments/pmtct.gsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/src/test/java/org/openmrs/module/visualization/AdminListExtensionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/test/java/org/openmrs/module/visualization/AdminListExtensionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/classes/org/openmrs/module/visualization/Model/BarChartModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/classes/org/openmrs/module/visualization/Model/BarChartModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/classes/org/openmrs/module/visualization/Model/DBConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/classes/org/openmrs/module/visualization/Model/DBConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/classes/org/openmrs/module/visualization/Utility/DbPatientUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/classes/org/openmrs/module/visualization/Utility/DbPatientUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/classes/org/openmrs/module/visualization/Utility/DbUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/classes/org/openmrs/module/visualization/Utility/DbUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/classes/org/openmrs/module/visualization/extension/html/AdminList.class" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/classes/org/openmrs/module/visualization/extension/html/AdminList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/classes/org/openmrs/module/visualization/fragment/controller/LineListFragmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/classes/org/openmrs/module/visualization/fragment/controller/LineListFragmentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/classes/org/openmrs/module/visualization/fragment/controller/PmtctFragmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/classes/org/openmrs/module/visualization/fragment/controller/PmtctFragmentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/classes/org/openmrs/module/visualization/fragment/controller/UsersFragmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/classes/org/openmrs/module/visualization/fragment/controller/UsersFragmentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/classes/org/openmrs/module/visualization/page/controller/HtsPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/classes/org/openmrs/module/visualization/page/controller/HtsPageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/classes/org/openmrs/module/visualization/page/controller/LineListPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/classes/org/openmrs/module/visualization/page/controller/LineListPageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/classes/org/openmrs/module/visualization/page/controller/PmtctPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/classes/org/openmrs/module/visualization/page/controller/PmtctPageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/classes/org/openmrs/module/visualization/web/controller/VisualizationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/classes/org/openmrs/module/visualization/web/controller/VisualizationController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/omod/target/classes/web/module/fragments/pmtct.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/classes/web/module/fragments/pmtct.gsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/classes/web/module/pages/Hts.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/classes/web/module/pages/Hts.gsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/omod/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/omod/target/maven-java-formatter-cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/maven-java-formatter-cache.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT.omod" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT.omod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/lib/visualization-api-1.0.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/lib/visualization-api-1.0.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/Model/BarChartModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/Model/BarChartModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/Model/DBConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/Model/DBConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/Utility/DbPatientUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/Utility/DbPatientUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/Utility/DbUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/Utility/DbUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/extension/html/AdminList.class" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/extension/html/AdminList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/fragment/controller/LineListFragmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/fragment/controller/LineListFragmentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/fragment/controller/PmtctFragmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/fragment/controller/PmtctFragmentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/fragment/controller/UsersFragmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/fragment/controller/UsersFragmentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/page/controller/HtsPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/page/controller/HtsPageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/page/controller/LineListPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/page/controller/LineListPageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/page/controller/PmtctPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/page/controller/PmtctPageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/web/controller/VisualizationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/web/controller/VisualizationController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/web/module/fragments/pmtct.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/web/module/fragments/pmtct.gsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/web/module/pages/Hts.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/web/module/pages/Hts.gsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/visualization-omod.iml" beforeDir="false" afterPath="$PROJECT_DIR$/omod/visualization-omod.iml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/api/target/" />
@@ -88,11 +33,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPmtctUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="116" selection-start-line="116" selection-end-line="116" />
+            <state relative-caret-position="131">
+              <caret line="141" column="42" lean-forward="true" selection-start-line="141" selection-start-column="42" selection-end-line="141" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#851#852#0" expanded="true" />
@@ -100,6 +45,7 @@
                 <element signature="method#getAncPmtctArt#0;class#DbPmtctUtils#0" />
                 <element signature="e#1116#1128#0" expanded="true" />
                 <element signature="e#5157#5182#0" expanded="true" />
+                <element signature="method#getCohort#0;class#DbPmtctUtils#0" />
               </folding>
             </state>
           </provider>
@@ -109,7 +55,7 @@
         <entry file="file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/PmtctCohortRetentiModel.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="713">
-              <caret line="42" column="21" lean-forward="true" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
+              <caret line="42" column="21" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
               <folding>
                 <element signature="e#244#245#0" expanded="true" />
                 <element signature="e#269#270#0" expanded="true" />
@@ -146,11 +92,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/omod/src/main/webapp/fragments/pmtct.gsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="272">
+              <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
@@ -192,8 +138,8 @@
         <option value="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/PmtctArtModel.java" />
         <option value="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/PmtctFragmentController.java" />
         <option value="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/PmtctCohortRetentiModel.java" />
-        <option value="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPmtctUtils.java" />
         <option value="$PROJECT_DIR$/omod/src/main/webapp/fragments/pmtct.gsp" />
+        <option value="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPmtctUtils.java" />
       </list>
     </option>
   </component>
@@ -304,7 +250,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1569228083804" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1569229151403" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
@@ -386,7 +332,7 @@
       <workItem from="1568989008251" duration="15265000" />
       <workItem from="1569006549699" duration="678000" />
       <workItem from="1569058475794" duration="613000" />
-      <workItem from="1569060953258" duration="26355000" />
+      <workItem from="1569060953258" duration="27420000" />
     </task>
     <task id="LOCAL-00001" summary="Added highchart scripts">
       <created>1568936871117</created>
@@ -413,13 +359,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26977000" />
+    <option name="totallyTimeSpent" value="28042000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1488" height="813" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16433567" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16433567" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -429,12 +375,12 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.22271386" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.30088496" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.30088496" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Spring" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32890856" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.32890856" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
       <window_info anchor="bottom" id="Version Control" order="11" />
@@ -522,7 +468,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPmtctUtils.java</url>
-          <line>227</line>
+          <line>275</line>
           <properties />
           <option name="timeStamp" value="35" />
         </line-breakpoint>
@@ -547,7 +493,7 @@
     <entry file="file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/PmtctCohortRetentiModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="713">
-          <caret line="42" column="21" lean-forward="true" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
+          <caret line="42" column="21" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
           <folding>
             <element signature="e#244#245#0" expanded="true" />
             <element signature="e#269#270#0" expanded="true" />
@@ -581,25 +527,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPmtctUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="116" selection-start-line="116" selection-end-line="116" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#851#852#0" expanded="true" />
-            <element signature="e#927#928#0" expanded="true" />
-            <element signature="method#getAncPmtctArt#0;class#DbPmtctUtils#0" />
-            <element signature="e#1116#1128#0" expanded="true" />
-            <element signature="e#5157#5182#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/omod/src/main/webapp/fragments/pmtct.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="272">
+          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
@@ -608,6 +539,29 @@
             <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPatientUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPmtctUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="141" column="42" lean-forward="true" selection-start-line="141" selection-start-column="42" selection-end-line="141" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#851#852#0" expanded="true" />
+            <element signature="e#927#928#0" expanded="true" />
+            <element signature="method#getAncPmtctArt#0;class#DbPmtctUtils#0" />
+            <element signature="e#1116#1128#0" expanded="true" />
+            <element signature="e#5157#5182#0" expanded="true" />
+            <element signature="method#getCohort#0;class#DbPmtctUtils#0" />
           </folding>
         </state>
       </provider>

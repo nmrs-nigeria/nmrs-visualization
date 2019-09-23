@@ -3,7 +3,7 @@
 <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
 <br>
-
+<br>
 <div id="cohort" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <script type="text/javascript">
     jq = jQuery;
@@ -103,7 +103,7 @@
                     pData.push([f.active_0, f.active_3, f.active_6, f.active_12]);
                     categories.push({name: f.cohort, data: dx});
                 });
-                Highcharts.chart('container',
+                Highcharts.chart('cohort',
                     {
                     chart: {
                         type: 'column'
