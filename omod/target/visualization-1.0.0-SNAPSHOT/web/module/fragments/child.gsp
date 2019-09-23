@@ -24,6 +24,7 @@
 
     function getAncPmtctArt()
     {
+        var colors = ['#030508', '#7cacc2', '#80699B'];
         var link = "${ ui.actionLink("visualization", "hts", "getPmtctFo")}";
         jq.ajax({
             contentType: "application/json; charset=utf-8",
@@ -66,6 +67,7 @@
                             }
                         }
                     },
+                    colors:colors,
                     series: [{
                         type: 'pie',
                         name: 'Browser share',
