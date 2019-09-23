@@ -13,6 +13,7 @@ import org.openmrs.api.UserService;
 import org.openmrs.module.visualization.Model.BarChartModel;
 import org.openmrs.module.visualization.Model.ChartModel;
 import org.openmrs.module.visualization.Model.PmtctCohortRetentiModel;
+import org.openmrs.module.visualization.Model.ViralSuppressionModel;
 import org.openmrs.module.visualization.Utility.DbPatientUtils;
 import org.openmrs.module.visualization.Utility.DbPmtctUtils;
 import org.openmrs.ui.framework.SimpleObject;
@@ -38,8 +39,13 @@ public class PmtctFragmentController {
 	}
 	
 	public @ResponseBody
-	ArrayList<PmtctCohortRetentiModel> getPmtctCohortRetention() {
-		DbPmtctUtils utils = new DbPmtctUtils();
-		return utils.getPmtctCohortRetention();
+	ArrayList<PmtctCohortRetentiModel> getPmtctCohortRetention()
+	{
+		return new DbPmtctUtils().getPmtctCohortRetention();
+	}
+
+	public @ResponseBody ArrayList<ViralSuppressionModel> getPmtctCohortViralSuppression()
+	{
+		return new DbPmtctUtils().getPmtctCohortViralSuppression();
 	}
 }
