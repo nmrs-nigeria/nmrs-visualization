@@ -131,7 +131,7 @@ public class DbPmtctUtils {
 			return null;
 		}
 	}
-
+	
 	public ArrayList<ViralSuppressionModel> getPmtctCohortViralSuppression()
 	{
 		ArrayList<ViralSuppressionModel> cohortSuppressions = new ArrayList<ViralSuppressionModel>();
@@ -163,50 +163,55 @@ public class DbPmtctUtils {
 				.mapToObj(i -> startDate.plusMonths(i))
 				.collect(Collectors.toList());
 	}
-
+	
 	/*
 		#All PMTCT mothers with vl results released for samples collected after Last menstrual Period
 	 */
 	public ViralSuppressionModel getCohortViralSuppression(LocalDate date) {
 		ViralSuppressionModel ViralSuppressionModel = new ViralSuppressionModel();
 		try {
-			Connection connection = DriverManager.getConnection(connResult.getUrl(), connResult.getUsername(), connResult.getPassword());
+			Connection connection = DriverManager.getConnection(connResult.getUrl(), connResult.getUsername(),
+			    connResult.getPassword());
 			Statement logic = connection.createStatement();
-
+			
 			DateTimeFormatter fmtr = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 			String dateStr = date.format(fmtr);
-
-			String str = "select * from\n" +
-					"(select count(CASE WHEN lofObR.value_numeric < 1000 THEN 1 ELSE 0 END) AS vl_sup, # test results < 1000\n" +
-					"count(CASE WHEN lofObR.value_numeric >= 1000 THEN 1 ELSE 0 END) AS vl_non_sup # test results >= 1000\n" +
-					"\tfrom\n" +
-					"    (select patient_id, encounter_datetime, encounter_id  FROM encounter WHERE (encounter_type = 10 AND form_id = 54)\n" +
-					"    and (year(encounter_datetime) = year(date(cast(" + dateStr + " as datetime))) and month(encounter_datetime) = month(date(cast(" + dateStr + " as datetime))))) pmtct #PMTCT HTS Register within cohort\n" +
-					"    join\n" +
-					"\t(select patient_id, encounter_datetime, encounter_id  FROM encounter WHERE (encounter_type = 10  AND form_id = 16)) anc on pmtct.patient_id = anc.patient_id # ANC form\n" +
-					"\tjoin\n" +
-					"    (SELECT * FROM obs WHERE concept_id = 1427 AND value_datetime IS NOT NULL) ancOb on pmtct.patient_id = ancOb.person_id and anc.encounter_id = ancOb.encounter_id # Last menstural period\n" +
-					"    join\n" +
-					"\t(SELECT patient_id, encounter_datetime, encounter_id FROM encounter WHERE (encounter_type = 11 AND form_id = 21)) lof on pmtct.patient_id = lof.patient_id  # Lab order form\n" +
-					"    join\n" +
-					"    (SELECT * FROM obs WHERE concept_id = 159951 AND value_datetime IS NOT NULL) lofObS on pmtct.patient_id = lofObS.person_id and lof.encounter_id = lofObS.encounter_id  #sample collection date for viral load test\n" +
-					"    join\n" +
-					"    (SELECT * FROM obs WHERE concept_id = 165987 AND value_datetime IS NOT NULL) lofObRd on pmtct.patient_id = lofObRd.person_id and lof.encounter_id = lofObRd.encounter_id # Date result was received at the facility\n" +
-					"    join\n" +
-					"    (SELECT * FROM obs WHERE concept_id = 856 AND value_numeric IS NOT NULL) lofObR on pmtct.patient_id = lofObR.person_id and lof.encounter_id = lofObR.encounter_id # Viral load result\n" +
-					"    \n" +
-					"    where lofObS.value_datetime >= ancOb.value_datetime # ensure sample was collected after LMP\n" +
-					"    and lofObRd.value_datetime >= ancOb.value_datetime # ensure test result was released after LMP\n" +
-					"    and lofObRd.value_datetime <= date(DATE_ADD(ancOb.value_datetime, INTERVAL 36 week)) # ensure test result was released after LMP but with GA\n" +
-					")q";
-
+			
+			String str = "select * from\n"
+			        + "(select count(CASE WHEN lofObR.value_numeric < 1000 THEN 1 ELSE 0 END) AS vl_sup, # test results < 1000\n"
+			        + "count(CASE WHEN lofObR.value_numeric >= 1000 THEN 1 ELSE 0 END) AS vl_non_sup # test results >= 1000\n"
+			        + "\tfrom\n"
+			        + "    (select patient_id, encounter_datetime, encounter_id  FROM encounter WHERE (encounter_type = 10 AND form_id = 54)\n"
+			        + "    and (year(encounter_datetime) = year(date(cast("
+			        + dateStr
+			        + " as datetime))) and month(encounter_datetime) = month(date(cast("
+			        + dateStr
+			        + " as datetime))))) pmtct #PMTCT HTS Register within cohort\n"
+			        + "    join\n"
+			        + "\t(select patient_id, encounter_datetime, encounter_id  FROM encounter WHERE (encounter_type = 10  AND form_id = 16)) anc on pmtct.patient_id = anc.patient_id # ANC form\n"
+			        + "\tjoin\n"
+			        + "    (SELECT * FROM obs WHERE concept_id = 1427 AND value_datetime IS NOT NULL) ancOb on pmtct.patient_id = ancOb.person_id and anc.encounter_id = ancOb.encounter_id # Last menstural period\n"
+			        + "    join\n"
+			        + "\t(SELECT patient_id, encounter_datetime, encounter_id FROM encounter WHERE (encounter_type = 11 AND form_id = 21)) lof on pmtct.patient_id = lof.patient_id  # Lab order form\n"
+			        + "    join\n"
+			        + "    (SELECT * FROM obs WHERE concept_id = 159951 AND value_datetime IS NOT NULL) lofObS on pmtct.patient_id = lofObS.person_id and lof.encounter_id = lofObS.encounter_id  #sample collection date for viral load test\n"
+			        + "    join\n"
+			        + "    (SELECT * FROM obs WHERE concept_id = 165987 AND value_datetime IS NOT NULL) lofObRd on pmtct.patient_id = lofObRd.person_id and lof.encounter_id = lofObRd.encounter_id # Date result was received at the facility\n"
+			        + "    join\n"
+			        + "    (SELECT * FROM obs WHERE concept_id = 856 AND value_numeric IS NOT NULL) lofObR on pmtct.patient_id = lofObR.person_id and lof.encounter_id = lofObR.encounter_id # Viral load result\n"
+			        + "    \n"
+			        + "    where lofObS.value_datetime >= ancOb.value_datetime # ensure sample was collected after LMP\n"
+			        + "    and lofObRd.value_datetime >= ancOb.value_datetime # ensure test result was released after LMP\n"
+			        + "    and lofObRd.value_datetime <= date(DATE_ADD(ancOb.value_datetime, INTERVAL 36 week)) # ensure test result was released after LMP but with GA\n"
+			        + ")q";
+			
 			ResultSet res = logic.executeQuery(str);
-
+			
 			if (res.next()) {
 				ViralSuppressionModel = new ViralSuppressionModel();
 				ViralSuppressionModel.setSuppressed(res.getInt("vl_sup"));
 				ViralSuppressionModel.setNonSuppressed(res.getInt("vl_non_sup"));
-
+				
 				DateTimeFormatter cohortFmtr = DateTimeFormatter.ofPattern("MMM-yyyy");
 				String cohort = date.format(cohortFmtr);
 				ViralSuppressionModel.setCohort(cohort);

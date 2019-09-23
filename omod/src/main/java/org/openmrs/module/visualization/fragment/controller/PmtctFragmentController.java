@@ -39,13 +39,12 @@ public class PmtctFragmentController {
 	}
 	
 	public @ResponseBody
-	ArrayList<PmtctCohortRetentiModel> getPmtctCohortRetention()
-	{
+	ArrayList<PmtctCohortRetentiModel> getPmtctCohortRetention() {
 		return new DbPmtctUtils().getPmtctCohortRetention();
 	}
-
-	public @ResponseBody ArrayList<ViralSuppressionModel> getPmtctCohortViralSuppression()
-	{
+	
+	public @ResponseBody
+	ArrayList<ViralSuppressionModel> getPmtctCohortViralSuppression() {
 		return new DbPmtctUtils().getPmtctCohortViralSuppression();
 	}
 }

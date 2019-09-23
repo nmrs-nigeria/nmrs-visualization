@@ -5,6 +5,14 @@
 <br>
 <br>
 <div id="cohort" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+<br>
+<br>
+<div id="cohortViralSupp" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+<br>
+<br>
+
 <script type="text/javascript">
     jq = jQuery;
 
@@ -39,7 +47,7 @@
                         type: 'column'
                     },
                     title: {
-                        text: 'ANC with prev/new HIV+ status and on ART '
+                        text: 'PMTCT ART Covergae'
                     },
                     xAxis: {
                         categories: categories
@@ -48,7 +56,7 @@
                         allowDecimals: false,
                         min: 0,
                         title: {
-                            text: 'Count'
+                            text: 'Number of pregnant women'
                         }
                     },
                     tooltip: {
@@ -99,9 +107,9 @@
                 var categories = [];
                 jq.each(r, function (i, f)
                 {
-                    var dx = [];
-                    pData.push([f.active_0, f.active_3, f.active_6, f.active_12]);
-                    categories.push({name: f.cohort, data: dx});
+                    var dx = [ f.active_12, f.active_6, f.active_3, f.active_0 ];
+                    categories.push(f.cohort);
+                    pData.push({name: f.cohort, data: dx});
                 });
                 Highcharts.chart('cohort',
                     {
@@ -109,7 +117,7 @@
                         type: 'column'
                     },
                     title: {
-                        text: 'Current PMTCT Cohort Retention'
+                        text: 'PMTCT ART Retention Analysis'
                     },
                     xAxis: {
                         categories: categories
@@ -117,7 +125,7 @@
                     yAxis: {
                         min: 0,
                         title: {
-                            text: 'Clients'
+                            text: 'Number of positive pregnant women'
                         },
                         stackLabels: {
                             enabled: true,
@@ -156,6 +164,8 @@
                     },
                     series: pData
                 });
+
+                getPmtctCohortViralSuppression();
             },
             error: function (e)
             {
@@ -163,4 +173,85 @@
             }
         });
     }
+
+    function getPmtctCohortViralSuppression()
+    {
+        var link = "${ ui.actionLink("visualization", "pmtct", "getPmtctCohortViralSuppression")}";
+        jq.ajax({
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            url: link,
+            cache: false,
+            timeout: 600000,
+            success: function (r)
+            {
+                var pData =[];
+                var categories = [];
+                jq.each(r, function (i, f)
+                {
+                    var dx = [ f.vl_sup, f.vl_non_sup ];
+                    categories.push(f.cohort);
+                    pData.push({name: f.cohort, data: dx});
+                });
+                Highcharts.chart('cohortViralSupp',
+                    {
+                        chart: {
+                            type: 'column'
+                        },
+                        title: {
+                            text: 'Viral load Result in PMTCT by gestation age'
+                        },
+                        xAxis: {
+                            categories: categories
+                        },
+                        yAxis: {
+                            min: 0,
+                            title: {
+                                text: 'Number of positive pregnant women'
+                            },
+                            stackLabels: {
+                                enabled: true,
+                                style: {
+                                    fontWeight: 'bold',
+                                    color: ( // theme
+                                        Highcharts.defaultOptions.title.style &&
+                                        Highcharts.defaultOptions.title.style.color
+                                    ) || 'gray'
+                                }
+                            }
+                        },
+                        legend: {
+                            align: 'right',
+                            x: -30,
+                            verticalAlign: 'top',
+                            y: 25,
+                            floating: true,
+                            backgroundColor:
+                                Highcharts.defaultOptions.legend.backgroundColor || 'white',
+                            borderColor: '#CCC',
+                            borderWidth: 1,
+                            shadow: false
+                        },
+                        tooltip: {
+                            headerFormat: '<b>{point.x}</b><br/>',
+                            pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+                        },
+                        plotOptions: {
+                            column: {
+                                stacking: 'normal',
+                                dataLabels: {
+                                    enabled: true
+                                }
+                            }
+                        },
+                        series: pData
+                    });
+            },
+            error: function (e)
+            {
+
+            }
+        });
+    }
+
 </script>
