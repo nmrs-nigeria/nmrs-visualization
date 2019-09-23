@@ -137,7 +137,7 @@ public class DbPmtctUtils {
 	
 	public static List<LocalDate> getMonths(LocalDate startDate, LocalDate endDate)
 	{
-		long numOfMonthsBetween = ChronoUnit.MONTHS.between(startDate, endDate);
+		long numOfMonthsBetween = ChronoUnit.MONTHS.between(startDate, endDate) + 1;
 		return IntStream.iterate(0, i -> i + 1)
 				.limit(numOfMonthsBetween)
 				.mapToObj(i -> startDate.plusMonths(i))
