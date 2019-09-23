@@ -86,6 +86,86 @@ public class DbPatientUtils {
 		}
 	}
 	
+	public ArrayList<ChartModel> getPmtctFollowUp() {
+		try {
+			DBConnection connResult = DbUtil.getNmrsConnectionDetails();
+			
+			ArrayList<ChartModel> barChartModels = new ArrayList<ChartModel>();
+			
+			Connection connection = DriverManager.getConnection(connResult.getUrl(), connResult.getUsername(),
+			    connResult.getPassword());
+			Statement statement = connection.createStatement();
+			String sql = "SELECT * FROM ((SELECT COUNT(DISTINCT(person_id)) AS pos_linked FROM obs WHERE concept_id = 165035 AND value_coded = 165552 AND MONTH(CURDATE())) AS a CROSS JOIN"
+			        + " (SELECT COUNT(DISTINCT(person_id)) AS pos_not_linked FROM obs WHERE concept_id = 165035 AND value_coded = 165553 AND MONTH(CURDATE())) AS b CROSS JOIN"
+			        + " (SELECT COUNT(DISTINCT(person_id)) AS neg_breastfeed FROM obs WHERE concept_id = 165035 AND value_coded = 165554 AND MONTH(CURDATE())) AS c CROSS JOIN"
+			        + " (SELECT COUNT(DISTINCT(person_id)) AS neg_not_breastfeed FROM obs WHERE concept_id = 165035 AND value_coded = 1404 AND MONTH(CURDATE())) AS d CROSS JOIN"
+			        + " (SELECT COUNT(DISTINCT(person_id)) AS died FROM obs WHERE concept_id = 165035 AND value_coded = 165556 AND MONTH(CURDATE())) AS e CROSS JOIN"
+			        + " (SELECT COUNT(DISTINCT(person_id)) AS lost_to_follow FROM obs WHERE concept_id = 165035 AND value_coded = 165557 AND MONTH(CURDATE())) AS f CROSS JOIN"
+			        + " (SELECT COUNT(DISTINCT(person_id)) AS transfered_out FROM obs WHERE concept_id = 165035 AND value_coded = 165558 AND MONTH(CURDATE())) AS g)";
+			String sqlStatement = (sql);
+			ResultSet result = statement.executeQuery(sqlStatement);
+			if (result.next()) {
+				barChartModels = buildPieData(result);
+			} else {}
+			
+			connection.close();
+			return barChartModels;
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public ArrayList<BarChartModel> getPmtctEid(int month, int year) {
+		try {
+			DBConnection connResult = DbUtil.getNmrsConnectionDetails();
+			
+			ArrayList<BarChartModel> chartModels = new ArrayList<BarChartModel>();
+			
+			Connection connection = DriverManager.getConnection(connResult.getUrl(), connResult.getUsername(),
+			    connResult.getPassword());
+			Statement statement = connection.createStatement();
+			//PreparedStatement preparedStatement = null;
+			String sql = "SELECT * FROM ((SELECT COUNT(DISTINCT(pid.patient_id)) AS hei_cohort FROM patient_identifier pid JOIN person per ON per.person_id = pid.patient_id WHERE pid.identifier_type = 7 AND MONTH(per.birthdate) = "
+			        + month
+			        + " AND YEAR(per.birthdate) = "
+			        + year
+			        + ") AS a CROSS JOIN "
+			        + "(SELECT COUNT(DISTINCT(person_id)) AS rec_nvp FROM obs WHERE concept_id = 164971 AND value_coded = 164970 AND person_id IN (SELECT pid.patient_id FROM patient_identifier pid JOIN person per ON per.person_id = pid.patient_id WHERE pid.identifier_type = 7 AND MONTH(per.birthdate) = "
+			        + month
+			        + " AND YEAR(per.birthdate) = "
+			        + year
+			        + ")) b CROSS JOIN "
+			        + "(SELECT COUNT(DISTINCT(person_id)) AS dbs_coll FROM obs WHERE concept_id = 165868 AND value_coded = 165865 AND person_id IN (SELECT pid.patient_id FROM patient_identifier pid JOIN person per ON per.person_id = pid.patient_id WHERE pid.identifier_type = 7 AND MONTH(per.birthdate) = "
+			        + month
+			        + " AND YEAR(per.birthdate) = "
+			        + year
+			        + ")) c CROSS JOIN "
+			        + "(SELECT COUNT(DISTINCT(person_id)) AS pos_pcr FROM obs WHERE concept_id = 165872 AND value_coded = 703 AND person_id IN (SELECT pid.patient_id FROM patient_identifier pid JOIN person per ON per.person_id = pid.patient_id WHERE pid.identifier_type = 7 AND MONTH(per.birthdate) = "
+			        + month
+			        + " AND YEAR(per.birthdate) = "
+			        + year
+			        + ")) d CROSS JOIN "
+			        + "(SELECT COUNT(DISTINCT(person_id)) AS pos_linked FROM obs WHERE concept_id = 165035 AND value_coded = 165552 AND person_id IN (SELECT pid.patient_id FROM patient_identifier pid JOIN person per ON per.person_id = pid.patient_id WHERE pid.identifier_type = 7 AND MONTH(per.birthdate) = "
+			        + month + " AND YEAR(per.birthdate) = " + year + ")) e)";
+			
+			//preparedStatement = connection.prepareStatement(sql);
+			ResultSet result = statement.executeQuery(sql);
+			//preparedStatement.setInt(1, month);
+			if (result.next()) {
+				chartModels = buildEIDData(result);
+			} else {}
+			
+			connection.close();
+			return chartModels;
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	private ArrayList<BarChartModel> buildChartData(ResultSet result) {
 		ArrayList<BarChartModel> barChartModels = new ArrayList<BarChartModel>();
 		BarChartModel barChartModel = new BarChartModel();
@@ -140,5 +220,85 @@ public class DbPatientUtils {
 			e.printStackTrace();
 		}
 		return chartModel;
+	}
+	
+	private ArrayList<ChartModel> buildPieData(ResultSet result) {
+		ArrayList<ChartModel> chartModels = new ArrayList<ChartModel>();
+		ChartModel chart = new ChartModel();
+		try {
+			chart.setName("HIV postive-Linked to ART");
+			chart.setValue(result.getInt("pos_linked"));
+			chartModels.add(chart);
+			//
+			chart = new ChartModel();
+			chart.setName("HIV postive-Not Linked to ART");
+			chart.setValue(result.getInt("pos_not_linked"));
+			chartModels.add(chart);
+			//
+			chart = new ChartModel();
+			chart.setName("HIV neg-No longer breastfeeding");
+			chart.setValue(result.getInt("neg_breastfeed"));
+			chartModels.add(chart);
+			//
+			chart = new ChartModel();
+			chart.setName("HIV neg-Still breastfeeding");
+			chart.setValue(result.getInt("neg_not_breastfeed"));
+			chartModels.add(chart);
+			//
+			chart = new ChartModel();
+			chart.setName("HIV status unknown Died");
+			chart.setValue(result.getInt("died"));
+			chartModels.add(chart);
+			//
+			chart = new ChartModel();
+			chart.setName("HIV status unknown lost to follow up");
+			chart.setValue(result.getInt("lost_to_follow"));
+			chartModels.add(chart);
+			//
+			chart = new ChartModel();
+			chart.setName("HIV status unknown Transfer out");
+			chart.setValue(result.getInt("transfered_out"));
+			chartModels.add(chart);
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return chartModels;
+	}
+	
+	private ArrayList<BarChartModel> buildEIDData(ResultSet result) {
+		ArrayList<BarChartModel> barChartModels = new ArrayList<BarChartModel>();
+		BarChartModel barChartModel = new BarChartModel();
+		try {
+			barChartModel.setY(result.getInt("hei_cohort"));
+			barChartModel.setName("Birth HEI Cohort");
+			barChartModels.add(barChartModel);
+			//
+			barChartModel = new BarChartModel();
+			barChartModel.setY(result.getInt("rec_nvp"));
+			barChartModel.setName("Received NVP");
+			barChartModels.add(barChartModel);
+			//
+			barChartModel = new BarChartModel();
+			barChartModel.setY(result.getInt("dbs_coll"));
+			barChartModel.setName("DBS Collected for EID");
+			barChartModels.add(barChartModel);
+			//
+			barChartModel = new BarChartModel();
+			barChartModel.setY(result.getInt("pos_pcr"));
+			barChartModel.setName("HIV Positive (PCR)");
+			barChartModels.add(barChartModel);
+			//
+			barChartModel = new BarChartModel();
+			barChartModel.setY(result.getInt("pos_linked"));
+			barChartModel.setName("Linked to ART");
+			barChartModels.add(barChartModel);
+			//
+			barChartModels.add(barChartModel);
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return barChartModels;
 	}
 }

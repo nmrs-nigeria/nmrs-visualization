@@ -11,13 +11,16 @@ package org.openmrs.module.visualization.fragment.controller;
 
 import org.openmrs.api.UserService;
 import org.openmrs.module.visualization.Model.BarChartModel;
+import org.openmrs.module.visualization.Model.ChartModel;
 import org.openmrs.module.visualization.Model.HtsCharts;
 import org.openmrs.module.visualization.Utility.DbPatientUtils;
 import org.openmrs.ui.framework.annotation.SpringBean;
 import org.openmrs.ui.framework.fragment.FragmentModel;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *  * Controller for a fragment that shows all users  
@@ -35,4 +38,19 @@ public class HtsFragmentController {
 		return utils.getHtsCharts();
 	}
 	
+	public @ResponseBody
+	ArrayList<ChartModel> getPmtctFo() {
+		DbPatientUtils utils = new DbPatientUtils();
+		return utils.getPmtctFollowUp();
+	}
+	
+	public @ResponseBody
+	ArrayList<BarChartModel> getPmtctEid(@RequestParam(value = "month") String month,
+	        @RequestParam(value = "year") String year) {
+		//parse data
+		int yr = Integer.parseInt(year);
+		int mo = Integer.parseInt(month) + 1;
+		DbPatientUtils utils = new DbPatientUtils();
+		return utils.getPmtctEid(mo, yr);
+	}
 }

@@ -1,5 +1,8 @@
 <% ui.decorateWith("appui", "standardEmrPage") %>
 
+<% ui.includeJavascript("visualization", "highcharts.js") %>
+<% ui.includeJavascript("visualization", "highcharts-3d.js") %>
+
 <%= ui.resourceLinks() %>
 <script type="text/javascript" src="/openmrs/ms/uiframework/resource/uicommons/scripts/datetimepicker/bootstrap-datetimepicker.min.js?cache=1525344062488"></script>
 <link rel="stylesheet" href="/openmrs/ms/uiframework/resource/uicommons/styles/datetimepicker.css?cache=1525344062488" type="text/css" />
@@ -22,8 +25,7 @@
 </div>
 
 <div id="Tokyo" class="tabcontent">
-    <h3>Others</h3>
-    <p>This will display the other charts.</p>
+    ${ui.includeFragment("visualization","child")}
 </div>
 
 <style>
