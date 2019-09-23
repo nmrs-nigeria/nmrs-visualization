@@ -27,21 +27,22 @@
     });
 
     function PlotHtsChart(data) {
+        var colors = ['#030508', '#7cacc2', '#80699B', '#ff4344', '#ff741e', '#cc7a34'];
         var columnData = data.barChartModels;
         var category = [];
         var values = [];
-        var valuesName = "HTS 1";
+        var valuesName = "HIV Testing Services Cascade";
         for(var i = 0; i < columnData.length; i++){
             category.push(columnData[i].name);
             values.push(columnData[i].y);
         }
-        var theSeries = {name: valuesName, data: values}
+        var theSeries = {name: valuesName, data: values};
         Highcharts.chart('clients', {
             chart: {
                 type: 'column'
             },
             title: {
-                text: 'HTS 1'
+                text: 'HIV Testing Services Cascade'
             }/*,
                 subtitle: {
                     text: 'Source: WorldClimate.com'
@@ -53,13 +54,14 @@
             yAxis: {
                 min: 0,
                 title: {
-                    text: '(mm)'
+                    text: 'Number of Clients'
                 }
             },
+            colors: colors,
             tooltip: {
                 headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
                 pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                    '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                    '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
                 footerFormat: '</table>',
                 shared: true,
                 useHTML: true
@@ -67,18 +69,20 @@
             plotOptions: {
                 column: {
                     pointPadding: 0.2,
-                    borderWidth: 0
+                    borderWidth: 0,
+                    colorByPoint: true
                 }
             },
             series: [ theSeries ]
         });
         var fac_model = data.chartModel;
+        var colors = ['#030508', '#7cacc2', '#80699B'];
         Highcharts.chart('facility', {
             chart: {
                 type: 'column'
             },
             title: {
-                text: 'HTS 2'
+                text: 'Linkage to Treatment'
             },
             xAxis: {
                 categories: [fac_model.pos_name, "Started Art"]
@@ -86,7 +90,7 @@
             yAxis: {
                 min: 0,
                 title: {
-                    text: ''
+                    text: 'Number of CLients'
                 }
             },
             tooltip: {
@@ -95,9 +99,11 @@
             },
             plotOptions: {
                 column: {
-                    stacking: 'percent'
+                    stacking: 'percent',
+                    colorByPoint: true
                 }
             },
+            colors: colors,
             series: [{
                 name: fac_model.pos_name,
                 data: [fac_model.pos_count,0]

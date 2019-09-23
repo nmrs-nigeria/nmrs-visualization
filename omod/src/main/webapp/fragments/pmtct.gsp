@@ -138,18 +138,9 @@
                             }
                         }
                     },
-                    legend: {
-                        align: 'right',
-                        x: -30,
-                        verticalAlign: 'top',
-                        y: 25,
-                        floating: true,
-                        backgroundColor:
-                            Highcharts.defaultOptions.legend.backgroundColor || 'white',
-                        borderColor: '#CCC',
-                        borderWidth: 1,
-                        shadow: false
-                    },
+                        legend: {
+                            enabled: false
+                        },
                     tooltip: {
                         headerFormat: '<b>{point.x}</b><br/>',
                         pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
@@ -162,7 +153,19 @@
                             }
                         }
                     },
-                    series: pData
+                    series: pData,
+                        dataLabels: {
+                            enabled: true,
+                            rotation: -90,
+                            color: '#FFFFFF',
+                            align: 'right',
+                            format: '{point.y:.0f}', // one decimal
+                            y: 10, // 10 pixels down from the top
+                            style: {
+                                fontSize: '13px',
+                                fontFamily: 'Verdana, sans-serif'
+                            }
+                        }
                 });
 
                 getPmtctCohortViralSuppression();
@@ -189,7 +192,7 @@
                 var categories = [];
                 jq.each(r, function (i, f)
                 {
-                    var dx = [ f.vl_sup, f.vl_non_sup ];
+                    var dx = [ f.suppressed, f.nonSuppressed ];
                     categories.push(f.cohort);
                     pData.push({name: f.cohort, data: dx});
                 });
@@ -221,16 +224,7 @@
                             }
                         },
                         legend: {
-                            align: 'right',
-                            x: -30,
-                            verticalAlign: 'top',
-                            y: 25,
-                            floating: true,
-                            backgroundColor:
-                                Highcharts.defaultOptions.legend.backgroundColor || 'white',
-                            borderColor: '#CCC',
-                            borderWidth: 1,
-                            shadow: false
+                            enabled: false
                         },
                         tooltip: {
                             headerFormat: '<b>{point.x}</b><br/>',
@@ -244,7 +238,19 @@
                                 }
                             }
                         },
-                        series: pData
+                        series: pData,
+                        dataLabels: {
+                            enabled: true,
+                            rotation: -90,
+                            color: '#FFFFFF',
+                            align: 'right',
+                            format: '{point.y:.0f}', // one decimal
+                            y: 10, // 10 pixels down from the top
+                            style: {
+                                fontSize: '13px',
+                                fontFamily: 'Verdana, sans-serif'
+                            }
+                        }
                     });
             },
             error: function (e)

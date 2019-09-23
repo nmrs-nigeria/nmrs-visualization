@@ -26,9 +26,6 @@
       <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/fragment/controller/PmtctFragmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/fragment/controller/PmtctFragmentController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/web/module/fragments/pmtct.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/web/module/fragments/pmtct.gsp" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/target/" />
-    <ignored path="$PROJECT_DIR$/api/target/" />
-    <ignored path="$PROJECT_DIR$/omod/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,8 +40,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPmtctUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="147" selection-start-line="147" selection-end-line="147" />
+            <state relative-caret-position="269">
+              <caret line="144" column="91" lean-forward="true" selection-start-line="144" selection-start-column="91" selection-end-line="144" selection-end-column="91" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#851#852#0" expanded="true" />
@@ -113,18 +110,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/PmtctArtModel.java" />
-        <option value="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/PmtctCohortRetentiModel.java" />
-        <option value="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/ViralSuppressionModel.java" />
-        <option value="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/PmtctFragmentController.java" />
-        <option value="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPmtctUtils.java" />
-        <option value="$PROJECT_DIR$/omod/src/main/webapp/fragments/pmtct.gsp" />
-      </list>
-    </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-25" />
@@ -238,10 +223,12 @@
     <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/omod/src/main/resources" />
-      <recent name="$PROJECT_DIR$/omod/src/main/webapp" />
-      <recent name="$PROJECT_DIR$/omod/src/main/webapp/resources/styles" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jcval\OneDrive\Documents\GitHub\nmrs-visualization\omod\src\main\java\org\openmrs\module\visualization\Utility" />
+      <recent name="C:\Users\jcval\OneDrive\Documents\GitHub\nmrs-visualization\omod\src\main\java\org\openmrs\module\visualization\Model" />
+      <recent name="$PROJECT_DIR$/omod/src/main/webapp/fragments" />
+      <recent name="$PROJECT_DIR$/omod/src/main/webapp/pages" />
+      <recent name="$PROJECT_DIR$/omod/src/main/webapp/resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.openmrs.module.visualization.Model" />
@@ -249,12 +236,10 @@
       <recent name="org.openmrs.module.visualization.page.controller" />
       <recent name="org.openmrs.module.visualization.web.controller" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\jcval\OneDrive\Documents\GitHub\nmrs-visualization\omod\src\main\java\org\openmrs\module\visualization\Utility" />
-      <recent name="C:\Users\jcval\OneDrive\Documents\GitHub\nmrs-visualization\omod\src\main\java\org\openmrs\module\visualization\Model" />
-      <recent name="$PROJECT_DIR$/omod/src/main/webapp/fragments" />
-      <recent name="$PROJECT_DIR$/omod/src/main/webapp/pages" />
-      <recent name="$PROJECT_DIR$/omod/src/main/webapp/resources" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/omod/src/main/resources" />
+      <recent name="$PROJECT_DIR$/omod/src/main/webapp" />
+      <recent name="$PROJECT_DIR$/omod/src/main/webapp/resources/styles" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -281,10 +266,8 @@
             </option>
             <option name="goals">
               <list>
-                <option value="openmrs-sdk:watch" />
-                <option value="-DserverId=nmrs" />
                 <option value="openmrs-sdk:run" />
-                <option value="-DserverId=nmrs" />
+                <option value="-DserverId=nigeriamrs" />
                 <option value="-Dfork=false" />
               </list>
             </option>
@@ -342,7 +325,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35467000" />
+    <option name="totallyTimeSpent" value="35475000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1488" height="813" extended-state="6" />
@@ -444,7 +427,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPmtctUtils.java</url>
-          <line>113</line>
+          <line>110</line>
           <properties />
           <option name="timeStamp" value="32" />
         </line-breakpoint>
@@ -542,8 +525,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPmtctUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="147" selection-start-line="147" selection-end-line="147" />
+        <state relative-caret-position="269">
+          <caret line="144" column="91" lean-forward="true" selection-start-line="144" selection-start-column="91" selection-end-line="144" selection-end-column="91" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#851#852#0" expanded="true" />
