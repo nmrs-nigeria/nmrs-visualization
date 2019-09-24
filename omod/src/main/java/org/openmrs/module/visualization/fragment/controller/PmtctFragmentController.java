@@ -19,8 +19,10 @@ import org.openmrs.module.visualization.Utility.DbPmtctUtils;
 import org.openmrs.ui.framework.SimpleObject;
 import org.openmrs.ui.framework.annotation.SpringBean;
 import org.openmrs.ui.framework.fragment.FragmentModel;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -39,12 +41,25 @@ public class PmtctFragmentController {
 	}
 	
 	public @ResponseBody
-	ArrayList<PmtctCohortRetentiModel> getPmtctCohortRetention() {
-		return new DbPmtctUtils().getPmtctCohortRetention();
+	ArrayList<PmtctCohortRetentiModel> getPmtctCohortRetention(@RequestParam(value = "year") int year,
+	        @RequestParam(value = "month") int month) {
+		if (year < 1) {
+			year = LocalDate.now().getYear();
+			month = LocalDate.now().getMonthValue();
+		}
+		LocalDate currentSel = LocalDate.of(year, month, 1);
+		ArrayList<PmtctCohortRetentiModel> pmtctCohortRetention = new DbPmtctUtils().getPmtctCohortRetention(currentSel);
+		return pmtctCohortRetention;
 	}
 	
 	public @ResponseBody
-	ArrayList<ViralSuppressionModel> getPmtctCohortViralSuppression() {
-		return new DbPmtctUtils().getPmtctCohortViralSuppression();
+	ArrayList<ViralSuppressionModel> getPmtctCohortViralSuppression(@RequestParam(value = "year") int year,
+	        @RequestParam(value = "month") int month) {
+		if (year < 1) {
+			year = LocalDate.now().getYear();
+			month = LocalDate.now().getMonthValue();
+		}
+		LocalDate currentSel = LocalDate.of(year, month, 1);
+		return new DbPmtctUtils().getPmtctCohortViralSuppression(currentSel);
 	}
 }

@@ -4,6 +4,13 @@
 
 <br>
 <br>
+
+<div>
+    <select id="year" class="button"></select>
+    <select id="month" class="button"></select>
+    <span class="button confirm" onclick="getPmtctCohortRetention()"><i class="icon-refresh"></i></span>
+</div>
+<br>
 <div id="cohort" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
 <br>
@@ -18,6 +25,7 @@
 
     jq(document).ready(function()
     {
+        populateDropdown();
         getAncPmtctArt()
     });
 
@@ -82,8 +90,6 @@
 
                     }]
                 });
-
-                getPmtctCohortRetention();
             },
             error: function (e)
             {
@@ -94,11 +100,15 @@
 
     function getPmtctCohortRetention()
     {
+        var month = document.getElementById("month").value;
+        var year = document.getElementById("year").value;
+
         var link = "${ ui.actionLink("visualization", "pmtct", "getPmtctCohortRetention")}";
         jq.ajax({
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             url: link,
+            data: {'month':parseInt(month)+1, 'year':parseInt(year)},
             cache: false,
             timeout: 600000,
             success: function (r)
@@ -111,7 +121,7 @@
                 {
                     var dx = [ f.active_12, f.active_6, f.active_3, f.active_0 ];
                     categories.push(f.cohort);
-                    pData.push({name: f.cohort, data: dx, type: 'column', pointPadding: pointPadding, pointPlacement: -0.1});
+                    pData.push({name: f.cohort, data: dx, type: 'column', pointPadding: pointPadding, pointPlacement: -0.1, tooltip: { valueSuffix: '' }});
                     pointPadding += 0.02;
 
                     if(f.active_12 > 0 && f.active_0 > 0)
@@ -135,24 +145,22 @@
                     xAxis: {
                         categories: categories
                     },
-                    yAxis: [{// first yAxis
-                        min: 0,
-                        title: {
-                            text: 'Number of positive pregnant women'
-                        },
-                        stackLabels: {
-                            enabled: true,
+                    yAxis: [{ // Primary yAxis
+                        labels: {
+                            format: '{value}',
                             style: {
-                                fontWeight: 'bold',
-                                color: ( // theme
-                                    Highcharts.defaultOptions.title.style &&
-                                    Highcharts.defaultOptions.title.style.color
-                                ) || 'gray'
+                                color: Highcharts.getOptions().colors[1]
+                            }
+                        },
+                        title: {
+                            text: 'Number of positive pregnant women',
+                            style: {
+                                color: Highcharts.getOptions().colors[1]
                             }
                         }
                     }, { // Secondary yAxis
                         title: {
-                            text: '% Retained',
+                            text: '%Retained',
                             style: {
                                 color: Highcharts.getOptions().colors[0]
                             }
@@ -169,13 +177,12 @@
                             enabled: false
                         },
                     tooltip: {
-                        headerFormat: '<b>{point.x}</b><br/>',
-                        pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+                        shared: true
                     },
                     plotOptions: {
                         column:
                          {
-                            dataLabels: { enabled: true },
+                            // dataLabels: { enabled: true },
                             grouping: false,
                              pointPadding: 0.02,
                              borderWidth: 0,
@@ -197,7 +204,7 @@
                         }
                 });
 
-                getPmtctCohortViralSuppression();
+                getPmtctCohortViralSuppression(month, year);
             },
             error: function (e)
             {
@@ -206,13 +213,14 @@
         });
     }
 
-    function getPmtctCohortViralSuppression()
+    function getPmtctCohortViralSuppression(month, year)
     {
         var link = "${ ui.actionLink("visualization", "pmtct", "getPmtctCohortViralSuppression")}";
         jq.ajax({
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             url: link,
+            data: {'month':parseInt(month)+1, 'year':parseInt(year)},
             cache: false,
             timeout: 600000,
             success: function (r)
@@ -257,7 +265,7 @@
                         },
                         tooltip: {
                             headerFormat: '<b>{point.x}</b><br/>',
-                            pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+                            pointFormat: '{series.name}: {point.y}<br/>+ve mothers: {point.y}'
                         },
                         plotOptions: {
                             column: {
@@ -289,4 +297,63 @@
         });
     }
 
+
+    function populateDropdown(){
+        var monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+        var qntYears = 6;
+        var selectYear = jq("#year");
+        var selectMonth = jq("#month");
+        //var selectDay = jq("#day");
+        var currentYear = new Date().getFullYear();
+
+        for (var y = 0; y < qntYears; y++){
+            var date = new Date(currentYear);
+            var yearElem = document.createElement("option");
+            yearElem.value = currentYear
+            yearElem.textContent = currentYear;
+            selectYear.append(yearElem);
+            currentYear--;
+        }
+
+        for (var m = 0; m < 12; m++){
+            var monthNum = new Date(2018, m).getMonth()
+            var month = monthNames[monthNum];
+            var monthElem = document.createElement("option");
+            monthElem.value = monthNum;
+            monthElem.textContent = month;
+            selectMonth.append(monthElem);
+        }
+
+        var d = new Date();
+        var month = d.getMonth();
+        var year = d.getFullYear();
+        var day = d.getDate();
+
+        selectYear.val(year);
+        //selectYear.on("change", AdjustDays);
+        selectMonth.val(month);
+        //selectMonth.on("change", AdjustDays);
+
+        //AdjustDays();
+        //selectDay.val(day);
+    }
+
+    function AdjustDays(){
+        var year = selectYear.val();
+        var month = parseInt(selectMonth.val());
+        selectDay.empty();
+
+        //get the last day, so the number of days in that month
+        var days = new Date(year, month, 0).getDate();
+
+        //lets create the days of that month
+        for (var d = 1; d <= days; d++){
+            var dayElem = document.createElement("option");
+            dayElem.value = d;
+            dayElem.textContent = d;
+            selectDay.append(dayElem);
+        }
+    }
 </script>
