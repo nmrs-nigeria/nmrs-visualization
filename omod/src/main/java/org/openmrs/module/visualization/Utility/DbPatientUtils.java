@@ -242,6 +242,11 @@ public class DbPatientUtils {
 			barChartModels.add(barChartModel);
 			//
 			barChartModel = new BarChartModel();
+			barChartModel.setY(result.getInt("positive"));
+			barChartModel.setName("HIV Positive");
+			barChartModels.add(barChartModel);
+			//
+			barChartModel = new BarChartModel();
 			barChartModel.setY(result.getInt("recent_infection"));
 			barChartModel.setName("Positive (Recent infection)");
 			barChartModels.add(barChartModel);
@@ -249,11 +254,6 @@ public class DbPatientUtils {
 			barChartModel = new BarChartModel();
 			barChartModel.setY(result.getInt("long_term"));
 			barChartModel.setName("Positive (Long Term)");
-			barChartModels.add(barChartModel);
-			//
-			barChartModel = new BarChartModel();
-			barChartModel.setY(result.getInt("positive"));
-			barChartModel.setName("HIV Positive");
 			barChartModels.add(barChartModel);
 			//
 			barChartModel = new BarChartModel();
