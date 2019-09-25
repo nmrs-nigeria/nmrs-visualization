@@ -21,14 +21,14 @@ public class DbPatientUtils {
 		List<Patient> patients = Context.getPatientService().getAllPatients();
 	}
 	
-	public HtsCharts getHtsCharts() {
+	public HtsCharts getHtsCharts(String startDate, String endDate) {
 		HtsCharts htsCharts = new HtsCharts();
-		htsCharts.setBarChartModels(getHtsCascadeBar());
+		htsCharts.setBarChartModels(getHtsCascadeBar(startDate, endDate));
 		htsCharts.setChartModel(getHtsStackBar());
 		return htsCharts;
 	}
 	
-	public ArrayList<BarChartModel> getHtsCascadeBar() {
+	public ArrayList<BarChartModel> getHtsCascadeBar(String startDate, String endDate) {
 		try {
 			DBConnection connResult = DbUtil.getNmrsConnectionDetails();
 			
@@ -38,13 +38,64 @@ public class DbPatientUtils {
 			    connResult.getPassword());
 			Statement statement = connection.createStatement();
 			String sql = "SELECT * FROM (\n"
-			        + "(SELECT COUNT(DISTINCT patient_id) AS patient_count FROM patient_identifier WHERE identifier_type = 8 AND MONTH(CURDATE())) AS d CROSS JOIN\n"
-			        + "(SELECT COUNT(DISTINCT person_id) AS risk_assessment_done FROM obs WHERE concept_id IN (165800, 1063, 159218, 165803, 164809, 165806) AND MONTH(CURDATE())) AS b CROSS JOIN\n"
-			        + "(SELECT COUNT(DISTINCT person_id) AS tested FROM obs WHERE concept_id = 165843 AND MONTH(CURDATE())) AS c CROSS JOIN\n"
-			        + "(SELECT COUNT(DISTINCT person_id) AS recent_infection FROM obs WHERE concept_id = 165853 AND value_coded = 165852 AND MONTH(CURDATE())) AS a CROSS JOIN\n"
-			        + "(SELECT COUNT(DISTINCT person_id) AS long_term FROM obs WHERE concept_id = 165853 AND value_coded = 165851 AND MONTH(CURDATE())) AS e CROSS JOIN\n"
-			        + "(SELECT COUNT(DISTINCT person_id) AS viral_load_done FROM obs WHERE concept_id = 165855 AND value_text IS NOT NULL AND MONTH(CURDATE())) AS f\n"
-			        + ")";
+			        + "(SELECT COUNT(DISTINCT(enc.patient_id)) AS patient_count FROM patient_identifier pid\n"
+			        + "JOIN encounter enc ON enc.patient_id = pid.patient_id\n"
+			        + "WHERE enc.encounter_type = 2 AND pid.identifier_type = 8\n" + "AND form_id = 10\n"
+			        + "AND DATE(enc.encounter_datetime) BETWEEN '"
+			        + startDate
+			        + "' AND '"
+			        + endDate
+			        + "') AS a CROSS JOIN\n"
+			        + "\n"
+			        + "(SELECT COUNT(DISTINCT(enc.patient_id)) AS risk_assessment FROM encounter enc\n"
+			        + "JOIN obs ob ON ob.encounter_id = enc.encounter_id\n"
+			        + "WHERE concept_id IN (165800, 1063, 159218, 165803, 164809, 165806)\n"
+			        + "AND DATE(enc.encounter_datetime) BETWEEN '"
+			        + startDate
+			        + "' AND '"
+			        + endDate
+			        + "') AS b CROSS JOIN\n"
+			        + "\n"
+			        + "(SELECT COUNT(DISTINCT(enc.patient_id)) AS tested FROM encounter enc\n"
+			        + "JOIN obs ob ON ob.encounter_id = enc.encounter_id\n"
+			        + "WHERE concept_id = 165843\n"
+			        + "AND DATE(enc.encounter_datetime) BETWEEN '"
+			        + startDate
+			        + "' AND '"
+			        + endDate
+			        + "') AS c CROSS JOIN\n"
+			        + "\n"
+			        + "(SELECT COUNT(DISTINCT(enc.patient_id)) AS positive FROM encounter enc\n"
+			        + "JOIN obs ob ON ob.encounter_id = enc.encounter_id\n"
+			        + "WHERE concept_id = 165843 AND value_coded = 703\n"
+			        + "AND DATE(enc.encounter_datetime) BETWEEN '"
+			        + startDate
+			        + "' AND '"
+			        + endDate
+			        + "') AS d CROSS JOIN\n"
+			        + "\n"
+			        + "(SELECT COUNT(DISTINCT(enc.patient_id)) AS recent_infection FROM encounter enc\n"
+			        + "JOIN obs ob ON ob.encounter_id = enc.encounter_id\n"
+			        + "WHERE concept_id = 165853 AND value_coded = 165852\n"
+			        + "AND DATE(enc.encounter_datetime) BETWEEN '"
+			        + startDate
+			        + "' AND '"
+			        + endDate
+			        + "') AS e CROSS JOIN\n"
+			        + "\n"
+			        + "(SELECT COUNT(DISTINCT(enc.patient_id)) AS long_term FROM encounter enc\n"
+			        + "JOIN obs ob ON ob.encounter_id = enc.encounter_id\n"
+			        + "WHERE concept_id = 165853 AND value_coded = 165851\n"
+			        + "AND DATE(enc.encounter_datetime) BETWEEN '"
+			        + startDate
+			        + "' AND '"
+			        + endDate
+			        + "') AS f CROSS JOIN\n"
+			        + "\n"
+			        + "(SELECT COUNT(DISTINCT(enc.patient_id)) AS viral_load_done FROM encounter enc\n"
+			        + "JOIN obs ob ON ob.encounter_id = enc.encounter_id\n"
+			        + "WHERE concept_id IN (165855, 165853) AND (value_text IS NOT NULL || value_coded = 165851)\n"
+			        + "AND DATE(enc.encounter_datetime) BETWEEN '" + startDate + "' AND '" + endDate + "') AS g\n" + ");";
 			String sqlStatement = (sql);
 			ResultSet result = statement.executeQuery(sqlStatement);
 			if (result.next()) {
@@ -68,9 +119,14 @@ public class DbPatientUtils {
 			Connection connection = DriverManager.getConnection(connResult.getUrl(), connResult.getUsername(),
 			    connResult.getPassword());
 			Statement statement = connection.createStatement();
-			String sql = "SELECT * FROM ((SELECT COUNT(DISTINCT person_id) AS new_positive FROM obs WHERE concept_id = 165843 AND value_coded = 703 AND MONTH(CURDATE())) AS a CROSS JOIN "
+			/*String sql = "SELECT * FROM ((SELECT COUNT(DISTINCT person_id) AS new_positive FROM obs WHERE concept_id = 165843 AND value_coded = 703 AND MONTH(CURDATE())) AS a CROSS JOIN "
 			        + "(SELECT COUNT(DISTINCT person_id) AS started_art_in FROM obs WHERE concept_id = 160540 AND value_coded IN (160542,160536,160539,160541,160546,160538,160545,5622) AND MONTH(CURDATE())) AS b CROSS JOIN "
-			        + "(SELECT COUNT(DISTINCT(pid.identifier)) AS started_art_out FROM patient_identifier pid  JOIN encounter e ON pid.patient_id = e.patient_id JOIN obs ob ON e.encounter_id = ob.encounter_id  WHERE (pid.identifier_type = 8) AND e.encounter_type = 22 AND ob.concept_id IN (165508,165501) AND MONTH(CURDATE())) AS c)";
+			        + "(SELECT COUNT(DISTINCT(pid.identifier)) AS started_art_out FROM patient_identifier pid  JOIN encounter e ON pid.patient_id = e.patient_id JOIN obs ob ON e.encounter_id = ob.encounter_id  WHERE (pid.identifier_type = 8) AND e.encounter_type = 22 AND ob.concept_id IN (165508,165501) AND MONTH(CURDATE())) AS c)";*/
+			String sql = "SELECT * FROM (\n"
+			        + "(SELECT COUNT(DISTINCT(patient_id)) AS new_positive FROM encounter WHERE encounter_type = 2 AND DATE(encounter_datetime) BETWEEN '2017-04-30' AND '2019-09-30') AS a CROSS JOIN\n"
+			        + "(SELECT COUNT(DISTINCT(patient_id)) AS started_art_in FROM encounter WHERE encounter_type = 25 AND form_id = 56 AND DATE(encounter_datetime) BETWEEN '2017-04-30' AND '2019-09-30') AS b CROSS JOIN\n"
+			        + "(SELECT COUNT(DISTINCT(patient_id)) AS started_art_out FROM encounter WHERE encounter_type = 22 AND form_id = 52 AND DATE(encounter_datetime) BETWEEN '2017-04-30' AND '2019-09-30') AS c\n"
+			        + ")";
 			String sqlStatement = (sql);
 			ResultSet result = statement.executeQuery(sqlStatement);
 			if (result.next()) {
@@ -175,7 +231,7 @@ public class DbPatientUtils {
 			barChartModels.add(barChartModel);
 			//
 			barChartModel = new BarChartModel();
-			barChartModel.setY(result.getInt("risk_assessment_done"));
+			barChartModel.setY(result.getInt("risk_assessment"));
 			//barChartModel.setY(20);
 			barChartModel.setName("Risk assessment");
 			barChartModels.add(barChartModel);
@@ -187,12 +243,17 @@ public class DbPatientUtils {
 			//
 			barChartModel = new BarChartModel();
 			barChartModel.setY(result.getInt("recent_infection"));
-			barChartModel.setName("Positive (New infection)");
+			barChartModel.setName("Positive (Recent infection)");
 			barChartModels.add(barChartModel);
 			//
 			barChartModel = new BarChartModel();
 			barChartModel.setY(result.getInt("long_term"));
 			barChartModel.setName("Positive (Long Term)");
+			barChartModels.add(barChartModel);
+			//
+			barChartModel = new BarChartModel();
+			barChartModel.setY(result.getInt("positive"));
+			barChartModel.setName("HIV Positive");
 			barChartModels.add(barChartModel);
 			//
 			barChartModel = new BarChartModel();

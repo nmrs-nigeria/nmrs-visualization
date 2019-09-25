@@ -104,12 +104,25 @@
             success: function (r)
             {
                 var pData =[];
+                var percentageRetention =[];
                 var categories = [];
+                var pointPadding = 0;
                 jq.each(r, function (i, f)
                 {
                     var dx = [ f.active_12, f.active_6, f.active_3, f.active_0 ];
                     categories.push(f.cohort);
-                    pData.push({name: f.cohort, data: dx});
+                    pData.push({name: f.cohort, data: dx, type: 'column', pointPadding: pointPadding, pointPlacement: -0.1});
+                    pointPadding += 0.02;
+
+                    if(f.active_12 > 0 && f.active_0 > 0)
+                    {
+                        percentageRetention.push((f.active_12*100)/f.active_0)
+                    }
+                    else
+                     {
+                        percentageRetention.push(0)
+                    }
+                    pData.push({name: f.cohort, data: percentageRetention, type: 'scatter', marker: { radius: 4 }, tooltip: { valueSuffix: '%' }});
                 });
                 Highcharts.chart('cohort',
                     {
@@ -122,7 +135,7 @@
                     xAxis: {
                         categories: categories
                     },
-                    yAxis: {
+                    yAxis: [{// first yAxis
                         min: 0,
                         title: {
                             text: 'Number of positive pregnant women'
@@ -137,7 +150,21 @@
                                 ) || 'gray'
                             }
                         }
-                    },
+                    }, { // Secondary yAxis
+                        title: {
+                            text: '% Retained',
+                            style: {
+                                color: Highcharts.getOptions().colors[0]
+                            }
+                        },
+                        labels: {
+                            format: '{value}%',
+                            style: {
+                                color: Highcharts.getOptions().colors[0]
+                            }
+                        },
+                        opposite: true
+                    }],
                         legend: {
                             enabled: false
                         },
@@ -146,11 +173,13 @@
                         pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
                     },
                     plotOptions: {
-                        column: {
-                            stacking: 'normal',
-                            dataLabels: {
-                                enabled: true
-                            }
+                        column:
+                         {
+                            dataLabels: { enabled: true },
+                            grouping: false,
+                             pointPadding: 0.02,
+                             borderWidth: 0,
+                             colorByPoint: true
                         }
                     },
                     series: pData,

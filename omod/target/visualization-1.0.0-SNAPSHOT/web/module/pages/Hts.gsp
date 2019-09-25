@@ -4,30 +4,42 @@
 <% ui.includeJavascript("visualization", "highcharts.js") %>
 
 <h1 align="center"> <b>HTS</b></h1>
-
+<div>
+    <input type="date" id="start_date" placeholder="Start Date">&nbsp;<input type="date" id="end_date" placeholder="End Date">
+    <span class="button confirm" onclick="getChartsByDate()"><i class="icon-refresh"></i></span>
+</div>
 <div id="clients" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <br/>
 <div id="facility" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
 <script type="text/javascript">
-
-</script>
-<script type="text/javascript">
     jq = jQuery;
     jq(document).ready(function(){
+
+    });
+
+    function getChartsByDate(){
+        var start_date = document.getElementById("start_date").value;
+        var end_date = document.getElementById("end_date").value;
+        if(start_date === "" || end_date === ""){
+            alert("Please Ensure you pick a date");
+            return false;
+        }
+        console.log(start_date + " => " + end_date);
         jq.ajax({
             url: "${ ui.actionLink("visualization", "Hts", "getClientData")}",
-            dataType:"json"
+            dataType:"json",
+            data: {'start_date':start_date, 'end_date':end_date}
         }).success(function (data) {
             //plot the chart here
             PlotHtsChart(data);
         }).error(function (err) {
             console.log(err)
         });
-    });
+    }
 
     function PlotHtsChart(data) {
-        var colors = ['#030508', '#7cacc2', '#80699B', '#ff4344', '#ff741e', '#cc7a34'];
+        var colors = ['#030508', '#7cacc2', '#80699B', '#ff4344', '#ff741e', '#cc7a34', '#34eada'];
         var columnData = data.barChartModels;
         var category = [];
         var values = [];

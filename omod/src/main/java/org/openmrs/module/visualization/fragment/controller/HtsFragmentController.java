@@ -32,10 +32,11 @@ public class HtsFragmentController {
 	}
 	
 	public @ResponseBody
-	HtsCharts getClientData() {
+	HtsCharts getClientData(@RequestParam(value = "start_date") String start_date,
+	        @RequestParam(value = "end_date") String end_date) {
 		DbPatientUtils utils = new DbPatientUtils();
 		
-		return utils.getHtsCharts();
+		return utils.getHtsCharts(start_date, end_date);
 	}
 	
 	public @ResponseBody
