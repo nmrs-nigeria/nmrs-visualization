@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60c1f400-7d02-4114-b362-38af6d13cabf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/omod/target/classes/web/module/fragments/pmtct.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/classes/web/module/fragments/pmtct.gsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/web/module/fragments/pmtct.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/web/module/fragments/pmtct.gsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/src/main/webapp/fragments/pmtct.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/webapp/fragments/pmtct.gsp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,19 +21,8 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>PmtctArtModel</find>
-      <find>@cohort_start_date</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>PmtctCohortRetentiModel</replace>
-      <replace>date(cast(&quot; + dateString + &quot; as datetime))</replace>
-    </replaceStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RESET_MODE" value="MIXED" />
   </component>
   <component name="ProjectId" id="1R4BRcWvIscqlmC2YEmtJupxmoX" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -46,10 +35,12 @@
     <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/omod/src/main/resources" />
-      <recent name="$PROJECT_DIR$/omod/src/main/webapp" />
-      <recent name="$PROJECT_DIR$/omod/src/main/webapp/resources/styles" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jcval\OneDrive\Documents\GitHub\nmrs-visualization\omod\src\main\java\org\openmrs\module\visualization\Utility" />
+      <recent name="C:\Users\jcval\OneDrive\Documents\GitHub\nmrs-visualization\omod\src\main\java\org\openmrs\module\visualization\Model" />
+      <recent name="$PROJECT_DIR$/omod/src/main/webapp/fragments" />
+      <recent name="$PROJECT_DIR$/omod/src/main/webapp/pages" />
+      <recent name="$PROJECT_DIR$/omod/src/main/webapp/resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.openmrs.module.visualization.Model" />
@@ -57,12 +48,10 @@
       <recent name="org.openmrs.module.visualization.page.controller" />
       <recent name="org.openmrs.module.visualization.web.controller" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\jcval\OneDrive\Documents\GitHub\nmrs-visualization\omod\src\main\java\org\openmrs\module\visualization\Utility" />
-      <recent name="C:\Users\jcval\OneDrive\Documents\GitHub\nmrs-visualization\omod\src\main\java\org\openmrs\module\visualization\Model" />
-      <recent name="$PROJECT_DIR$/omod/src/main/webapp/fragments" />
-      <recent name="$PROJECT_DIR$/omod/src/main/webapp/pages" />
-      <recent name="$PROJECT_DIR$/omod/src/main/webapp/resources" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/omod/src/main/resources" />
+      <recent name="$PROJECT_DIR$/omod/src/main/webapp" />
+      <recent name="$PROJECT_DIR$/omod/src/main/webapp/resources/styles" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -89,8 +78,10 @@
             </option>
             <option name="goals">
               <list>
+                <option value="openmrs-sdk:watch" />
+                <option value="-DserverId=nmrs" />
                 <option value="openmrs-sdk:run" />
-                <option value="-DserverId=nmrstestserver" />
+                <option value="-DserverId=nmrs" />
                 <option value="-Dfork=false" />
               </list>
             </option>
@@ -123,8 +114,9 @@
       <workItem from="1569058475794" duration="613000" />
       <workItem from="1569060953258" duration="34845000" />
       <workItem from="1569251369118" duration="1035000" />
-      <workItem from="1569254007325" duration="6687000" />
-      <workItem from="1569270277193" duration="17360000" />
+      <workItem from="1569254007325" duration="48701000" />
+      <workItem from="1569356762668" duration="13887000" />
+      <workItem from="1569385277297" duration="2948000" />
     </task>
     <task id="LOCAL-00001" summary="Added highchart scripts">
       <created>1568936871117</created>
@@ -147,57 +139,43 @@
       <option name="project" value="LOCAL" />
       <updated>1568986223461</updated>
     </task>
-    <task id="LOCAL-00004" summary="Updates">
-      <created>1569398664903</created>
+    <task id="LOCAL-00004" summary="corrected axis stacking">
+      <created>1569352201877</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1569398664903</updated>
+      <updated>1569352201877</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="finalised dual axes of scatter and ungrouped column charts">
+      <created>1569381600644</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1569381600644</updated>
+    </task>
+    <task id="LOCAL-00006" summary="added data points label to scatter plot on and dual axis and ungrouped column charts">
+      <created>1569384775601</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1569384775601</updated>
+    </task>
+    <task id="LOCAL-00007" summary="added data points label to scatter plot on dual axis and ungrouped column charts">
+      <created>1569398101938</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1569398101938</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ORDER">
-      <list>
-        <option value="0" />
-        <option value="2" />
-        <option value="3" />
-        <option value="1" />
-      </list>
-    </option>
-  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
-        <entry key="1">
-          <value>
-            <State>
-              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="HEAD" />
-                      </list>
-                    </value>
-                  </entry>
-                  <entry key="roots">
-                    <value>
-                      <list>
-                        <option value="$PROJECT_DIR$" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
-          </value>
-        </entry>
         <entry key="MAIN">
           <value>
             <State>
@@ -206,11 +184,6 @@
           </value>
         </entry>
       </map>
-    </option>
-    <option name="OPEN_TABS">
-      <set>
-        <option value="1" />
-      </set>
     </option>
     <option name="RECENT_FILTERS">
       <map>
@@ -231,8 +204,11 @@
     <MESSAGE value="Added highchart scripts" />
     <MESSAGE value="Added tabs" />
     <MESSAGE value="Started quering" />
-    <MESSAGE value="Updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updates" />
+    <MESSAGE value="corrected axis stacking" />
+    <MESSAGE value="finalised dual axes of scatter and ungrouped column charts" />
+    <MESSAGE value="added data points label to scatter plot on and dual axis and ungrouped column charts" />
+    <MESSAGE value="added data points label to scatter plot on dual axis and ungrouped column charts" />
+    <option name="LAST_COMMIT_MESSAGE" value="added data points label to scatter plot on dual axis and ungrouped column charts" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -243,34 +219,14 @@
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/PmtctFragmentController.java</url>
-          <line>44</line>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPmtctUtils.java</url>
-          <line>110</line>
-          <option name="timeStamp" value="32" />
+          <url>file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/HtsFragmentController.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPmtctUtils.java</url>
           <line>353</line>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/HtsFragmentController.java</url>
-          <line>36</line>
           <option name="timeStamp" value="36" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPatientUtils.java</url>
-          <line>32</line>
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPatientUtils.java</url>
-          <line>177</line>
-          <option name="timeStamp" value="38" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
