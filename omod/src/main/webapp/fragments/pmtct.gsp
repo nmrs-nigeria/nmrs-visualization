@@ -130,9 +130,7 @@
                         borderColor: '#fff',
                         borderWidth: 0,
                         shadow: false
-                    }
-                    ,
-                    // colors: colors,
+                    },
                     series: pData,
                     dataLabels: {
                         enabled: false
