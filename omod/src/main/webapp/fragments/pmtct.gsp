@@ -14,6 +14,7 @@
 <div id="cohort" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <br>
 <br>
+<hr style="border-bottom: thin solid #ddd; margin-bottom: 45px;"/>
 <div id="cohortViralSupp" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
 <br>
@@ -190,7 +191,7 @@
                 pData.push({name: '3 Months retention', data: month3, type: 'column', pointWidth: 40, pointPadding: 0.1, tooltip: { valueSuffix: '' }});
                 pData.push({name: '6 Months retention', data: month6, type: 'column', pointWidth: 35, pointPadding: 0.2, tooltip: { valueSuffix: '' }});
                 pData.push({name: '12 Months retention', data: month12, type: 'column', pointWidth: 30, pointPadding: 0.25, tooltip: { valueSuffix: '' }});
-                pData.push({name: '% 12 Month retention', data: percentageRetention, yAxis: 1, type: 'scatter', marker: { radius: 4 }, tooltip: { valueSuffix: '%' }});
+                pData.push({name: '% 12 Month retention', data: percentageRetention, yAxis: 1, type: 'scatter', marker: { radius: 4 }, tooltip: { valueSuffix: '%' }, dataLabels: { enabled: true, format: '{point.y}%'}});
 
                 Highcharts.chart('cohort',
                     {
