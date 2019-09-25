@@ -1,28 +1,25 @@
 <%=  ui.resourceLinks() %>
-
-<div id="pmtct_fo" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-
 <div>
-    <div>
-        <select id="year" class="button"></select>
-        <select id="month" class="button"></select>
-        <span class="button confirm" onclick="getEid()"><i class="icon-refresh"></i></span>
-    </div>
-    <div id="pmtct_eid" style="min-width: 310px; height: 400px; margin: 0 auto">
+    <input type="date" id="start_date" placeholder="Start Date">&nbsp;<input type="date" id="end_date" placeholder="End Date">
+    <span class="button confirm" onclick="getEid()"><i class="icon-refresh"></i></span>
 </div>
-    
-</div>
+<div id="pmtct_fo" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<br/>
+<hr>
+<div id="facility" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div id="pmtct_eid" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+
 
 <script type="text/javascript">
     jq = jQuery;
 
     jq(document).ready(function()
     {
-        populateDropdown()
-        getAncPmtctArt()
+        populateDropdown2();
     });
 
-    function getAncPmtctArt()
+    function getAncPmtctPie()
     {
         var colors = ['#030508', '#7cacc2', '#80699B'];
         var link = "${ ui.actionLink("visualization", "hts", "getPmtctFo")}";
@@ -83,8 +80,10 @@
     }
 
     function getEid() {
-        var month = document.getElementById("month").value;
-        var year = document.getElementById("year").value;
+        var month = document.getElementById("start_date").value;
+        var year = document.getElementById("end_date").value;
+
+        getAncPmtctPie();
 
         var link = "${ ui.actionLink("visualization", "hts", "getPmtctEid")}";
         jq.ajax({
@@ -105,27 +104,27 @@
         });
     }
 
-    function populateDropdown(){
+    function populateDropdown2(){
         var monthNames = ["January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"
         ];
         var qntYears = 6;
-        var selectYear = jq("#year");
-        var selectMonth = jq("#month");
+        var selectYear = jq("#pmtct_year");
+        var selectMonth = jq("#pmtct_month");
         //var selectDay = jq("#day");
         var currentYear = new Date().getFullYear();
 
         for (var y = 0; y < qntYears; y++){
             var date = new Date(currentYear);
             var yearElem = document.createElement("option");
-            yearElem.value = currentYear
+            yearElem.value = currentYear;
             yearElem.textContent = currentYear;
             selectYear.append(yearElem);
             currentYear--;
         }
 
         for (var m = 0; m < 12; m++){
-            var monthNum = new Date(2018, m).getMonth()
+            var monthNum = new Date(2018, m).getMonth();
             var month = monthNames[monthNum];
             var monthElem = document.createElement("option");
             monthElem.value = monthNum;
@@ -145,23 +144,6 @@
 
         //AdjustDays();
         //selectDay.val(day);
-    }
-
-    function AdjustDays(){
-        var year = selectYear.val();
-        var month = parseInt(selectMonth.val()) + 1;
-        selectDay.empty();
-
-        //get the last day, so the number of days in that month
-        var days = new Date(year, month, 0).getDate();
-
-        //lets create the days of that month
-        for (var d = 1; d <= days; d++){
-            var dayElem = document.createElement("option");
-            dayElem.value = d;
-            dayElem.textContent = d;
-            selectDay.append(dayElem);
-        }
     }
 
     function PlotEidChart(data) {

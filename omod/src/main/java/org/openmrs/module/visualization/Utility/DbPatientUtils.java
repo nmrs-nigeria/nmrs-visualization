@@ -50,7 +50,7 @@ public class DbPatientUtils {
 			        + "(SELECT COUNT(DISTINCT(enc.patient_id)) AS risk_assessment FROM encounter enc\n"
 			        + "JOIN obs ob ON ob.encounter_id = enc.encounter_id\n"
 			        + "WHERE concept_id IN (165800, 1063, 159218, 165803, 164809, 165806)\n"
-			        + "AND DATE(enc.encounter_datetime) BETWEEN '"
+			        + "AND enc.encounter_type = 2 AND DATE(enc.encounter_datetime) BETWEEN '"
 			        + startDate
 			        + "' AND '"
 			        + endDate
@@ -59,7 +59,7 @@ public class DbPatientUtils {
 			        + "(SELECT COUNT(DISTINCT(enc.patient_id)) AS tested FROM encounter enc\n"
 			        + "JOIN obs ob ON ob.encounter_id = enc.encounter_id\n"
 			        + "WHERE concept_id = 165843\n"
-			        + "AND DATE(enc.encounter_datetime) BETWEEN '"
+			        + "AND enc.encounter_type = 2 AND DATE(enc.encounter_datetime) BETWEEN '"
 			        + startDate
 			        + "' AND '"
 			        + endDate
@@ -68,7 +68,7 @@ public class DbPatientUtils {
 			        + "(SELECT COUNT(DISTINCT(enc.patient_id)) AS positive FROM encounter enc\n"
 			        + "JOIN obs ob ON ob.encounter_id = enc.encounter_id\n"
 			        + "WHERE concept_id = 165843 AND value_coded = 703\n"
-			        + "AND DATE(enc.encounter_datetime) BETWEEN '"
+			        + "AND enc.encounter_type = 2 AND DATE(enc.encounter_datetime) BETWEEN '"
 			        + startDate
 			        + "' AND '"
 			        + endDate
@@ -77,7 +77,7 @@ public class DbPatientUtils {
 			        + "(SELECT COUNT(DISTINCT(enc.patient_id)) AS recent_infection FROM encounter enc\n"
 			        + "JOIN obs ob ON ob.encounter_id = enc.encounter_id\n"
 			        + "WHERE concept_id = 165853 AND value_coded = 165852\n"
-			        + "AND DATE(enc.encounter_datetime) BETWEEN '"
+			        + "AND enc.encounter_type = 2 AND DATE(enc.encounter_datetime) BETWEEN '"
 			        + startDate
 			        + "' AND '"
 			        + endDate
@@ -86,7 +86,7 @@ public class DbPatientUtils {
 			        + "(SELECT COUNT(DISTINCT(enc.patient_id)) AS long_term FROM encounter enc\n"
 			        + "JOIN obs ob ON ob.encounter_id = enc.encounter_id\n"
 			        + "WHERE concept_id = 165853 AND value_coded = 165851\n"
-			        + "AND DATE(enc.encounter_datetime) BETWEEN '"
+			        + "AND enc.encounter_type = 2 AND DATE(enc.encounter_datetime) BETWEEN '"
 			        + startDate
 			        + "' AND '"
 			        + endDate
@@ -95,7 +95,10 @@ public class DbPatientUtils {
 			        + "(SELECT COUNT(DISTINCT(enc.patient_id)) AS viral_load_done FROM encounter enc\n"
 			        + "JOIN obs ob ON ob.encounter_id = enc.encounter_id\n"
 			        + "WHERE concept_id IN (165855, 165853) AND (value_text IS NOT NULL || value_coded = 165851)\n"
-			        + "AND DATE(enc.encounter_datetime) BETWEEN '" + startDate + "' AND '" + endDate + "') AS g\n" + ");";
+			        + "AND enc.encounter_type = 2 AND DATE(enc.encounter_datetime) BETWEEN '"
+			        + startDate
+			        + "' AND '"
+			        + endDate + "') AS g\n" + ");";
 			String sqlStatement = (sql);
 			ResultSet result = statement.executeQuery(sqlStatement);
 			if (result.next()) {

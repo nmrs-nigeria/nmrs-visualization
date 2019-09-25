@@ -35,7 +35,6 @@ public class HtsFragmentController {
 	HtsCharts getClientData(@RequestParam(value = "start_date") String start_date,
 	        @RequestParam(value = "end_date") String end_date) {
 		DbPatientUtils utils = new DbPatientUtils();
-		
 		return utils.getHtsCharts(start_date, end_date);
 	}
 	

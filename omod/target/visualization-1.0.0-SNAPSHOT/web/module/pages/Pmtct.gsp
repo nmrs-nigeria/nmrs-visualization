@@ -5,24 +5,18 @@
 
 <!-- Tab links -->
 <div class="tab">
-    <button class="tablinks" onclick="openCity(event, 'London')">Mother</button>
-    <button class="tablinks" onclick="openCity(event, 'Paris')">Child</button>
-    <button class="tablinks" onclick="openCity(event, 'Tokyo')">Others</button>
+    <button class="tablinks" onclick="openCity(event, 'Pmtct1')">PMTCT 1</button>
+    <button class="tablinks" onclick="openCity(event, 'Pmtct2')">PMTCT 2</button>
+
 </div>
 
 <!-- Tab content -->
-<div id="London" class="tabcontent">
+<div id="Pmtct1" class="tabcontent">
     ${ui.includeFragment("visualization","pmtct")}
 </div>
 
-<div id="Paris" class="tabcontent">
-    <h3>Child</h3>
-    <p>This will show the child charts.</p>
-</div>
-
-<div id="Tokyo" class="tabcontent">
-    <h3>Others</h3>
-    <p>This will show ungrouped charts.</p>
+<div id="Pmtct2" class="tabcontent">
+    ${ui.includeFragment("visualization","child")}
 </div>
 
 <style>

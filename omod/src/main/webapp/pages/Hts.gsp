@@ -10,6 +10,7 @@
 </div>
 <div id="clients" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <br/>
+<hr>
 <div id="facility" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
 <script type="text/javascript">
@@ -39,7 +40,8 @@
     }
 
     function PlotHtsChart(data) {
-        var colors = ['#030508', '#7cacc2', '#80699B', '#ff4344', '#ff741e', '#cc7a34', '#34eada'];
+        var colors = ['#030508', '#7cacc2', '#80699B',
+            '#7c8aff', '#de4b70', '#ff4941', '#d0681c'];
         var columnData = data.barChartModels;
         var category = [];
         var values = [];
@@ -111,20 +113,24 @@
             },
             plotOptions: {
                 column: {
-                    stacking: 'percent',
-                    colorByPoint: true
-                }
+                    stacking: 'normal'
+                },
+                colorByPoint: true
             },
-            colors: colors,
             series: [{
                 name: fac_model.pos_name,
-                data: [fac_model.pos_count,0]
+                data: [fac_model.pos_count,null],
+                color: '#030508'
             }, {
                 name: fac_model.start_art_in,
-                data: [0, fac_model.in_count]
+                data: [null, fac_model.in_count],
+                color: '#bee2ed',
+                stacking: fac_model.start_art_out
             },{
                 name:fac_model.start_art_out,
-                data:[0, fac_model.out_count]
+                data:[null, fac_model.out_count],
+                color:'#734b8e',
+                stacking: fac_model.start_art_out
             }]
         });
     }
