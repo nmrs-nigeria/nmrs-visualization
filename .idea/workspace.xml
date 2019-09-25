@@ -6,17 +6,13 @@
       <change beforePath="$PROJECT_DIR$/api/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/target/maven-java-formatter-cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/maven-java-formatter-cache.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/target/visualization-api-1.0.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/visualization-api-1.0.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPmtctUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPmtctUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/PmtctFragmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/PmtctFragmentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/omod/src/main/webapp/fragments/pmtct.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/webapp/fragments/pmtct.gsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/classes/org/openmrs/module/visualization/fragment/controller/PmtctFragmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/classes/org/openmrs/module/visualization/fragment/controller/PmtctFragmentController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/omod/target/classes/web/module/fragments/pmtct.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/classes/web/module/fragments/pmtct.gsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/omod/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/omod/target/maven-java-formatter-cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/maven-java-formatter-cache.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT.omod" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT.omod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/lib/visualization-api-1.0.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/lib/visualization-api-1.0.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/fragment/controller/PmtctFragmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/org/openmrs/module/visualization/fragment/controller/PmtctFragmentController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/web/module/fragments/pmtct.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/web/module/fragments/pmtct.gsp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -128,7 +124,8 @@
       <workItem from="1569058475794" duration="613000" />
       <workItem from="1569060953258" duration="34845000" />
       <workItem from="1569251369118" duration="1035000" />
-      <workItem from="1569254007325" duration="46318000" />
+      <workItem from="1569254007325" duration="48701000" />
+      <workItem from="1569356762668" duration="10527000" />
     </task>
     <task id="LOCAL-00001" summary="Added highchart scripts">
       <created>1568936871117</created>
@@ -151,7 +148,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568986223461</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="corrected axis stacking">
+      <created>1569352201877</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1569352201877</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -188,7 +192,8 @@
     <MESSAGE value="Added highchart scripts" />
     <MESSAGE value="Added tabs" />
     <MESSAGE value="Started quering" />
-    <option name="LAST_COMMIT_MESSAGE" value="Started quering" />
+    <MESSAGE value="corrected axis stacking" />
+    <option name="LAST_COMMIT_MESSAGE" value="corrected axis stacking" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -206,7 +211,7 @@
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPmtctUtils.java</url>
           <line>353</line>
-          <option name="timeStamp" value="35" />
+          <option name="timeStamp" value="36" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -184,13 +184,13 @@
                     {
                         percentageRetention.push(0)
                     }
-
                 });
-                pData.push({name: 'Month 0', data: month0, type: 'column', tooltip: { valueSuffix: '' }, color: '#000'});
-                pData.push({name: '3 Months retention', data: month3, type: 'column', tooltip: { valueSuffix: '' }, color: 'rgba(35,127,229,0.42)'});
-                pData.push({name: '6 Months retention', data: month6, type: 'column', tooltip: { valueSuffix: '' }, color: '#e0e0e0'});
-                pData.push({name: '12 Months retention', data: month12, type: 'column', tooltip: { valueSuffix: '' }, color: '#9e9e9e'});
-                pData.push({name: '% 12 Months retention', data: percentageRetention, yAxis: 1, type: 'scatter', marker: { radius: 4 }, tooltip: { valueSuffix: '%' }});
+
+                pData.push({name: 'Month 0', data: month0, type: 'column', pointWidth: 45, pointPadding: 0, tooltip: { valueSuffix: '' }});
+                pData.push({name: '3 Months retention', data: month3, type: 'column', pointWidth: 40, pointPadding: 0.1, tooltip: { valueSuffix: '' }});
+                pData.push({name: '6 Months retention', data: month6, type: 'column', pointWidth: 35, pointPadding: 0.2, tooltip: { valueSuffix: '' }});
+                pData.push({name: '12 Months retention', data: month12, type: 'column', pointWidth: 30, pointPadding: 0.25, tooltip: { valueSuffix: '' }});
+                pData.push({name: '% 12 Month retention', data: percentageRetention, yAxis: 1, type: 'scatter', marker: { radius: 4 }, tooltip: { valueSuffix: '%' }});
 
                 Highcharts.chart('cohort',
                     {
@@ -201,7 +201,8 @@
                         text: 'PMTCT ART Retention Analysis'
                     },
                     xAxis: {
-                        categories: categories
+                        categories: categories,
+                        crosshair: true
                     },
                     yAxis: [{ // Primary yAxis
                         labels: {
@@ -218,7 +219,7 @@
                         }
                     }, { // Secondary yAxis
                         title: {
-                            text: '%Retained',
+                            text: 'Percentage Retained',
                             style: {
                                 color: Highcharts.getOptions().colors[0]
                             }
@@ -231,7 +232,9 @@
                                 color: Highcharts.getOptions().colors[0]
                             }
                         },
-                        opposite: true
+                        opposite: true,
+                        showFirstLabel: false,
+                        showLastLabel: true
                     }],
                         legend: {
                             align: 'left',
@@ -244,21 +247,26 @@
                             borderWidth: 0,
                             shadow: false
                         },
-                    tooltip: {
-                        shared: true
-                    },
-                    plotOptions: {
-                        bar: {
-                            borderWidth: 0,
-                            colorByPoint: true,
-                            stacking: 'normal'
+                        tooltip: {
+                            headerFormat: '<table style="width: 110px"><tr style="font-size:12px; font-weight: bold; border-bottom: thin solid #ddd"><td colspan="2">{point.key}</td></tr>',
+                            pointFormat: '<tr style="font-size:11px;background-color: #fff"><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                                '<td style="padding:0"><b>{point.y:,.0f}</b></td></tr>',
+                            footerFormat: '</table>',
+                            shared: true,
+                            useHTML: true
                         },
-                        series: {
-                            pointWidth: 45
-                        }
+                    plotOptions: {
+                        column: {
+                            borderWidth: 0,
+                            grouping: false,
+                            shadow: false
+                        },
+                        colorByPoint: true
                     },
+                    colors: ['#000', '#90a4ae', 'rgba(106,27,154,0.88)', '#e0e0e0', 'rgba(35,127,229,0.42)'],
                     series: pData,
-                    dataLabels: {
+                    dataLabels:
+                        {
                         enabled: true
                     }
                 });
@@ -295,7 +303,7 @@
                     categories.push(f.cohort);
                 });
 
-                pData.push({name: 'VL Result by 36 week GA (<1,000)', data: suppressed, color: '#3949ab', stacking: 'VL Result by 36 week GA (>= 1,000)'});
+                pData.push({name: 'VL Result by 36 week GA (<1,000)', data: suppressed, color: '#0073b1', stacking: 'VL Result by 36 week GA (>= 1,000)'});
                 pData.push({name: 'VL Result by 36 week GA (>= 1,000)', data: nonSuppressed, color: '#d84315', stacking: 'VL Result by 36 week GA (>= 1,000)'});
                 Highcharts.chart('cohortViralSupp',
                     {
