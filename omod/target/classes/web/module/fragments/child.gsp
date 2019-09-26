@@ -16,7 +16,6 @@
 <br/>
 
 <hr style="border-bottom: thin solid #ddd; margin-bottom: 45px;"/>
-<div id="facility" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <div id="pmtct_eid" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
 <script type="text/javascript">

@@ -71,13 +71,16 @@
             xAxis: {
                 categories: category,
                 crosshair: true,
-                minorGridLineWidth: 0
+                minorGridLineWidth: 0,
+                gridLineWidth: 0
             },
             yAxis: {
                 min: 0,
                 title: {
                     text: 'Number of Clients'
-                }
+                },
+                gridLineWidth: 0,
+                minorGridLineWidth: 0
             },
             colors: colors,
             tooltip: {
@@ -107,13 +110,17 @@
                 text: 'Linkage to Treatment'
             },
             xAxis: {
-                categories: [fac_model.pos_name, "Started Art"]
+                categories: [fac_model.pos_name, "Started Art"],
+                gridLineWidth: 0,
+                minorGridLineWidth: 0
             },
             yAxis: {
                 min: 0,
                 title: {
                     text: 'Number of CLients'
-                }
+                },
+                gridLineWidth: 0,
+                minorGridLineWidth: 0
             },
             tooltip: {
                 pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
