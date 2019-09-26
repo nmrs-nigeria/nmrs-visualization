@@ -39,10 +39,14 @@ public class HtsFragmentController {
 	}
 	
 	public @ResponseBody
-	ArrayList<ChartModel> getPmtctFo(@RequestParam(value = "start_date") String start_date,
-	        @RequestParam(value = "end_date") String end_date) {
+	ArrayList<ChartModel> getPmtctFo(@RequestParam(value = "pmtct_year") String pmtct_year,
+	        @RequestParam(value = "pmtct_month") String pmtct_month) {
+		//parse data
+		int yr = Integer.parseInt(pmtct_year);
+		
+		int mo = Integer.parseInt(pmtct_month) + 1;
 		DbPatientUtils utils = new DbPatientUtils();
-		return utils.getPmtctFollowUp();
+		return utils.getPmtctFollowUp(mo, yr);
 	}
 	
 	public @ResponseBody

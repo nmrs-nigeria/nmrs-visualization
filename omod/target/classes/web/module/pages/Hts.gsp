@@ -2,6 +2,7 @@
 
 <%= ui.resourceLinks() %>
 <% ui.includeJavascript("visualization", "highcharts.js") %>
+${ui.includeFragment("visualization","header")}
 
 <h1 align="center"> <b>HTS</b></h1>
 <div style="border: thin solid #ddd; margin: 5px; border-radius: 25px; padding: 10px;">

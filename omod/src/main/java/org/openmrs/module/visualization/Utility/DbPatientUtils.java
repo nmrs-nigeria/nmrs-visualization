@@ -24,7 +24,7 @@ public class DbPatientUtils {
 	public HtsCharts getHtsCharts(String startDate, String endDate) {
 		HtsCharts htsCharts = new HtsCharts();
 		htsCharts.setBarChartModels(getHtsCascadeBar(startDate, endDate));
-		htsCharts.setChartModel(getHtsStackBar());
+		htsCharts.setChartModel(getHtsStackBar(startDate, endDate));
 		return htsCharts;
 	}
 	
@@ -113,7 +113,7 @@ public class DbPatientUtils {
 		}
 	}
 	
-	public ChartModel getHtsStackBar() {
+	public ChartModel getHtsStackBar(String startDate, String endDate) {
 		try {
 			DBConnection connResult = DbUtil.getNmrsConnectionDetails();
 			
@@ -126,10 +126,18 @@ public class DbPatientUtils {
 			        + "(SELECT COUNT(DISTINCT person_id) AS started_art_in FROM obs WHERE concept_id = 160540 AND value_coded IN (160542,160536,160539,160541,160546,160538,160545,5622) AND MONTH(CURDATE())) AS b CROSS JOIN "
 			        + "(SELECT COUNT(DISTINCT(pid.identifier)) AS started_art_out FROM patient_identifier pid  JOIN encounter e ON pid.patient_id = e.patient_id JOIN obs ob ON e.encounter_id = ob.encounter_id  WHERE (pid.identifier_type = 8) AND e.encounter_type = 22 AND ob.concept_id IN (165508,165501) AND MONTH(CURDATE())) AS c)";*/
 			String sql = "SELECT * FROM (\n"
-			        + "(SELECT COUNT(DISTINCT(patient_id)) AS new_positive FROM encounter WHERE encounter_type = 2 AND DATE(encounter_datetime) BETWEEN '2017-04-30' AND '2019-09-30') AS a CROSS JOIN\n"
-			        + "(SELECT COUNT(DISTINCT(patient_id)) AS started_art_in FROM encounter WHERE encounter_type = 25 AND form_id = 56 AND DATE(encounter_datetime) BETWEEN '2017-04-30' AND '2019-09-30') AS b CROSS JOIN\n"
-			        + "(SELECT COUNT(DISTINCT(patient_id)) AS started_art_out FROM encounter WHERE encounter_type = 22 AND form_id = 52 AND DATE(encounter_datetime) BETWEEN '2017-04-30' AND '2019-09-30') AS c\n"
-			        + ")";
+			        + "(SELECT COUNT(DISTINCT(patient_id)) AS new_positive FROM encounter WHERE encounter_type = 2 AND DATE(encounter_datetime) BETWEEN '"
+			        + startDate
+			        + "' AND '"
+			        + endDate
+			        + "') AS a CROSS JOIN\n"
+			        + "(SELECT COUNT(DISTINCT(patient_id)) AS started_art_in FROM encounter WHERE encounter_type = 25 AND form_id = 56 AND DATE(encounter_datetime) BETWEEN '"
+			        + startDate
+			        + "' AND '"
+			        + endDate
+			        + "') AS b CROSS JOIN\n"
+			        + "(SELECT COUNT(DISTINCT(patient_id)) AS started_art_out FROM encounter WHERE encounter_type = 22 AND form_id = 52 AND DATE(encounter_datetime) BETWEEN '"
+			        + startDate + "' AND '" + endDate + "') AS c\n" + ")";
 			String sqlStatement = (sql);
 			ResultSet result = statement.executeQuery(sqlStatement);
 			if (result.next()) {
@@ -145,8 +153,10 @@ public class DbPatientUtils {
 		}
 	}
 	
-	public ArrayList<ChartModel> getPmtctFollowUp() {
+	public ArrayList<ChartModel> getPmtctFollowUp(int month, int year) {
 		try {
+			//add 24 months to the month /year ie add 2 years to the year and use the same month
+			year = year - 2;
 			DBConnection connResult = DbUtil.getNmrsConnectionDetails();
 			
 			ArrayList<ChartModel> barChartModels = new ArrayList<ChartModel>();
@@ -154,13 +164,59 @@ public class DbPatientUtils {
 			Connection connection = DriverManager.getConnection(connResult.getUrl(), connResult.getUsername(),
 			    connResult.getPassword());
 			Statement statement = connection.createStatement();
-			String sql = "SELECT * FROM ((SELECT COUNT(DISTINCT(person_id)) AS pos_linked FROM obs WHERE concept_id = 165035 AND value_coded = 165552 AND MONTH(CURDATE())) AS a CROSS JOIN"
-			        + " (SELECT COUNT(DISTINCT(person_id)) AS pos_not_linked FROM obs WHERE concept_id = 165035 AND value_coded = 165553 AND MONTH(CURDATE())) AS b CROSS JOIN"
-			        + " (SELECT COUNT(DISTINCT(person_id)) AS neg_breastfeed FROM obs WHERE concept_id = 165035 AND value_coded = 165554 AND MONTH(CURDATE())) AS c CROSS JOIN"
-			        + " (SELECT COUNT(DISTINCT(person_id)) AS neg_not_breastfeed FROM obs WHERE concept_id = 165035 AND value_coded = 1404 AND MONTH(CURDATE())) AS d CROSS JOIN"
-			        + " (SELECT COUNT(DISTINCT(person_id)) AS died FROM obs WHERE concept_id = 165035 AND value_coded = 165556 AND MONTH(CURDATE())) AS e CROSS JOIN"
-			        + " (SELECT COUNT(DISTINCT(person_id)) AS lost_to_follow FROM obs WHERE concept_id = 165035 AND value_coded = 165557 AND MONTH(CURDATE())) AS f CROSS JOIN"
-			        + " (SELECT COUNT(DISTINCT(person_id)) AS transfered_out FROM obs WHERE concept_id = 165035 AND value_coded = 165558 AND MONTH(CURDATE())) AS g)";
+			String sql = "SELECT * FROM (\n" + "(\n" + "SELECT COUNT(DISTINCT(ob.person_id)) AS pos_linked FROM obs ob\n"
+			        + "JOIN person per ON per.person_id = ob.person_id\n"
+			        + "WHERE concept_id = 165035 AND value_coded = 165552\n" + "AND MONTH(per.birthdate) = "
+			        + month
+			        + " AND YEAR(per.birthdate) = "
+			        + year
+			        + ") AS a CROSS JOIN\n"
+			        + "(SELECT COUNT(DISTINCT(ob.person_id)) AS pos_not_linked FROM obs ob\n"
+			        + "JOIN person per ON per.person_id = ob.person_id\n"
+			        + "WHERE concept_id = 165035 AND value_coded = 165553\n"
+			        + "AND MONTH(per.birthdate) = "
+			        + month
+			        + " AND YEAR(per.birthdate) = "
+			        + year
+			        + ") AS b CROSS JOIN\n"
+			        + "(SELECT COUNT(DISTINCT(ob.person_id)) AS neg_breastfeed FROM obs ob\n"
+			        + "JOIN person per ON per.person_id = ob.person_id\n"
+			        + "WHERE concept_id = 165035 AND value_coded = 165554\n"
+			        + "AND MONTH(per.birthdate) = "
+			        + month
+			        + " AND YEAR(per.birthdate) = "
+			        + year
+			        + ") AS c CROSS JOIN\n"
+			        + "(SELECT COUNT(DISTINCT(ob.person_id)) AS neg_not_breastfeed FROM obs ob\n"
+			        + "JOIN person per ON per.person_id = ob.person_id\n"
+			        + "WHERE concept_id = 165035 AND value_coded = 1404\n"
+			        + "AND MONTH(per.birthdate) = "
+			        + month
+			        + " AND YEAR(per.birthdate) = "
+			        + year
+			        + ") AS d CROSS JOIN\n"
+			        + "(SELECT COUNT(DISTINCT(ob.person_id)) AS died FROM obs ob\n"
+			        + "JOIN person per ON per.person_id = ob.person_id\n"
+			        + "WHERE concept_id = 165035 AND value_coded = 165556\n"
+			        + "AND MONTH(per.birthdate) = "
+			        + month
+			        + " AND YEAR(per.birthdate) = "
+			        + year
+			        + ") AS e CROSS JOIN\n"
+			        + "(SELECT COUNT(DISTINCT(ob.person_id)) AS lost_to_follow FROM obs ob\n"
+			        + "JOIN person per ON per.person_id = ob.person_id\n"
+			        + "WHERE concept_id = 165035 AND value_coded = 165557\n"
+			        + "AND MONTH(per.birthdate) = "
+			        + month
+			        + " AND YEAR(per.birthdate) = "
+			        + year
+			        + ") AS f CROSS JOIN\n"
+			        + "(SELECT COUNT(DISTINCT(ob.person_id)) AS transfered_out FROM obs ob\n"
+			        + "JOIN person per ON per.person_id = ob.person_id\n"
+			        + "WHERE concept_id = 165035 AND value_coded = 165558\n"
+			        + "AND MONTH(per.birthdate) = "
+			        + month
+			        + " AND YEAR(per.birthdate) = " + year + ") AS g\n" + ")";
 			String sqlStatement = (sql);
 			ResultSet result = statement.executeQuery(sqlStatement);
 			if (result.next()) {

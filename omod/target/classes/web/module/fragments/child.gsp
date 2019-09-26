@@ -12,11 +12,16 @@
     <span class="button confirm" onclick="getEid()"><i class="icon-refresh"></i></span>
 </div>
 
-<div id="pmtct_fo" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div id="pmtct_eid" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <br/>
 
 <hr style="border-bottom: thin solid #ddd; margin-bottom: 45px;"/>
-<div id="pmtct_eid" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div>
+    <select id="pmtct_year" class="button"></select>
+    <select id="pmtct_month" class="button"></select>
+    <span class="button confirm" onclick="getAncPmtctPie()"><i class="icon-refresh"></i></span>
+</div>
+<div id="pmtct_fo" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
 <script type="text/javascript">
     jq = jQuery;
@@ -26,19 +31,16 @@
         populateDropdown2();
     });
 
-    function getAncPmtctPie(start_date, end_date)
+    function getAncPmtctPie()
     {
-        var start_date = document.getElementById("start_date").value;
-        var end_date = document.getElementById("end_date").value;
-        if(start_date === "" || end_date === ""){
-            alert("Please Ensure you pick a date");
-            return false;
-        }
+        var pmtct_year = document.getElementById("pmtct_year").value;
+        var pmtct_month = document.getElementById("pmtct_month").value;
+
         var link = "${ ui.actionLink("visualization", "hts", "getPmtctFo")}";
         jq.ajax({
             contentType: "application/json; charset=utf-8",
             dataType: "json",
-            data: {'start_date':start_date, 'end_date':end_date},
+            data: {'pmtct_year':pmtct_year, 'pmtct_month':pmtct_month},
             url: link,
             cache: false,
             timeout: 600000,
@@ -94,8 +96,6 @@
     function getEid() {
         var start_date = document.getElementById("start_date").value;
         var end_date = document.getElementById("end_date").value;
-
-        getAncPmtctPie(start_date, end_date);
 
         var link = "${ ui.actionLink("visualization", "hts", "getPmtctEid")}";
         jq.ajax({
