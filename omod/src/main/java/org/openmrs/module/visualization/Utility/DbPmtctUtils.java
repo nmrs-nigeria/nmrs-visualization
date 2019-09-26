@@ -36,36 +36,48 @@ public class DbPmtctUtils {
 			
 			//ANC: that was Tested, Previous known HIV+, New HIV+, already on Tx, Newly on Tx
 			
-			String str = "select *\n"
-			        + "from\n"
-			        + "(\n"
-			        + "\t(select count(patient_id) as anc FROM patient_identifier where identifier_type = 6) as anc\n"
-			        + "    \n"
-			        + "    cross join\n"
-			        + "    \n"
-			        + "\t(select count(distinct(ancx.patient_id)) as ancHts from\n"
-			        + "    (select patient_id FROM patient_identifier where identifier_type = 6) ancx\n"
-			        + "\tjoin\n"
-			        + "    (select patient_id FROM patient_identifier where identifier_type = 8) hts on ancx.patient_id = hts.patient_id\n"
-			        + "    ) ancHts\n" + "\t\n" + "    cross join\n" + "    \n"
-			        + "    (select count(distinct(ps.patient_id)) as prevPositive from\t\n"
-			        + "    (SELECT patient_id FROM patient_identifier WHERE identifier_type = 6) ps join\n"
-			        + "    (SELECT person_id FROM obs where concept_id = 166030 and value_coded = 1065) obPrev  \n"
-			        + "    on ps.patient_id = obPrev.person_id\n" + "    ) prevPositive \n" + "    \n" + "    cross join\n"
-			        + "\t\n" + "    (select count(distinct(p.patient_id)) as newPositive from\t\n"
-			        + "    (SELECT patient_id FROM patient_identifier WHERE identifier_type = 6) p join\n"
-			        + "    (SELECT person_id FROM obs where concept_id = 159427 and value_coded in (703)) obPrev  \n"
-			        + "    on p.patient_id = obPrev.person_id\n" + "    ) as newPositive\n" + "    \n" + "    cross join\n"
-			        + "\t\n" + "    (select count(distinct(pmtctHts.patient_id)) as newOnTx \n" + "    from    \n"
-			        + "    (SELECT * FROM encounter WHERE encounter_type = 10 AND form_id = 54) pmtctHts\n" + "    join\n"
-			        + "    (SELECT * FROM encounter WHERE encounter_type = 13 AND form_id = 27) pof  \n"
-			        + "    on pmtctHts.patient_id = pof.patient_id\n"
-			        + "    where pof.encounter_datetime > pmtctHts.encounter_datetime\n" + "    ) as newOnTx\n" + "    \n"
-			        + "    cross join\n" + "\t\n" + "    (select count(distinct(pmtctHts.patient_id)) as oldOnTx from\t\n"
-			        + "    (SELECT * FROM encounter WHERE encounter_type = 10 AND form_id = 54) pmtctHts\n" + "    join\n"
-			        + "    (SELECT * FROM encounter WHERE encounter_type = 13 AND form_id = 27) pof  \n"
-			        + "    on pmtctHts.patient_id = pof.patient_id\n"
-			        + "    where pof.encounter_datetime < pmtctHts.encounter_datetime\n" + "    ) as oldOnTx\n" + ")";
+			String str = "select * from\n" +
+                    "(\n" +
+                    "\t(select count(patient_id) as anc FROM patient_identifier where identifier_type = 6) as anc\t\t\t            \n" +
+                    "\t\tcross join\t\t\n" +
+                    "\t(select count(distinct(ancx.patient_id)) as ancHts from\n" +
+                    "\t\t(select patient_id FROM patient_identifier where identifier_type = 6) ancx\n" +
+                    "\t\tjoin\n" +
+                    "\t\t(select patient_id FROM patient_identifier where identifier_type = 8) hts on ancx.patient_id = hts.patient_id \n" +
+                    "    ) ancHts      \n" +
+                    "    \n" +
+                    "    cross join     \n" +
+                    "\t(select count(distinct(ps.patient_id)) as prevPositive from\n" +
+                    "\t\t(SELECT patient_id FROM patient_identifier WHERE identifier_type = 6) ps \n" +
+                    "        join\n" +
+                    "\t\t(SELECT person_id FROM obs where concept_id = 166030 and value_coded = 1065) obPrev on ps.patient_id = obPrev.person_id\n" +
+                    "        ) prevPositive           \n" +
+                    "\t\t\n" +
+                    "        cross join\n" +
+                    "\t\n" +
+                    "    (select count(distinct(p.patient_id)) as newPositive from\n" +
+                    "\t\t(SELECT patient_id FROM patient_identifier WHERE identifier_type = 6) p join\n" +
+                    "\t\t(SELECT person_id FROM obs where concept_id = 159427 and value_coded in (703)) obPrev on p.patient_id = obPrev.person_id\n" +
+                    "\t) as newPositive          \n" +
+                    "    \n" +
+                    "    cross join\n" +
+                    "    \n" +
+                    "\t(select count(distinct(matCort.patient_id)) as newOnTx  from    \n" +
+                    "\t\t(SELECT * FROM encounter WHERE form_id = 48) matCort\n" +
+                    "\t\tjoin \n" +
+                    "        (SELECT * FROM obs WHERE concept_id in (165520,165521)) matCortOb on matCort.patient_id = matCortOb.person_id and \n" +
+                    "\t\tmatCortOb.encounter_id = matCortOb.encounter_id  # Initiated ART during pregnancy < 36 weeks gestation period OR Initiated ART during pregnancy >= 36 weeks gestation period\n" +
+                    "\t) as newOnTx     \n" +
+                    "\t\n" +
+                    "    cross join    \n" +
+                    "    \n" +
+                    "    (select count(distinct(matCort.patient_id)) as oldOnTx from\n" +
+                    "\t\t(SELECT * FROM encounter WHERE form_id = 48) matCort\n" +
+                    "\t\tjoin \n" +
+                    "        (SELECT * FROM obs WHERE concept_id = 165519) matCortOb on matCort.patient_id = matCortOb.person_id and \n" +
+                    "\t\tmatCortOb.encounter_id = matCortOb.encounter_id # Prior to this pregnancy\n" +
+                    "    ) as oldOnTx\n" +
+                    ")";
 			
 			ResultSet result = statement.executeQuery(str);
 			
@@ -200,7 +212,7 @@ public class DbPmtctUtils {
 			        + "    \n"
 			        + "    where lofObS.value_datetime >= ancOb.value_datetime # ensure sample was collected after LMP\n"
 			        + "    and lofObRd.value_datetime >= ancOb.value_datetime # ensure test result was released after LMP\n"
-			        + "    and lofObRd.value_datetime <= date(DATE_ADD(ancOb.value_datetime, INTERVAL 36 week)) # ensure test result was released after LMP but with GA\n"
+			        + "    and lofObRd.value_datetime <= date(DATE_ADD(ancOb.value_datetime, INTERVAL 36 week)) # ensure test result was released after LMP but within GA\n"
 			        + ")q";
 			
 			ResultSet res = logic.executeQuery(str);

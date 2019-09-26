@@ -76,12 +76,12 @@
                     }
                 });
 
-                pData.push({name: 'ANC Registration', data: [ancReg, 0, 0, 0, 0, 0], color: '#000'});
-                pData.push({name: 'Tested', data: [0, ancTested, 0, 0, 0, 0], color: '#90a4ae'});
-                pData.push({name: 'Known Positive', data: [0, 0, oldPositive, 0, 0, 0], color: '#e905bf', stacking: 'New Positive'});
-                pData.push({name: 'New Positive', data: [0, 0, newPositive, 0, 0, 0], color: '#6a1b9a', stacking: 'New Positive'});
-                pData.push({name: 'Already on Tx', data: [0, 0, 0, 0, 0, oldTx], color: '#e905bf', stacking: 'New on Tx'});
-                pData.push({name: 'New on Tx', data: [0, 0, 0, 0, 0, newTx], color: '#6a1b9a', stacking: 'New on Tx'});
+                pData.push({name: 'ANC Registration', data: [ancReg, null, null, null, null, null], color: '#000'});
+                pData.push({name: 'Tested', data: [null, ancTested, null, null, null, null], color: '#90a4ae'});
+                pData.push({name: 'Known Positive', data: [null, null, oldPositive, null, null, null], color: '#e905bf', stacking: 'New Positive'});
+                pData.push({name: 'New Positive', data: [null, null, newPositive, null, null, null], color: '#6a1b9a', stacking: 'New Positive'});
+                pData.push({name: 'Already on Tx', data: [null, null, null, null, null, oldTx], color: '#e905bf', stacking: 'New on Tx'});
+                pData.push({name: 'New on Tx', data: [null, null, null, null, null, newTx], color: '#6a1b9a', stacking: 'New on Tx'});
 
                 Highcharts.chart('container',
                 {
@@ -130,9 +130,7 @@
                         borderColor: '#fff',
                         borderWidth: 0,
                         shadow: false
-                    }
-                    ,
-                    // colors: colors,
+                    },
                     series: pData,
                     dataLabels: {
                         enabled: false

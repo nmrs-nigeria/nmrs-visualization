@@ -77,11 +77,11 @@
                 });
 
                 pData.push({name: 'ANC Registration', data: [ancReg, null, null, null, null, null], color: '#000'});
-                pData.push({name: 'Tested', data: [null, ancTested, null, null, null, null], color: '#90a4ae'});
-                pData.push({name: 'Known Positive', data: [null, null, oldPositive, null, null, null], color: '#e905bf', stacking: 'New Positive'});
-                pData.push({name: 'New Positive', data: [null, null, newPositive, null, null, null], color: '#6a1b9a', stacking: 'New Positive'});
-                pData.push({name: 'Already on Tx', data: [null, null, null, null, null, oldTx], color: '#e905bf', stacking: 'New on Tx'});
-                pData.push({name: 'New on Tx', data: [null, null, null, null, null, newTx], color: '#6a1b9a', stacking: 'New on Tx'});
+                pData.push({name: 'Tested', data: [null, ancTested, null, null, null, null], color: '#B4C7E7'});
+                pData.push({name: 'Known Positive', data: [null, null, oldPositive, null, null, null], color: '#FF00FF', stacking: 'New Positive'});
+                pData.push({name: 'New Positive', data: [null, null, newPositive, null, null, null], color: '#7030A0', stacking: 'New Positive'});
+                pData.push({name: 'Already on Tx', data: [null, null, null, null, null, oldTx], color: '#FF00FF', stacking: 'New on Tx'});
+                pData.push({name: 'New on Tx', data: [null, null, null, null, null, newTx], color: '#7030A0', stacking: 'New on Tx'});
 
                 Highcharts.chart('container',
                 {
@@ -92,14 +92,16 @@
                         text: 'PMTCT ART Coverage'
                     },
                     xAxis: {
-                        categories: ['ANC Registration', 'Tested', 'Positives', 'New Positive', 'Known Positive', 'New on Tx', 'Already on Tx'],
+                        categories: ['ANC Registration', 'Tested', 'New Positive', 'Known Positive', 'New on Tx', 'Already on Tx'],
                         labels: {enabled:false}
                     },
                     yAxis: {
                         allowDecimals: false,
+                        gridLineWidth: 0,
+                        minorGridLineWidth: 0,
                         min: 0,
                         title: {
-                            text: 'Number of pregnant women'
+                            text: 'Number of Pregnant Women'
                         }
                     },
                     tooltip: {
@@ -125,6 +127,7 @@
                         x: 50,
                         verticalAlign: 'bottom',
                         y: 22,
+                        itemDistance:45,
                         floating: false,
                         backgroundColor: 'white',
                         borderColor: '#fff',
@@ -204,6 +207,8 @@
                         crosshair: true
                     },
                     yAxis: [{ // Primary yAxis
+                        gridLineWidth: 0,
+                        minorGridLineWidth: 0,
                         labels: {
                             format: '{value}',
                             style: {
@@ -218,11 +223,14 @@
                         }
                     }, { // Secondary yAxis
                         title: {
-                            text: 'Percentage Retained',
+                            text: '% Retained',
+                            rotation: 270,
                             style: {
                                 color: Highcharts.getOptions().colors[0]
                             }
                         },
+                        gridLineWidth: 0,
+                        minorGridLineWidth: 0,
                         min: 0,
                         max: 100,
                         labels: {
@@ -262,7 +270,7 @@
                         },
                         colorByPoint: true
                     },
-                    colors: ['#000', '#90a4ae', 'rgba(106,27,154,0.88)', '#e0e0e0', 'rgba(35,127,229,0.42)'],
+                    colors: ['#000', '#B4C7E7', '#7030A0', '#fff', '#4472C4'],
                     series: pData,
                     dataLabels:
                         {
@@ -302,8 +310,8 @@
                     categories.push(f.cohort);
                 });
 
-                pData.push({name: 'VL Result by 36 week GA (<1,000)', data: suppressed, color: '#0073b1', stacking: 'VL Result by 36 week GA (>= 1,000)'});
-                pData.push({name: 'VL Result by 36 week GA (>= 1,000)', data: nonSuppressed, color: '#d84315', stacking: 'VL Result by 36 week GA (>= 1,000)'});
+                pData.push({name: 'VL Result by 36 week GA (<1,000)', data: suppressed, color: '#B4C7E7', stacking: 'VL Result by 36 week GA (>= 1,000)'});
+                pData.push({name: 'VL Result by 36 week GA (>= 1,000)', data: nonSuppressed, color: '#000', stacking: 'VL Result by 36 week GA (>= 1,000)'});
                 Highcharts.chart('cohortViralSupp',
                     {
                         chart: {
@@ -318,6 +326,8 @@
                         },
                         yAxis: {
                             allowDecimals: false,
+                            gridLineWidth: 0,
+                            minorGridLineWidth: 0,
                             min: 0,
                             title: {
                                 text: 'Number of positive pregnant women'
