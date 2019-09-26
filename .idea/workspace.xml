@@ -2,23 +2,68 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60c1f400-7d02-4114-b362-38af6d13cabf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/HIVPositveCLients.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/JsonResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/NewPatientVLCascade.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/NewPatientsCD4Analysis.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/Series.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/SummaryDashboard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/TxNewAchievements.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DBARTUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/VisualizationFragmentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/omod/src/main/webapp/pages/datavisualization.gsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/org/openmrs/module/visualization/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/org/openmrs/module/visualization/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/org/openmrs/module/visualization/VisualizationActivator.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/org/openmrs/module/visualization/VisualizationActivator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/org/openmrs/module/visualization/VisualizationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/org/openmrs/module/visualization/VisualizationConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/org/openmrs/module/visualization/api/VisualizationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/org/openmrs/module/visualization/api/VisualizationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/org/openmrs/module/visualization/api/dao/VisualizationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/org/openmrs/module/visualization/api/dao/VisualizationDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/org/openmrs/module/visualization/api/impl/VisualizationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/org/openmrs/module/visualization/api/impl/VisualizationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/test/java/org/openmrs/module/visualization/VisualizationServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/test/java/org/openmrs/module/visualization/VisualizationServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/test/java/org/openmrs/module/visualization/dao/VisualizationDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/test/java/org/openmrs/module/visualization/dao/VisualizationDaoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/target/maven-java-formatter-cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/maven-java-formatter-cache.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/target/visualization-api-1.0.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/visualization-api-1.0.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/src/main/webapp/fragments/child.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/webapp/fragments/child.gsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/src/main/webapp/pages/Hts.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/webapp/pages/Hts.gsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/classes/web/module/fragments/child.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/classes/web/module/fragments/child.gsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/classes/web/module/pages/Hts.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/classes/web/module/pages/Hts.gsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/BarChartModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/BarChartModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/ChartModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/ChartModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/DBConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/HtsCharts.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/HtsCharts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/PmtctCohortRetentiModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/PmtctCohortRetentiModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/ViralSuppressionModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/ViralSuppressionModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPatientUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPatientUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPmtctUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPmtctUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/extension/html/AdminList.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/extension/html/AdminList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/ChildFragmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/ChildFragmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/HtsFragmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/HtsFragmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/LineListFragmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/LineListFragmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/PmtctFragmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/PmtctFragmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/UsersFragmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/UsersFragmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/page/controller/HtsPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/page/controller/HtsPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/page/controller/LineListPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/page/controller/LineListPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/page/controller/PmtctPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/page/controller/PmtctPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/web/controller/VisualizationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/web/controller/VisualizationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/src/test/java/org/openmrs/module/visualization/AdminListExtensionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/test/java/org/openmrs/module/visualization/AdminListExtensionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/target/classes/liquibase.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/target/classes/messages.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/target/classes/messages_es.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/target/classes/messages_fr.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/target/classes/moduleApplicationContext.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/omod/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/omod/target/maven-java-formatter-cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/maven-java-formatter-cache.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT.omod" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT.omod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/lib/visualization-api-1.0.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/lib/visualization-api-1.0.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/web/module/fragments/child.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/web/module/fragments/child.gsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/web/module/pages/Hts.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/web/module/pages/Hts.gsp" afterDir="false" />
     </list>
+    <ignored path="$PROJECT_DIR$/omod/target/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path="$PROJECT_DIR$/api/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,6 +71,61 @@
   </component>
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="datavisualization.gsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/omod/src/main/webapp/pages/datavisualization.gsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="803">
+              <caret line="108" column="53" selection-start-line="108" selection-start-column="53" selection-end-line="108" selection-end-column="53" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#1;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#button#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#fieldset#0;n#form#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#button#0;n#div#0;n#fieldset#0;n#form#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#3;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#4;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#5;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DBARTUtils.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DBARTUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="346">
+              <caret line="229" lean-forward="true" selection-start-line="229" selection-end-line="229" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VisualizationFragmentController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/VisualizationFragmentController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="31" selection-start-line="31" selection-end-line="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -37,34 +137,219 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/JsonResult.java" />
+        <option value="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/Series.java" />
+        <option value="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/VisualizationFragmentController.java" />
+        <option value="$PROJECT_DIR$/omod/src/main/webapp/pages/datavisualization.gsp" />
+        <option value="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DBARTUtils.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="953" />
+    <option name="width" value="974" />
+    <option name="height" value="1047" />
+  </component>
   <component name="ProjectId" id="1R4BRcWvIscqlmC2YEmtJupxmoX" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="nmrs-visualization" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nmrs-visualization" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nmrs-visualization" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nmrs-visualization" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nmrs-visualization" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nmrs-visualization" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nmrs-visualization" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nmrs-visualization" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nmrs-visualization" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nmrs-visualization" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nmrs-visualization" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nmrs-visualization" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="visualization" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nmrs-visualization" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nmrs-visualization" type="462c0819:PsiDirectoryNode" />
+              <item name="omod" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nmrs-visualization" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nmrs-visualization" type="462c0819:PsiDirectoryNode" />
+              <item name="omod" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nmrs-visualization" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nmrs-visualization" type="462c0819:PsiDirectoryNode" />
+              <item name="omod" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nmrs-visualization" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nmrs-visualization" type="462c0819:PsiDirectoryNode" />
+              <item name="omod" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nmrs-visualization" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nmrs-visualization" type="462c0819:PsiDirectoryNode" />
+              <item name="omod" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="visualization" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nmrs-visualization" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nmrs-visualization" type="462c0819:PsiDirectoryNode" />
+              <item name="omod" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="visualization" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nmrs-visualization" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nmrs-visualization" type="462c0819:PsiDirectoryNode" />
+              <item name="omod" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="visualization" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nmrs-visualization" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nmrs-visualization" type="462c0819:PsiDirectoryNode" />
+              <item name="omod" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="visualization" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nmrs-visualization" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nmrs-visualization" type="462c0819:PsiDirectoryNode" />
+              <item name="omod" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="visualization" type="462c0819:PsiDirectoryNode" />
+              <item name="Utility" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nmrs-visualization" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nmrs-visualization" type="462c0819:PsiDirectoryNode" />
+              <item name="omod" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nmrs-visualization" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nmrs-visualization" type="462c0819:PsiDirectoryNode" />
+              <item name="omod" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="fragments" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nmrs-visualization" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nmrs-visualization" type="462c0819:PsiDirectoryNode" />
+              <item name="omod" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1569247112172" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../dataquality" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\jcval\OneDrive\Documents\GitHub\nmrs-visualization\omod\src\main\java\org\openmrs\module\visualization\Utility" />
-      <recent name="C:\Users\jcval\OneDrive\Documents\GitHub\nmrs-visualization\omod\src\main\java\org\openmrs\module\visualization\Model" />
-      <recent name="$PROJECT_DIR$/omod/src/main/webapp/fragments" />
-      <recent name="$PROJECT_DIR$/omod/src/main/webapp/pages" />
-      <recent name="$PROJECT_DIR$/omod/src/main/webapp/resources" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="org.openmrs.module.visualization.Model" />
-      <recent name="org.openmrs.module.visualization.fragment.controller" />
-      <recent name="org.openmrs.module.visualization.page.controller" />
-      <recent name="org.openmrs.module.visualization.web.controller" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/omod/src/main/resources" />
       <recent name="$PROJECT_DIR$/omod/src/main/webapp" />
       <recent name="$PROJECT_DIR$/omod/src/main/webapp/resources/styles" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.openmrs.module.visualization.Model" />
+      <recent name="org.openmrs.module.visualization.Utility" />
+      <recent name="org.openmrs.module.visualization.fragment.controller" />
+      <recent name="org.openmrs.module.visualization.page.controller" />
+      <recent name="org.openmrs.module.visualization.web.controller" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\APINPC\nmrs-visualization\omod\src\main\webapp\pages" />
+      <recent name="C:\Users\APINPC\nmrs-visualization\omod\src\main\java\org\openmrs\module\visualization\Model" />
+      <recent name="C:\Users\jcval\OneDrive\Documents\GitHub\nmrs-visualization\omod\src\main\java\org\openmrs\module\visualization\Utility" />
+      <recent name="C:\Users\jcval\OneDrive\Documents\GitHub\nmrs-visualization\omod\src\main\java\org\openmrs\module\visualization\Model" />
+      <recent name="$PROJECT_DIR$/omod/src/main/webapp/fragments" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -92,7 +377,7 @@
             <option name="goals">
               <list>
                 <option value="openmrs-sdk:run" />
-                <option value="-DserverId=nmrstestserver" />
+                <option value="-DserverId=nmrsnew" />
                 <option value="-Dfork=false" />
               </list>
             </option>
@@ -105,7 +390,6 @@
           </MavenRunnerParameters>
         </option>
       </MavenSettings>
-      <method v="2" />
     </configuration>
   </component>
   <component name="SvnConfiguration">
@@ -128,7 +412,8 @@
       <workItem from="1569254007325" duration="48701000" />
       <workItem from="1569356762668" duration="13887000" />
       <workItem from="1569385277297" duration="2948000" />
-      <workItem from="1569438328510" duration="22411000" />
+      <workItem from="1569438328510" duration="16658000" />
+      <workItem from="1569503129388" duration="5059000" />
     </task>
     <task id="LOCAL-00001" summary="Added highchart scripts">
       <created>1568936871117</created>
@@ -186,15 +471,47 @@
       <option name="project" value="LOCAL" />
       <updated>1569445160208</updated>
     </task>
-    <task id="LOCAL-00009" summary="Added more styles to the graph">
-      <created>1569498652062</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1569498652062</updated>
-    </task>
-    <option name="localTasksCounter" value="10" />
+    <option name="localTasksCounter" value="9" />
     <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="5059000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" sideWeight="0.49946696" weight="0.32900432" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info id="Image Layers" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="bottom" id="Event Log" sideWeight="0.50053304" side_tool="true" visible="true" weight="0.38852814" />
+      <window_info anchor="right" id="Maven Projects" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Spring" />
+      <window_info anchor="bottom" id="Terminal" sideWeight="0.49946696" weight="0.3365801" />
+      <window_info id="Capture Tool" />
+      <window_info id="Designer" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info anchor="right" id="Bean Validation" />
+      <window_info anchor="right" id="Database" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" visible="true" weight="0.38852814" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -204,32 +521,34 @@
       <map>
         <entry key="1">
           <value>
-            <State />
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+            </State>
           </value>
         </entry>
         <entry key="MAIN">
           <value>
             <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
               <option name="COLUMN_ORDER" />
             </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="Branch">
-          <value>
-            <list />
-          </value>
-        </entry>
-        <entry key="User">
-          <value>
-            <list />
-          </value>
-        </entry>
-      </map>
-    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added highchart scripts" />
@@ -240,8 +559,7 @@
     <MESSAGE value="added data points label to scatter plot on and dual axis and ungrouped column charts" />
     <MESSAGE value="added data points label to scatter plot on dual axis and ungrouped column charts" />
     <MESSAGE value="Merged PMTCT charts" />
-    <MESSAGE value="Added more styles to the graph" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added more styles to the graph" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merged PMTCT charts" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -249,14 +567,196 @@
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/LineListFragmentController.java</url>
           <line>27</line>
+          <properties />
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPmtctUtils.java</url>
           <line>353</line>
+          <properties />
           <option name="timeStamp" value="36" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/HtsFragmentController.java</url>
+          <line>54</line>
+          <properties />
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/HtsFragmentController.java</url>
+          <line>43</line>
+          <properties />
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
       </breakpoints>
+      <option name="time" value="5" />
     </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/api/src/main/java/org/openmrs/module/visualization/VisualizationConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/src/main/java/org/openmrs/module/visualization/VisualizationActivator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/src/main/java/org/openmrs/module/visualization/Item.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/HIVPositveCLients.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/TxNewAchievements.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/NewPatientVLCascade.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/SummaryDashboard.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/NewPatientsCD4Analysis.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/JsonResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Model/Series.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPatientUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-544">
+          <caret line="36" column="20" selection-start-line="36" selection-start-column="12" selection-end-line="37" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/omod/src/main/webapp/fragments/child.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-357">
+          <folding>
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/omod/src/main/webapp/fragments/pmtct.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1683">
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/omod/src/main/webapp/pages/LineList.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1046" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/page/controller/HtsPageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/page/controller/PmtctPageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/omod/src/main/webapp/pages/Pmtct.gsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/omod/src/main/webapp/pages/visualization.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="45" column="9" lean-forward="true" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/omod/src/main/webapp/pages/datavisualization.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="803">
+          <caret line="108" column="53" selection-start-line="108" selection-start-column="53" selection-end-line="108" selection-end-column="53" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#1;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#button#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#fieldset#0;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#button#0;n#div#0;n#fieldset#0;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#5;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/fragment/controller/VisualizationFragmentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DBARTUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="229" lean-forward="true" selection-start-line="229" selection-end-line="229" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
