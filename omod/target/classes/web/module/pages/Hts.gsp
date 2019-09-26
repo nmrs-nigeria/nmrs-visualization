@@ -4,10 +4,18 @@
 <% ui.includeJavascript("visualization", "highcharts.js") %>
 
 <h1 align="center"> <b>HTS</b></h1>
-<div>
-    <input type="date" id="start_date" placeholder="Start Date">&nbsp;<input type="date" id="end_date" placeholder="End Date">
+<div style="border: thin solid #ddd; margin: 5px; border-radius: 25px; padding: 10px;">
+    <span style="width:40%">
+        <label>Start Date</label>
+        <input type="date" id="start_date" placeholder="Start Date">
+    </span>&nbsp;&nbsp;
+    <span style="width:40%">
+        <label>End Date</label>
+        <input type="date" id="end_date" placeholder="End Date">
+    </span>&nbsp;&nbsp;
     <span class="button confirm" onclick="getChartsByDate()"><i class="icon-refresh"></i></span>
 </div>
+
 <div id="clients" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <br/>
 <hr>
@@ -26,7 +34,6 @@
             alert("Please Ensure you pick a date");
             return false;
         }
-        console.log(start_date + " => " + end_date);
         jq.ajax({
             url: "${ ui.actionLink("visualization", "Hts", "getClientData")}",
             dataType:"json",
@@ -63,7 +70,8 @@
                 }*/,
             xAxis: {
                 categories: category,
-                crosshair: true
+                crosshair: true,
+                minorGridLineWidth: 0
             },
             yAxis: {
                 min: 0,

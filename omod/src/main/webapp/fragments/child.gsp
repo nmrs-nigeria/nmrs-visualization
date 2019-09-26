@@ -1,15 +1,23 @@
-<%=  ui.resourceLinks() %>
-<div>
-    <input type="date" id="start_date" placeholder="Start Date">&nbsp;<input type="date" id="end_date" placeholder="End Date">
+<% ui.includeJavascript("visualization", "highcharts-3d.js") %>
+
+<div style="border: thin solid #ddd; margin: 5px; border-radius: 25px; padding: 10px;">
+    <span style="width:40%">
+        <label>Start Date</label>
+        <input type="date" id="start_date" placeholder="Start Date">
+    </span>&nbsp;&nbsp;
+    <span style="width:40%">
+        <label>End Date</label>
+        <input type="date" id="end_date" placeholder="End Date">
+    </span>&nbsp;&nbsp;
     <span class="button confirm" onclick="getEid()"><i class="icon-refresh"></i></span>
 </div>
+
 <div id="pmtct_fo" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <br/>
-<hr>
+
+<hr style="border-bottom: thin solid #ddd; margin-bottom: 45px;"/>
 <div id="facility" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <div id="pmtct_eid" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-
-
 
 <script type="text/javascript">
     jq = jQuery;
@@ -21,7 +29,12 @@
 
     function getAncPmtctPie(start_date, end_date)
     {
-        var colors = ['#030508', '#7cacc2', '#80699B'];
+        var start_date = document.getElementById("start_date").value;
+        var end_date = document.getElementById("end_date").value;
+        if(start_date === "" || end_date === ""){
+            alert("Please Ensure you pick a date");
+            return false;
+        }
         var link = "${ ui.actionLink("visualization", "hts", "getPmtctFo")}";
         jq.ajax({
             contentType: "application/json; charset=utf-8",
@@ -49,7 +62,7 @@
                         }
                     },
                     title: {
-                        text: 'PMTCT Follow up'
+                        text: 'HIV Exposed Infant Final Outcome'
                     },
                     tooltip: {
                         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -65,17 +78,16 @@
                             }
                         }
                     },
-                    colors:colors,
                     series: [{
                         type: 'pie',
-                        name: 'Browser share',
+                        name: 'HIV Exposed Infant Final Outcome',
                         data: mData
                     }]
                 });
             },
             error: function (e)
             {
-
+                console.log(e);
             }
         });
     }

@@ -176,7 +176,7 @@ public class DbPatientUtils {
 		}
 	}
 	
-	public ArrayList<BarChartModel> getPmtctEid(int month, int year) {
+	public ArrayList<BarChartModel> getPmtctEid(String start_date, String end_date) {
 		try {
 			DBConnection connResult = DbUtil.getNmrsConnectionDetails();
 			
@@ -186,28 +186,28 @@ public class DbPatientUtils {
 			    connResult.getPassword());
 			Statement statement = connection.createStatement();
 			//PreparedStatement preparedStatement = null;
-			String sql = "SELECT * FROM ((SELECT COUNT(DISTINCT(pid.patient_id)) AS hei_cohort FROM patient_identifier pid JOIN person per ON per.person_id = pid.patient_id WHERE pid.identifier_type = 7 AND MONTH(per.birthdate) = "
-			        + month
-			        + " AND YEAR(per.birthdate) = "
-			        + year
+			String sql = "SELECT * FROM ((SELECT COUNT(DISTINCT(pid.patient_id)) AS hei_cohort FROM patient_identifier pid JOIN person per ON per.person_id = pid.patient_id WHERE pid.identifier_type = 7 AND DATE(per.birthdate) BETWEEN "
+			        + start_date
+			        + " AND "
+			        + end_date
 			        + ") AS a CROSS JOIN "
-			        + "(SELECT COUNT(DISTINCT(person_id)) AS rec_nvp FROM obs WHERE concept_id = 164971 AND value_coded = 164970 AND person_id IN (SELECT pid.patient_id FROM patient_identifier pid JOIN person per ON per.person_id = pid.patient_id WHERE pid.identifier_type = 7 AND MONTH(per.birthdate) = "
-			        + month
-			        + " AND YEAR(per.birthdate) = "
-			        + year
+			        + "(SELECT COUNT(DISTINCT(person_id)) AS rec_nvp FROM obs WHERE concept_id = 164971 AND value_coded = 164970 AND person_id IN (SELECT pid.patient_id FROM patient_identifier pid JOIN person per ON per.person_id = pid.patient_id WHERE pid.identifier_type = 7 AND DATE(per.birthdate) BETWEEN "
+			        + start_date
+			        + " AND "
+			        + end_date
 			        + ")) b CROSS JOIN "
-			        + "(SELECT COUNT(DISTINCT(person_id)) AS dbs_coll FROM obs WHERE concept_id = 165868 AND value_coded = 165865 AND person_id IN (SELECT pid.patient_id FROM patient_identifier pid JOIN person per ON per.person_id = pid.patient_id WHERE pid.identifier_type = 7 AND MONTH(per.birthdate) = "
-			        + month
-			        + " AND YEAR(per.birthdate) = "
-			        + year
+			        + "(SELECT COUNT(DISTINCT(person_id)) AS dbs_coll FROM obs WHERE concept_id = 165868 AND value_coded = 165865 AND person_id IN (SELECT pid.patient_id FROM patient_identifier pid JOIN person per ON per.person_id = pid.patient_id WHERE pid.identifier_type = 7 AND DATE(per.birthdate) BETWEEN "
+			        + start_date
+			        + " AND "
+			        + end_date
 			        + ")) c CROSS JOIN "
-			        + "(SELECT COUNT(DISTINCT(person_id)) AS pos_pcr FROM obs WHERE concept_id = 165872 AND value_coded = 703 AND person_id IN (SELECT pid.patient_id FROM patient_identifier pid JOIN person per ON per.person_id = pid.patient_id WHERE pid.identifier_type = 7 AND MONTH(per.birthdate) = "
-			        + month
-			        + " AND YEAR(per.birthdate) = "
-			        + year
+			        + "(SELECT COUNT(DISTINCT(person_id)) AS pos_pcr FROM obs WHERE concept_id = 165872 AND value_coded = 703 AND person_id IN (SELECT pid.patient_id FROM patient_identifier pid JOIN person per ON per.person_id = pid.patient_id WHERE pid.identifier_type = 7 AND DATE(per.birthdate) BETWEEN "
+			        + start_date
+			        + " AND "
+			        + end_date
 			        + ")) d CROSS JOIN "
-			        + "(SELECT COUNT(DISTINCT(person_id)) AS pos_linked FROM obs WHERE concept_id = 165035 AND value_coded = 165552 AND person_id IN (SELECT pid.patient_id FROM patient_identifier pid JOIN person per ON per.person_id = pid.patient_id WHERE pid.identifier_type = 7 AND MONTH(per.birthdate) = "
-			        + month + " AND YEAR(per.birthdate) = " + year + ")) e)";
+			        + "(SELECT COUNT(DISTINCT(person_id)) AS pos_linked FROM obs WHERE concept_id = 165035 AND value_coded = 165552 AND person_id IN (SELECT pid.patient_id FROM patient_identifier pid JOIN person per ON per.person_id = pid.patient_id WHERE pid.identifier_type = 7 AND DATE(per.birthdate) BETWEEN "
+			        + start_date + " AND " + end_date + ")) e)";
 			
 			//preparedStatement = connection.prepareStatement(sql);
 			ResultSet result = statement.executeQuery(sql);

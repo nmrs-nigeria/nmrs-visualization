@@ -7,7 +7,6 @@
 <div class="tab">
     <button class="tablinks" onclick="openCity(event, 'Pmtct1')">PMTCT 1</button>
     <button class="tablinks" onclick="openCity(event, 'Pmtct2')">PMTCT 2</button>
-
 </div>
 
 <!-- Tab content -->
