@@ -25,7 +25,7 @@
 </div>
 
 <div id="Tokyo" class="tabcontent">
-    ${ui.includeFragment("visualization","child")}
+
 </div>
 
 <style>

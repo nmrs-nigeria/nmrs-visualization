@@ -32,26 +32,27 @@ public class HtsFragmentController {
 	}
 	
 	public @ResponseBody
-	HtsCharts getClientData() {
+	HtsCharts getClientData(@RequestParam(value = "start_date") String start_date,
+	        @RequestParam(value = "end_date") String end_date) {
 		DbPatientUtils utils = new DbPatientUtils();
-		
-		return utils.getHtsCharts();
+		return utils.getHtsCharts(start_date, end_date);
 	}
 	
 	public @ResponseBody
-	ArrayList<ChartModel> getPmtctFo() {
+	ArrayList<ChartModel> getPmtctFo(@RequestParam(value = "start_date") String start_date,
+	        @RequestParam(value = "end_date") String end_date) {
 		DbPatientUtils utils = new DbPatientUtils();
 		return utils.getPmtctFollowUp();
 	}
 	
 	public @ResponseBody
-	ArrayList<BarChartModel> getPmtctEid(@RequestParam(value = "month") String month,
-	        @RequestParam(value = "year") String year) {
+	ArrayList<BarChartModel> getPmtctEid(@RequestParam(value = "start_date") String start_date,
+	        @RequestParam(value = "end_date") String end_date) {
 		//parse data
-		int yr = Integer.parseInt(year);
+		/*int yr = Integer.parseInt(year);
 		
-		int mo = Integer.parseInt(month) + 1;
+		int mo = Integer.parseInt(month) + 1;*/
 		DbPatientUtils utils = new DbPatientUtils();
-		return utils.getPmtctEid(mo, yr);
+		return utils.getPmtctEid(start_date, end_date);
 	}
 }

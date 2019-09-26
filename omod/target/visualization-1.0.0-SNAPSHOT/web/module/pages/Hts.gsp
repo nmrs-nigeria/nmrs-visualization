@@ -4,30 +4,51 @@
 <% ui.includeJavascript("visualization", "highcharts.js") %>
 
 <h1 align="center"> <b>HTS</b></h1>
+<div style="border: thin solid #ddd; margin: 5px; border-radius: 25px; padding: 10px;">
+    <span style="width:40%">
+        <label>Start Date</label>
+        <input type="date" id="start_date" placeholder="Start Date">
+    </span>&nbsp;&nbsp;
+    <span style="width:40%">
+        <label>End Date</label>
+        <input type="date" id="end_date" placeholder="End Date">
+    </span>&nbsp;&nbsp;
+    <span class="button confirm" onclick="getChartsByDate()"><i class="icon-refresh"></i></span>
+</div>
 
 <div id="clients" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <br/>
+<hr>
 <div id="facility" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
 <script type="text/javascript">
-
-</script>
-<script type="text/javascript">
     jq = jQuery;
     jq(document).ready(function(){
+
+    });
+
+    function getChartsByDate(){
+        var start_date = document.getElementById("start_date").value;
+        var end_date = document.getElementById("end_date").value;
+        if(start_date === "" || end_date === ""){
+            alert("Please Ensure you pick a date");
+            return false;
+        }
         jq.ajax({
             url: "${ ui.actionLink("visualization", "Hts", "getClientData")}",
-            dataType:"json"
+            dataType:"json",
+            data: {'start_date':start_date, 'end_date':end_date}
         }).success(function (data) {
             //plot the chart here
             PlotHtsChart(data);
         }).error(function (err) {
             console.log(err)
         });
-    });
+    }
 
     function PlotHtsChart(data) {
-        var colors = ['#030508', '#7cacc2', '#80699B', '#ff4344', '#ff741e', '#cc7a34'];
+        var colors = ['#030508', '#7cacc2', '#80699B',
+            '#7c8aff', '#de4b70', '#ff4941', '#d0681c'];
         var columnData = data.barChartModels;
         var category = [];
         var values = [];
@@ -49,7 +70,8 @@
                 }*/,
             xAxis: {
                 categories: category,
-                crosshair: true
+                crosshair: true,
+                minorGridLineWidth: 0
             },
             yAxis: {
                 min: 0,
@@ -99,20 +121,24 @@
             },
             plotOptions: {
                 column: {
-                    stacking: 'percent',
-                    colorByPoint: true
-                }
+                    stacking: 'normal'
+                },
+                colorByPoint: true
             },
-            colors: colors,
             series: [{
                 name: fac_model.pos_name,
-                data: [fac_model.pos_count,0]
+                data: [fac_model.pos_count,null],
+                color: '#030508'
             }, {
                 name: fac_model.start_art_in,
-                data: [0, fac_model.in_count]
+                data: [null, fac_model.in_count],
+                color: '#bee2ed',
+                stacking: fac_model.start_art_out
             },{
                 name:fac_model.start_art_out,
-                data:[0, fac_model.out_count]
+                data:[null, fac_model.out_count],
+                color:'#734b8e',
+                stacking: fac_model.start_art_out
             }]
         });
     }
