@@ -13,7 +13,7 @@
                 <br>
                 HTS
             </a>
-            {<a class="button big" href="#" onclick="gotoPath('visualization/LineList.page')">
+            {<a class="button big" href="#" onclick="gotoPath('visualization/datavisualization.page')">
 
                 <br>
                 TXCURR

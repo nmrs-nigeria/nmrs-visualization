@@ -6,7 +6,27 @@ public class HIVPositveCLients {
 	
 	Integer monthNumber;
 	
+	Integer total;
+	
+	public Integer getTotal() {
+		return total;
+	}
+	
+	public void setTotal(Integer total) {
+		this.total = total;
+	}
+	
 	Integer samDay;
+	
+	public Integer getUnknown() {
+		return unknown;
+	}
+	
+	public void setUnknown(Integer unknown) {
+		this.unknown = unknown;
+	}
+	
+	Integer unknown;
 	
 	Integer oneToSeven;
 	

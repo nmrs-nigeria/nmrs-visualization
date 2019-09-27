@@ -89,12 +89,15 @@ public class DBARTUtils {
 				
 				sql += String
 				        .format(
-				            " SELECT  MONTHNAME('%s')  as month ,"
-				                    + " COALESCE(SUM(IF( DATEDIFF(o.value_datetime , (SELECT value_datetime  FROM obs AS obs  WHERE obs.concept_id =160554 AND obs.person_id = o.person_id   LIMIT 1)) = 0, 1, 0)),0)  AS  'Sameday',"
-				                    + " COALESCE(SUM(IF( DATEDIFF(o.value_datetime , (SELECT value_datetime  FROM obs AS obs  WHERE obs.concept_id =160554 AND obs.person_id = o.person_id   LIMIT 1)) BETWEEN 1 AND 7, 1, 0)),0)  AS  '1-7' ,"
-				                    + " COALESCE(SUM(IF( DATEDIFF(o.value_datetime , (SELECT value_datetime  FROM obs AS obs  WHERE obs.concept_id =160554 AND obs.person_id = o.person_id   LIMIT 1)) >=8, 1, 0)),0)  AS  '>=8'"
-				                    + " FROM  obs AS o WHERE o.concept_id = 159599  AND  value_datetime BETWEEN  '%s'  AND LAST_DAY('%s')  %s"
-				                    + " ", date, date, date, sqlUnioin);
+				            " SELECT  '%s'  as month ,"
+				                    + " count(*)  AS  'total',"
+				                    + " COALESCE(SUM(IF( DATEDIFF(o.value_datetime , (SELECT value_datetime  FROM obs AS obs  WHERE obs.concept_id =160554 AND obs.person_id = o.person_id  AND  value_datetime BETWEEN  '%s'  AND LAST_DAY('%s')  LIMIT 1)) is NULL, 1, 0)),0)  AS  'unknown',"
+				                    + " COALESCE(SUM(IF( DATEDIFF(o.value_datetime , (SELECT value_datetime  FROM obs AS obs  WHERE obs.concept_id =160554 AND obs.person_id = o.person_id AND  value_datetime BETWEEN  '%s'  AND LAST_DAY('%s')  LIMIT 1)) = 0, 1, 0)),0)  AS  'Sameday',"
+				                    + " COALESCE(SUM(IF( DATEDIFF(o.value_datetime , (SELECT value_datetime  FROM obs AS obs  WHERE obs.concept_id =160554 AND obs.person_id = o.person_id  AND  value_datetime BETWEEN  '%s'  AND LAST_DAY('%s') LIMIT 1)) BETWEEN 1 AND 7, 1, 0)),0)  AS  '1-7' ,"
+				                    + " COALESCE(SUM(IF( DATEDIFF(o.value_datetime , (SELECT value_datetime  FROM obs AS obs  WHERE obs.concept_id =160554 AND obs.person_id = o.person_id AND  value_datetime BETWEEN  '%s'  AND LAST_DAY('%s')  LIMIT 1)) >=8, 1, 0)),0)  AS  '>=8'"
+				                    + " FROM  obs AS o WHERE o.concept_id = 159599  AND value_datetime BETWEEN  '%s'  AND LAST_DAY('%s')  %s"
+				                    + " ", monthYearDateString(date), date, date, date, date, date, date, date, date, date,
+				            date, sqlUnioin);
 				i++;
 			}
 			
@@ -103,6 +106,8 @@ public class DBARTUtils {
 			while (result.next()) {
 				HIVPositveCLients stats = new HIVPositveCLients();
 				stats.setMonthText(result.getString(result.findColumn("month")));
+				stats.setTotal(result.getInt(result.findColumn("total")));
+				stats.setUnknown(result.getInt(result.findColumn("unknown")));
 				stats.setSamDay(result.getInt(result.findColumn("Sameday")));
 				stats.setOneToSeven(result.getInt(result.findColumn("1-7")));
 				stats.setGraterThanEqual8(result.getInt(result.findColumn(">=8")));
@@ -123,28 +128,39 @@ public class DBARTUtils {
         Series sr1 = new Series();
         Series sr2 = new Series();
         Series sr3 = new Series();
-        List<Integer> seriesData1 = new ArrayList<>();
-        List<Integer> seriesData2 = new ArrayList<>();
-        List<Integer> seriesData3 = new ArrayList<>();
+        Series sr4 = new Series();
+        List<Double> seriesData1 = new ArrayList<>();
+        List<Double> seriesData2 = new ArrayList<>();
+        List<Double> seriesData3 = new ArrayList<>();
+        List<Double> seriesData4 = new ArrayList<>();
         List<String> categories = new ArrayList<>();
         List<Series> seriesList = new ArrayList<>();
 
         for (HIVPositveCLients rs : resultList) {
             sr1.setName("SameDay");
-            seriesData1.add(rs.getSamDay());
+             double samedayPercent = (rs.getTotal() == 0) ?0 :(rs.getSamDay()*100)/rs.getTotal();
+            seriesData1.add(samedayPercent);
             sr2.setName("1-7");
-            seriesData2.add(rs.getOneToSeven());
+            double oneToSevenPercent = (rs.getTotal() == 0) ?0 : (rs.getOneToSeven()*100)/rs.getTotal();
+            seriesData2.add(oneToSevenPercent);
             sr3.setName(">=8");
-            seriesData3.add(rs.getGraterThanEqual8());
+            double graterThanEqual8Percent = (rs.getTotal() == 0) ?0 : (rs.getGraterThanEqual8()*100)/rs.getTotal();
+            seriesData3.add(graterThanEqual8Percent);
+
+            sr4.setName("Unknown");
+            double unknowPercentage = (rs.getTotal() == 0) ?0 : (rs.getUnknown()*100)/rs.getTotal();
+            seriesData4.add(unknowPercentage);
 
             categories.add(rs.getMonthText());
         }
-        sr1.setData(seriesData1);
+        sr1.setDataDouble(seriesData1);
         seriesList.add(sr1);
-        sr2.setData(seriesData2);
+        sr2.setDataDouble(seriesData2);
         seriesList.add(sr2);
-        sr3.setData(seriesData3);
+        sr3.setDataDouble(seriesData3);
         seriesList.add(sr3);
+        sr4.setDataDouble(seriesData4);
+        seriesList.add(sr4);
         jsonResult.setSeries(seriesList);
         jsonResult.setCategories(categories);
         return jsonResult;
@@ -171,8 +187,8 @@ public class DBARTUtils {
 				String yearMont = sql += String
 				        .format(
 				            " SELECT  '%s'  as month ,"
-				                    + "COALESCE(SUM(IF((SELECT COUNT(*) FROM obs WHERE obs.person_id = o.person_id AND obs.concept_id = 165766) >0 ,0 ,1)),0) AS txNewPerMonth  "
-				                    + " FROM  obs AS o WHERE o.concept_id = 159599  AND  value_datetime BETWEEN  '%s'  AND LAST_DAY('%s')  %s"
+				                    + " COALESCE(SUM(IF((SELECT COUNT(*)  FROM obs AS obs  WHERE  obs.person_id = o.person_id  AND   voided =0 AND  concept_id = 160563 LIMIT 1 )= 0, 1, 0)),0)    AS txNewPerMonth  "
+				                    + " FROM  obs AS o WHERE o.concept_id = 159599    AND value_datetime BETWEEN  '%s'  AND LAST_DAY('%s')  %s"
 				                    + " ", monthYearDateString(date), date, date, sqlUnioin);
 				i++;
 			}
@@ -198,6 +214,7 @@ public class DBARTUtils {
         JsonResult jsonResult = new JsonResult();
         List<TxNewAchievements> resultList = getTxNewAchievementsList(start, end);
         int monthtlyTarget = Math.round(target / 12);
+        int i =0;
         int cumulative = 0;
         int txNewPerMonth = 0;
         Series sr1 = new Series();
@@ -206,7 +223,7 @@ public class DBARTUtils {
         Series sr4 = new Series();
         List<Integer> seriesData1 = new ArrayList<>();
         List<Integer> seriesData2 = new ArrayList<>();
-        List<Integer> seriesData3 = new ArrayList<>();
+        List<Double> seriesData3 = new ArrayList<>();
         List<Integer> seriesData4 = new ArrayList<>();
         List<String> categories = new ArrayList<>();
         List<Series> seriesList = new ArrayList<>();
@@ -218,9 +235,10 @@ public class DBARTUtils {
             seriesData1.add(txNewPerMonth);
 
             sr2.setName("Target");
+            cumulative = (i == resultList.size()-1) ? target :cumulative;
             seriesData2.add(cumulative);
 
-            int percentage = (txNewPerMonth * 100) / target;
+            double percentage = (txNewPerMonth * 100) / target;
 
             sr3.setName("Percentage");
             seriesData3.add(percentage);
@@ -229,6 +247,7 @@ public class DBARTUtils {
             seriesData4.add(target);
 
             categories.add(rs.getMonthText());
+            i++;
         }
         sr1.setData(seriesData1);
         seriesList.add(sr1);
@@ -236,7 +255,7 @@ public class DBARTUtils {
         sr2.setData(seriesData2);
         seriesList.add(sr2);
 
-        sr3.setData(seriesData3);
+        sr3.setDataDouble(seriesData3);
         seriesList.add(sr3);
 
         sr4.setData(seriesData4);
@@ -265,17 +284,13 @@ public class DBARTUtils {
 				
 				sql += String
 				        .format(
-				            " SELECT  '%s' as month ,"
-				                    + "  COALESCE((SELECT  COALESCE(SUM(IF((SELECT COUNT(*) FROM obs WHERE obs.person_id = o.person_id AND obs.concept_id = 165766) >0 ,0 ,1)),0)"
-				                    + " FROM  obs AS o WHERE o.concept_id = 159599  AND  value_datetime BETWEEN  DATE_SUB('%s', INTERVAL 6 MONTH)  AND LAST_DAY(DATE_SUB('%s', INTERVAL 6 MONTH))),0)  AS totalPatients, "
-				                    + " COALESCE(SUM(IF(value_numeric >= 200 ,1,0)),0) AS cd4LessThan20 ,"
-				                    + " COALESCE(SUM(IF(value_numeric < 20 ,1,0)),0) AS cd4GreaterThanEqual200 "
-				                    + "   \n"
-				                    + "   FROM  obs JOIN encounter  e  ON e.`encounter_id` = obs.`encounter_id`  WHERE  `concept_id` = 5497  AND    e.`encounter_datetime`   BETWEEN '%s'  AND LAST_DAY( '%s' ) "
-				                    + " AND  person_id IN(\n"
-				                    + "\n"
-				                    + " SELECT DISTINCT person_id FROM  obs AS o WHERE o.concept_id = 159599  AND  value_datetime BETWEEN DATE_SUB('%s', INTERVAL 6 MONTH)   AND LAST_DAY(DATE_SUB('%s', INTERVAL 6 MONTH))) %s "
-				                    + " ", monthYear, date, date, date, date, date, date, sqlUnioin);
+				            "SELECT '%s' as month , COALESCE(SUM(IF((SELECT COUNT(*)  FROM obs AS obs  WHERE  obs.person_id = o.person_id  AND   voided =0 AND  concept_id = 160563 LIMIT 1 )= 0, 1, 0)),0)    AS totalPatients,"
+				                    + "COALESCE(SUM(IF("
+				                    + "(SELECT MAX(value_numeric) FROM obs WHERE obs.person_id = o.person_id AND obs.concept_id = 5497 AND   voided =0  ) >=200, 1, 0 )),0) AS cd4GreaterThanEqual200, "
+				                    + "COALESCE(SUM(IF("
+				                    + "(SELECT MAX(value_numeric) FROM obs WHERE obs.person_id = o.person_id AND obs.concept_id = 5497 AND   voided =0 ) <200, 1, 0 )),0) AS cd4LessThan20  "
+				                    + "FROM  obs AS o WHERE o.concept_id = 159599    AND value_datetime BETWEEN  '%s'  AND LAST_DAY('%s')    %s"
+				                    + " ", monthYear, date, date, sqlUnioin);
 				i++;
 			}
 			
@@ -317,26 +332,29 @@ public class DBARTUtils {
         List<Series> seriesList = new ArrayList<>();
 
         for (NewPatientsCD4Analysis rs : resultList) {
+            sr2.setName("TotalPatients");
             seriesData1.add(rs.getTotalPatients());
-            seriesData3.add(rs.getCd4GreaterThanEqual200());
-            seriesData4.add(rs.getCd4LessThan20());
+            sr2.setName("Cd4GreaterThanEqual200");
+            seriesData2.add(rs.getCd4GreaterThanEqual200());
+            sr3.setName("Cd4LessThan20");
+            seriesData3.add(rs.getCd4LessThan20());
             int proportion = (rs.getTotalPatients() > 0) ? (((rs.getCd4GreaterThanEqual200() + rs.getCd4LessThan20()) * 100 / rs.getTotalPatients())) : 0;
             int percentageLessThan200 = ((rs.getCd4LessThan20() + rs.getCd4GreaterThanEqual200()) > 0) ?
                     ((rs.getCd4LessThan20() * 100 / (rs.getCd4LessThan20() + rs.getCd4GreaterThanEqual200()))) : 0;
-            seriesData5.add(proportion);
-            seriesData6.add(percentageLessThan200);
+            seriesData4.add(proportion);
+            seriesData5.add(percentageLessThan200);
             categories.add(rs.getMonthofReview());
         }
         sr1.setData(seriesData1);
         seriesList.add(sr1);
+        sr2.setData(seriesData2);
+        seriesList.add(sr2);
         sr3.setData(seriesData3);
         seriesList.add(sr3);
         sr4.setData(seriesData4);
         seriesList.add(sr4);
         sr5.setData(seriesData5);
         seriesList.add(sr5);
-        sr6.setData(seriesData6);
-        seriesList.add(sr6);
 
         jsonResult.setSeries(seriesList);
         jsonResult.setCategories(categories);
@@ -361,18 +379,16 @@ public class DBARTUtils {
 				
 				sql += String
 				        .format(
-				            " SELECT  '%s' as month ,"
-				                    + "  COALESCE((SELECT  COALESCE(SUM(IF((SELECT COUNT(*) FROM obs WHERE obs.person_id = o.person_id AND obs.concept_id = 165766) >0 ,0 ,1)),0)"
-				                    + " FROM  obs AS o WHERE o.concept_id = 159599  AND  value_datetime BETWEEN  DATE_SUB('%s', INTERVAL 6 MONTH)  AND LAST_DAY(DATE_SUB('%s', INTERVAL 6 MONTH))),0)  AS totalPatients, "
-				                    + " COALESCE(SUM(IF(`value_numeric` IS NOT NULL , 1, 0)),0) AS totalPatientsVl ,"
-				                    + " COALESCE(SUM(IF(value_numeric >= 1000 ,1,0)),0) AS totalPatientsVlGreaterThan1000 ,"
-				                    + " COALESCE(SUM(IF(value_numeric < 1000 ,1,0)),0) AS totalPatientsVlLessThen1000 "
-				                    + "   \n"
-				                    + "   FROM  obs JOIN encounter  e  ON e.`encounter_id` = obs.`encounter_id`  WHERE  `concept_id` = 856  AND    e.`encounter_datetime`   BETWEEN '%s'  AND LAST_DAY( '%s' ) "
-				                    + " AND  person_id IN(\n"
-				                    + "\n"
-				                    + " SELECT DISTINCT person_id FROM  obs AS o WHERE o.concept_id = 159599  AND  value_datetime BETWEEN DATE_SUB('%s', INTERVAL 6 MONTH)   AND LAST_DAY(DATE_SUB('%s', INTERVAL 6 MONTH))) %s "
-				                    + " ", monthYear, date, date, date, date, date, date, sqlUnioin);
+				            "SELECT '%s' as month , COALESCE(SUM(IF((SELECT COUNT(*)  FROM obs AS obs  WHERE  obs.person_id = o.person_id  AND   voided =0 AND  concept_id = 160563 LIMIT 1 )= 0, 1, 0)),0)    AS totalPatients,"
+				                    + "COALESCE(SUM(IF("
+				                    + "(SELECT MAX(value_numeric) FROM obs WHERE obs.person_id = o.person_id AND obs.concept_id = 856 AND   voided =0 AND   obs.obs_datetime >= DATE_ADD('%s', INTERVAL 6 MONTH)) IS NOT NULL, 1, 0 )),0) AS totalPatientsVl, "
+				                    + "COALESCE(SUM(IF("
+				                    + "(SELECT MAX(value_numeric) FROM obs WHERE obs.person_id = o.person_id AND obs.concept_id = 856 AND   voided =0 AND   obs.obs_datetime >= DATE_ADD('%s', INTERVAL 6 MONTH)) >=1000, 1, 0 )),0) AS totalPatientsVlGreaterThan1000, "
+				                    + "COALESCE(SUM(IF("
+				                    + "(SELECT MAX(value_numeric) FROM obs WHERE obs.person_id = o.person_id AND obs.concept_id = 856 AND   voided =0 AND   obs.obs_datetime >= DATE_ADD('%s', INTERVAL 6 MONTH)) <1000, 1, 0 )),0) AS totalPatientsVlLessThen1000 "
+				                    + "FROM  obs AS o WHERE o.concept_id = 159599  AND value_datetime BETWEEN  '%s'  AND   voided =0 AND  LAST_DAY('%s')    %s"
+				                    
+				                    + " ", monthYear, date, date, date, date, date, sqlUnioin);
 				i++;
 			}
 			
@@ -454,7 +470,7 @@ public class DBARTUtils {
         int i = 0;
         String sql = "";
         List<Integer> pateints = new ArrayList<>();
-        List<Integer> pateintsInAppointment = new ArrayList<>();
+        List<Integer> pateintsInAppointment =new ArrayList<>();
 
         Series sr1 = new Series();
         Series sr2 = new Series();
@@ -470,8 +486,16 @@ public class DBARTUtils {
                 String monthYear = monthYearDateString(date);
                 pateints = getPateintsInAppointment(date);
                 pateintsInAppointment = getPatientInApointments(date, pateints);
-                int pateintsWithMissedAppointMents = pateints.size() - pateintsInAppointment.size();
-                System.out.println(pateintsWithMissedAppointMents);
+                int pateintsWithMissedAppointMents  = 0;
+                if(pateintsInAppointment != null &&  pateints != null){
+                    pateintsWithMissedAppointMents = (pateintsInAppointment.size() == 0 || pateintsInAppointment.size()==0 )? 0 : (pateints.size() - pateintsInAppointment.size());
+                }else{
+                    pateintsWithMissedAppointMents = 0;
+                }
+
+
+
+                System.out.println("M"+pateintsWithMissedAppointMents +"|" + "T"+pateints.size()+"|"+date);
 
                 sr1.setName("Appointments");
                 seriesData1.add(pateints.size());
@@ -494,7 +518,6 @@ public class DBARTUtils {
 
         jsonResult.setSeries(seriesList);
         jsonResult.setCategories(categories);
-
         return jsonResult;
     }
 	
@@ -510,18 +533,21 @@ public class DBARTUtils {
             int i = 0;
             String sql = String
                     .format(
-                            " SELECT  "
-                                    + " p.patient_id"
-                                    + " FROM patient p JOIN encounter e ON e.patient_id = p.patient_id AND e.encounter_type = 13 "
-                                    + "  WHERE  DATE_ADD((SELECT obs_datetime FROM obs WHERE person_id = p.patient_id AND obs_datetime = e.encounter_datetime AND concept_id IN (164506,164513,165702,164507,164514,165703) LIMIT 1), INTERVAL  "
-                                    + " (SELECT value_numeric FROM obs WHERE person_id = p.patient_id AND obs_datetime = e.encounter_datetime AND concept_id IN (159368) LIMIT 1) DAY) BETWEEN '%s' AND LAST_DAY('%s')"
-                                    + " GROUP BY p.patient_id"
-                                    + " ", chort, chort);
+
+                            " SELECT obs.person_id,"
+                                    +" duration.value_numeric,"
+                                    +" obs.`encounter_id`,"
+                                    +" duration.obs_datetime, "
+                                    + " DATE_ADD(duration.obs_datetime, INTERVAL duration.value_numeric DAY) AS next_appointment"
+                                    + "  FROM obs INNER JOIN (SELECT value_numeric AS value_numeric , encounter_id ,`obs_datetime` FROM obs WHERE concept_id = 159368) AS duration  ON duration.encounter_id = obs.encounter_id "
+                                    + " WHERE  DATE_ADD(duration.obs_datetime, INTERVAL duration.value_numeric DAY)  BETWEEN '%s' AND LAST_DAY('%s') "
+                                    + " AND concept_id = 165708 GROUP BY person_id"
+                                    + "", chort, chort);
 
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery(sql);
             while (result.next()) {
-                patientLineList.add(result.getInt(result.findColumn("patient_id")));
+                patientLineList.add(result.getInt(result.findColumn("person_id")));
             }
             return patientLineList;
         } catch (SQLException e) {
@@ -539,14 +565,15 @@ public class DBARTUtils {
 
             int i = 0;
             String sql = String
-                    .format("  SELECT  count(obs.person_id) as patient_ids  FROM obs AS obs JOIN encounter e ON e.patient_id = obs.person_id AND e.encounter_type = 13 AND concept_id IN (164506,164513,165702,164507,164514,165703)  AND  "
-                            + " obs.`obs_datetime` BETWEEN '%s' AND LAST_DAY('%s') AND obs.`person_id` IN  ('%s') GROUP BY obs.person_id"
+                    .format(" SELECT DISTINCT  patient_id as missed_appointments FROM encounter JOIN obs ON obs.`encounter_id` = encounter.`encounter_id`  "
+                            + " WHERE encounter_datetime BETWEEN '%s' AND LAST_DAY('%s') AND patient_id IN  "
+                            + "(%s) AND encounter_type =13 AND obs.concept_id IN (165708)  "
                             + " ", chort, chort, StringUtils.join(patients, ','));
 
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery(sql);
             while (result.next()) {
-                patientLineList.add(result.getInt(result.findColumn("patient_ids")));
+                patientLineList.add(result.getInt(result.findColumn("missed_appointments")));
             }
             return patientLineList;
         } catch (SQLException e) {
