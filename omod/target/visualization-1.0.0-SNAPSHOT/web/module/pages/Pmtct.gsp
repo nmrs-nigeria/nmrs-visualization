@@ -2,7 +2,7 @@
 
 <%= ui.resourceLinks() %>
 <% ui.includeJavascript("visualization", "highcharts.js") %>
-
+${ui.includeFragment("visualization","header")}
 <!-- Tab links -->
 <div class="tab">
     <button class="tablinks" onclick="openCity(event, 'Pmtct1')">PMTCT 1</button>

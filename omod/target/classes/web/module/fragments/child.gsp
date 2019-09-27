@@ -53,6 +53,8 @@
                     dataData.push(f.name, f.value);
                     mData.push(dataData);
                 });
+                var colors = ['#000308', '#ff9b2a', '#95c9df',
+                    '#ffea62', '#4eabb4', '#5dce8a', '#3643d0'];
                 Highcharts.chart('pmtct_fo', {
                     chart: {
                         type: 'pie',
@@ -68,6 +70,7 @@
                     tooltip: {
                         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
                     },
+                    colors:colors,
                     plotOptions: {
                         pie: {
                             allowPointSelect: true,
@@ -75,8 +78,11 @@
                             depth: 35,
                             dataLabels: {
                                 enabled: true,
-                                format: '{point.name}'
-                            }
+                                formatter: function() {
+                                    return '<b>'+ this.point.y +'</b>%';
+                                }
+                            },
+                            showInLegend: true
                         }
                     },
                     series: [{
@@ -168,12 +174,14 @@
             values.push(columnData[i].y);
         }
         var theSeries = {name: valuesName, data: values};
+        var colors = ['#030508', '#7cacc2', '#80699B',
+            '#f43713', '#afe5b7'];
         Highcharts.chart('pmtct_eid', {
             chart: {
                 type: 'column'
             },
             title: {
-                text: 'HTS 1'
+                text: 'HIV Exposed Infant Cohort Analysis'
             }/*,
                 subtitle: {
                     text: 'Source: WorldClimate.com'

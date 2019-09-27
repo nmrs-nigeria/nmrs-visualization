@@ -38,7 +38,7 @@ public class DbPatientUtils {
 			    connResult.getPassword());
 			Statement statement = connection.createStatement();
 			String sql = "SELECT * FROM (\n"
-			        + "(SELECT COUNT(DISTINCT(enc.patient_id)) AS patient_count FROM patient_identifier pid\n"
+			        + "(SELECT COUNT(enc.patient_id) AS patient_count FROM patient_identifier pid\n"
 			        + "JOIN encounter enc ON enc.patient_id = pid.patient_id\n"
 			        + "WHERE enc.encounter_type = 2 AND pid.identifier_type = 8\n" + "AND form_id = 10\n"
 			        + "AND DATE(enc.encounter_datetime) BETWEEN '"
@@ -47,7 +47,7 @@ public class DbPatientUtils {
 			        + endDate
 			        + "') AS a CROSS JOIN\n"
 			        + "\n"
-			        + "(SELECT COUNT(DISTINCT(enc.patient_id)) AS risk_assessment FROM encounter enc\n"
+			        + "(SELECT COUNT(enc.patient_id) AS risk_assessment FROM encounter enc\n"
 			        + "JOIN obs ob ON ob.encounter_id = enc.encounter_id\n"
 			        + "WHERE concept_id IN (165800, 1063, 159218, 165803, 164809, 165806)\n"
 			        + "AND enc.encounter_type = 2 AND DATE(enc.encounter_datetime) BETWEEN '"
@@ -56,7 +56,7 @@ public class DbPatientUtils {
 			        + endDate
 			        + "') AS b CROSS JOIN\n"
 			        + "\n"
-			        + "(SELECT COUNT(DISTINCT(enc.patient_id)) AS tested FROM encounter enc\n"
+			        + "(SELECT COUNT(enc.patient_id) AS tested FROM encounter enc\n"
 			        + "JOIN obs ob ON ob.encounter_id = enc.encounter_id\n"
 			        + "WHERE concept_id = 165843\n"
 			        + "AND enc.encounter_type = 2 AND DATE(enc.encounter_datetime) BETWEEN '"
@@ -65,7 +65,7 @@ public class DbPatientUtils {
 			        + endDate
 			        + "') AS c CROSS JOIN\n"
 			        + "\n"
-			        + "(SELECT COUNT(DISTINCT(enc.patient_id)) AS positive FROM encounter enc\n"
+			        + "(SELECT COUNT(enc.patient_id) AS positive FROM encounter enc\n"
 			        + "JOIN obs ob ON ob.encounter_id = enc.encounter_id\n"
 			        + "WHERE concept_id = 165843 AND value_coded = 703\n"
 			        + "AND enc.encounter_type = 2 AND DATE(enc.encounter_datetime) BETWEEN '"
@@ -74,7 +74,7 @@ public class DbPatientUtils {
 			        + endDate
 			        + "') AS d CROSS JOIN\n"
 			        + "\n"
-			        + "(SELECT COUNT(DISTINCT(enc.patient_id)) AS recent_infection FROM encounter enc\n"
+			        + "(SELECT COUNT(enc.patient_id) AS recent_infection FROM encounter enc\n"
 			        + "JOIN obs ob ON ob.encounter_id = enc.encounter_id\n"
 			        + "WHERE concept_id = 165853 AND value_coded = 165852\n"
 			        + "AND enc.encounter_type = 2 AND DATE(enc.encounter_datetime) BETWEEN '"
@@ -83,7 +83,7 @@ public class DbPatientUtils {
 			        + endDate
 			        + "') AS e CROSS JOIN\n"
 			        + "\n"
-			        + "(SELECT COUNT(DISTINCT(enc.patient_id)) AS long_term FROM encounter enc\n"
+			        + "(SELECT COUNT(enc.patient_id) AS long_term FROM encounter enc\n"
 			        + "JOIN obs ob ON ob.encounter_id = enc.encounter_id\n"
 			        + "WHERE concept_id = 165853 AND value_coded = 165851\n"
 			        + "AND enc.encounter_type = 2 AND DATE(enc.encounter_datetime) BETWEEN '"
@@ -92,7 +92,7 @@ public class DbPatientUtils {
 			        + endDate
 			        + "') AS f CROSS JOIN\n"
 			        + "\n"
-			        + "(SELECT COUNT(DISTINCT(enc.patient_id)) AS viral_load_done FROM encounter enc\n"
+			        + "(SELECT COUNT(enc.patient_id) AS viral_load_done FROM encounter enc\n"
 			        + "JOIN obs ob ON ob.encounter_id = enc.encounter_id\n"
 			        + "WHERE concept_id IN (165855, 165853) AND (value_text IS NOT NULL || value_coded = 165851)\n"
 			        + "AND enc.encounter_type = 2 AND DATE(enc.encounter_datetime) BETWEEN '"
@@ -346,37 +346,37 @@ public class DbPatientUtils {
 		ArrayList<ChartModel> chartModels = new ArrayList<ChartModel>();
 		ChartModel chart = new ChartModel();
 		try {
-			chart.setName("HIV postive-Linked to ART");
+			chart.setName("HIV Postive - Linked to ART");
 			chart.setValue(result.getInt("pos_linked"));
 			chartModels.add(chart);
 			//
 			chart = new ChartModel();
-			chart.setName("HIV postive-Not Linked to ART");
+			chart.setName("HIV Postive - Not Linked to ART");
 			chart.setValue(result.getInt("pos_not_linked"));
 			chartModels.add(chart);
 			//
 			chart = new ChartModel();
-			chart.setName("HIV neg-No longer breastfeeding");
+			chart.setName("HIV Negative - No longer breastfeeding");
 			chart.setValue(result.getInt("neg_breastfeed"));
 			chartModels.add(chart);
 			//
 			chart = new ChartModel();
-			chart.setName("HIV neg-Still breastfeeding");
+			chart.setName("HIV Negative - Still breastfeeding");
 			chart.setValue(result.getInt("neg_not_breastfeed"));
 			chartModels.add(chart);
 			//
 			chart = new ChartModel();
-			chart.setName("HIV status unknown Died");
+			chart.setName("Died Without Status Unknown");
 			chart.setValue(result.getInt("died"));
 			chartModels.add(chart);
 			//
 			chart = new ChartModel();
-			chart.setName("HIV status unknown lost to follow up");
+			chart.setName("HIV Status Unknown - Lost to Follow Up");
 			chart.setValue(result.getInt("lost_to_follow"));
 			chartModels.add(chart);
 			//
 			chart = new ChartModel();
-			chart.setName("HIV status unknown Transfer out");
+			chart.setName("HIV Status Unknown Transfer Out");
 			chart.setValue(result.getInt("transfered_out"));
 			chartModels.add(chart);
 		}

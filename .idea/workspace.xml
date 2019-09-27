@@ -1,7 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="60c1f400-7d02-4114-b362-38af6d13cabf" name="Default Changelist" comment="" />
+    <list default="true" id="60c1f400-7d02-4114-b362-38af6d13cabf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/target/maven-java-formatter-cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/maven-java-formatter-cache.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/target/visualization-api-1.0.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/visualization-api-1.0.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPatientUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPatientUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPmtctUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/java/org/openmrs/module/visualization/Utility/DbPmtctUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/src/main/webapp/fragments/child.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/webapp/fragments/child.gsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/src/main/webapp/fragments/header.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/webapp/fragments/header.gsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/src/main/webapp/pages/Hts.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/webapp/pages/Hts.gsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/src/main/webapp/pages/Pmtct.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/webapp/pages/Pmtct.gsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/src/main/webapp/pages/datavisualization.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/webapp/pages/datavisualization.gsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/src/main/webapp/pages/visualization.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/src/main/webapp/pages/visualization.gsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/target/classes/web/module/fragments/child.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/classes/web/module/fragments/child.gsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/target/classes/web/module/fragments/pmtct.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/classes/web/module/fragments/pmtct.gsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/target/classes/web/module/pages/Hts.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/classes/web/module/pages/Hts.gsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/target/classes/web/module/pages/Pmtct.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/classes/web/module/pages/Pmtct.gsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/target/classes/web/module/pages/visualization.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/classes/web/module/pages/visualization.gsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/target/maven-java-formatter-cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/maven-java-formatter-cache.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT.omod" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT.omod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/lib/visualization-api-1.0.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/lib/visualization-api-1.0.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/web/module/fragments/child.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/web/module/fragments/child.gsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/web/module/fragments/pmtct.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/web/module/fragments/pmtct.gsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/web/module/pages/Hts.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/web/module/pages/Hts.gsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/web/module/pages/Pmtct.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/web/module/pages/Pmtct.gsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/web/module/pages/visualization.gsp" beforeDir="false" afterPath="$PROJECT_DIR$/omod/target/visualization-1.0.0-SNAPSHOT/web/module/pages/visualization.gsp" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +51,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1R4BRcWvIscqlmC2YEmtJupxmoX" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -33,12 +63,10 @@
     <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\jcval\OneDrive\Documents\GitHub\nmrs-visualization\omod\src\main\java\org\openmrs\module\visualization\Utility" />
-      <recent name="C:\Users\jcval\OneDrive\Documents\GitHub\nmrs-visualization\omod\src\main\java\org\openmrs\module\visualization\Model" />
-      <recent name="$PROJECT_DIR$/omod/src/main/webapp/fragments" />
-      <recent name="$PROJECT_DIR$/omod/src/main/webapp/pages" />
-      <recent name="$PROJECT_DIR$/omod/src/main/webapp/resources" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/omod/src/main/resources" />
+      <recent name="$PROJECT_DIR$/omod/src/main/webapp" />
+      <recent name="$PROJECT_DIR$/omod/src/main/webapp/resources/styles" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.openmrs.module.visualization.Model" />
@@ -46,10 +74,12 @@
       <recent name="org.openmrs.module.visualization.page.controller" />
       <recent name="org.openmrs.module.visualization.web.controller" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/omod/src/main/resources" />
-      <recent name="$PROJECT_DIR$/omod/src/main/webapp" />
-      <recent name="$PROJECT_DIR$/omod/src/main/webapp/resources/styles" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jcval\OneDrive\Documents\GitHub\nmrs-visualization\omod\src\main\java\org\openmrs\module\visualization\Utility" />
+      <recent name="C:\Users\jcval\OneDrive\Documents\GitHub\nmrs-visualization\omod\src\main\java\org\openmrs\module\visualization\Model" />
+      <recent name="$PROJECT_DIR$/omod/src/main/webapp/fragments" />
+      <recent name="$PROJECT_DIR$/omod/src/main/webapp/pages" />
+      <recent name="$PROJECT_DIR$/omod/src/main/webapp/resources" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -76,10 +106,8 @@
             </option>
             <option name="goals">
               <list>
-                <option value="openmrs-sdk:watch" />
-                <option value="-DserverId=nmrs" />
                 <option value="openmrs-sdk:run" />
-                <option value="-DserverId=nmrs" />
+                <option value="-DserverId=nmrstestserver" />
                 <option value="-Dfork=false" />
               </list>
             </option>

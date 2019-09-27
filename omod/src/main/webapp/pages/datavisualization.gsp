@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="/openmrs/ms/uiframework/resource/uicommons/styles/datetimepicker.css?cache=1525344062488" type="text/css" />
 <% ui.includeJavascript("datamigration", "highcharts.js") %>
 <% ui.includeJavascript("datamigration", "sunburst.js") %>
+${ui.includeFragment("visualization","header")}
 <h1 align="center"> <b>VISUALS DEMO</b></h1>
 
 <style>
@@ -86,8 +87,6 @@
 <div id="container3" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <br><br>
 <div id="container4" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-
-
 
 <script>
     jq('#filter').click(function (e) {

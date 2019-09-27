@@ -97,7 +97,8 @@ ${ui.includeFragment("visualization","header")}
                     pointPadding: 0.2,
                     borderWidth: 0,
                     colorByPoint: true
-                }
+                },
+                showInLegend:false
             },
             series: [ theSeries ]
         });

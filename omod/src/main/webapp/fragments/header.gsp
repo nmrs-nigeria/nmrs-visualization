@@ -1,5 +1,5 @@
 <div class="topnav">
-    <a class="active" href="#" onclick="gotoPath('visualization/datavisualization.page')">TXCURR</a>
+    <a class="" href="#" onclick="gotoPath('visualization/datavisualization.page')">TXCURR</a>
     <a href="#" onclick="gotoPath('visualization/datavisualization.page')">TXNEW</a>
     <a href="#" onclick="gotoPath('visualization/Hts.page')">HTS</a>
     <a href="#" onclick="gotoPath('visualization/Pmtct.page')">PMTCT</a>
@@ -34,7 +34,7 @@
     color: white;
 }
     .confirm{
-        background-color: #5aaf50 !important;
+        background-color: #4CAF50 !important;
     }
 </style>
 

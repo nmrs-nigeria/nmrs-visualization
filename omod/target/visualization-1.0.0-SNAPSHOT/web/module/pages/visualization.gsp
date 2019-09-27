@@ -3,21 +3,21 @@
     <div class="container">
         <div class="home-container">
             <a class="button big" href="#" onclick="gotoPath('visualization/Pmtct.page')">
-                <i class="icon-medical"></i>
+
                 <br>
-                PMTCT Charts
+                PMTCT
             </a>
             &nbsp;
             <a class="button big" href="#" onclick="gotoPath('visualization/Hts.page')">
-                <i class="icon-medical"></i>
+
                 <br>
-                HTS Charts
+                HTS
             </a>
-            <!--{<a class="button big" href="#" onclick="gotoPath('visualization/LineList.page')">
-                <i class="icon-medical"></i>
+            {<a class="button big" href="#" onclick="gotoPath('visualization/LineList.page')">
+
                 <br>
-                Line List Charts
-            </a>}-->
+                TXCURR
+            </a>}
         </div>
     </div>
 </div>
