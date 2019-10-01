@@ -1,3 +1,4 @@
+
 <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
 <br>
@@ -137,6 +138,11 @@
                         enabled: false
                     }
                 });
+
+                //forcefully adjusting the positions the last stacked plot points to not be too far away from other plot points
+                var t = jq('rect.highcharts-point');
+                jq(t[4]).attr('x', 640);
+                jq(t[5]).attr('x', 640);
             },
             error: function (e)
             {
@@ -187,9 +193,9 @@
                 });
 
                 pData.push({name: 'Month 0', data: month0, type: 'column', pointWidth: 45, pointPadding: 0, tooltip: { valueSuffix: '' }});
-                pData.push({name: '3 Months retention', data: month3, type: 'column', pointWidth: 40, pointPadding: 0.1, tooltip: { valueSuffix: '' }});
+                pData.push({name: '3 Months retention', data: month3, type: 'column', pointWidth: 40, pointPadding: 0., tooltip: { valueSuffix: '' }});
                 pData.push({name: '6 Months retention', data: month6, type: 'column', pointWidth: 35, pointPadding: 0.2, tooltip: { valueSuffix: '' }});
-                pData.push({name: '12 Months retention', data: month12, type: 'column', pointWidth: 30, pointPadding: 0.25, tooltip: { valueSuffix: '' }});
+                pData.push({name: '12 Months retention', data: month12, type: 'column', pointWidth: 30, pointPadding: 0.1, tooltip: { valueSuffix: '' }});
                 pData.push({name: '% 12 Month retention', data: percentageRetention, yAxis: 1, type: 'scatter', marker: { radius: 4 }, tooltip: { valueSuffix: '%' }, dataLabels: { enabled: true, format: '{point.y}%'}});
 
                 Highcharts.chart('cohort',

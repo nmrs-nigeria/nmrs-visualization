@@ -36,48 +36,46 @@ public class DbPmtctUtils {
 			
 			//ANC: that was Tested, Previous known HIV+, New HIV+, already on Tx, Newly on Tx
 			
-			String str = "select * from\n" +
-                    "(\n" +
-                    "\t(select count(patient_id) as anc FROM patient_identifier where identifier_type = 6) as anc\t\t\t            \n" +
-                    "\t\tcross join\t\t\n" +
-                    "\t(select count(distinct(ancx.patient_id)) as ancHts from\n" +
-                    "\t\t(select patient_id FROM patient_identifier where identifier_type = 6) ancx\n" +
-                    "\t\tjoin\n" +
-                    "\t\t(select patient_id FROM patient_identifier where identifier_type = 8) hts on ancx.patient_id = hts.patient_id \n" +
-                    "    ) ancHts      \n" +
-                    "    \n" +
-                    "    cross join     \n" +
-                    "\t(select count(distinct(ps.patient_id)) as prevPositive from\n" +
-                    "\t\t(SELECT patient_id FROM patient_identifier WHERE identifier_type = 6) ps \n" +
-                    "        join\n" +
-                    "\t\t(SELECT person_id FROM obs where concept_id = 166030 and value_coded = 1065) obPrev on ps.patient_id = obPrev.person_id\n" +
-                    "        ) prevPositive           \n" +
-                    "\t\t\n" +
-                    "        cross join\n" +
-                    "\t\n" +
-                    "    (select count(distinct(p.patient_id)) as newPositive from\n" +
-                    "\t\t(SELECT patient_id FROM patient_identifier WHERE identifier_type = 6) p join\n" +
-                    "\t\t(SELECT person_id FROM obs where concept_id = 159427 and value_coded in (703)) obPrev on p.patient_id = obPrev.person_id\n" +
-                    "\t) as newPositive          \n" +
-                    "    \n" +
-                    "    cross join\n" +
-                    "    \n" +
-                    "\t(select count(distinct(matCort.patient_id)) as newOnTx  from    \n" +
-                    "\t\t(SELECT * FROM encounter WHERE form_id = 48) matCort\n" +
-                    "\t\tjoin \n" +
-                    "        (SELECT * FROM obs WHERE concept_id in (165520,165521)) matCortOb on matCort.patient_id = matCortOb.person_id and \n" +
-                    "\t\tmatCortOb.encounter_id = matCortOb.encounter_id  # Initiated ART during pregnancy < 36 weeks gestation period OR Initiated ART during pregnancy >= 36 weeks gestation period\n" +
-                    "\t) as newOnTx     \n" +
-                    "\t\n" +
-                    "    cross join    \n" +
-                    "    \n" +
-                    "    (select count(distinct(matCort.patient_id)) as oldOnTx from\n" +
-                    "\t\t(SELECT * FROM encounter WHERE form_id = 48) matCort\n" +
-                    "\t\tjoin \n" +
-                    "        (SELECT * FROM obs WHERE concept_id = 165519) matCortOb on matCort.patient_id = matCortOb.person_id and \n" +
-                    "\t\tmatCortOb.encounter_id = matCortOb.encounter_id # Prior to this pregnancy\n" +
-                    "    ) as oldOnTx\n" +
-                    ")";
+			String str = "select * from\n"
+			        + "(\n"
+			        + "(select count(patient_id) as anc FROM patient_identifier where identifier_type = 6) as anc\n"
+			        + "cross join\n"
+			        + "(select count(distinct(ancx.patient_id)) as ancHts from\n"
+			        + "(select patient_id FROM patient_identifier where identifier_type = 6) ancx\n"
+			        + "join\n"
+			        + "(select patient_id FROM patient_identifier where identifier_type = 8) hts on ancx.patient_id = hts.patient_id \n"
+			        + "\t) ancHts      \n"
+			        + "\t\n"
+			        + "\tcross join     \n"
+			        + "(select count(distinct(ps.patient_id)) as prevPositive from\n"
+			        + "(SELECT patient_id FROM patient_identifier WHERE identifier_type = 6) ps \n"
+			        + "\t\tjoin\n"
+			        + "(SELECT person_id FROM obs where concept_id = 166030 and value_coded = 1065) obPrev on ps.patient_id = obPrev.person_id\n"
+			        + "\t\t) prevPositive\n"
+			        + "\n"
+			        + "\t\tcross join\n"
+			        + "\n"
+			        + "\t(select count(distinct(p.patient_id)) as newPositive from\n"
+			        + "(SELECT patient_id FROM patient_identifier WHERE identifier_type = 6) p join\n"
+			        + "(SELECT person_id FROM obs where concept_id = 159427 and value_coded in (703)) obPrev on p.patient_id = obPrev.person_id\n"
+			        + ") as newPositive\n"
+			        + "\t\n"
+			        + "\tcross join\n"
+			        + "\t\n"
+			        + "(select count(distinct(matCort.patient_id)) as newOnTx  from    \n"
+			        + "(SELECT * FROM encounter WHERE form_id = 48 and encounter_type = 29) matCort\n"
+			        + "join \n"
+			        + "\t(SELECT * FROM obs WHERE concept_id = 165518 and value_coded in (165520,165521)) matCortOb on matCort.patient_id = matCortOb.person_id and \n"
+			        + "\tmatCortOb.encounter_id = matCortOb.encounter_id  # Initiated ART during pregnancy < 36 weeks gestation period OR Initiated ART during pregnancy >= 36 weeks gestation period\n"
+			        + "\t) as newOnTx     \n"
+			        + "\n"
+			        + "\tcross join    \n"
+			        + "\t\n"
+			        + "\t(select count(distinct(matCort.patient_id)) as oldOnTx from\n"
+			        + "\t(SELECT * FROM encounter WHERE form_id = 48 and encounter_type = 29) matCort\n"
+			        + "\tjoin \n"
+			        + "\t(SELECT * FROM obs WHERE concept_id = 165518 and value_coded = 165519) matCortOb on matCort.patient_id = matCortOb.person_id and  matCortOb.encounter_id = matCortOb.encounter_id # Prior to this pregnancy\n"
+			        + "\t) as oldOnTx)";
 			
 			ResultSet result = statement.executeQuery(str);
 			
