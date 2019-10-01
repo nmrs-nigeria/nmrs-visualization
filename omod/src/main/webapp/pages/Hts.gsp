@@ -2,6 +2,7 @@
 
 <%= ui.resourceLinks() %>
 <% ui.includeJavascript("visualization", "highcharts.js") %>
+${ui.includeFragment("visualization","header")}
 
 <h1 align="center"> <b>HTS</b></h1>
 <div style="border: thin solid #ddd; margin: 5px; border-radius: 25px; padding: 10px;">
@@ -71,13 +72,16 @@
             xAxis: {
                 categories: category,
                 crosshair: true,
-                minorGridLineWidth: 0
+                minorGridLineWidth: 0,
+                gridLineWidth: 0
             },
             yAxis: {
                 min: 0,
                 title: {
                     text: 'Number of Clients'
-                }
+                },
+                gridLineWidth: 0,
+                minorGridLineWidth: 0
             },
             colors: colors,
             tooltip: {
@@ -93,7 +97,8 @@
                     pointPadding: 0.2,
                     borderWidth: 0,
                     colorByPoint: true
-                }
+                },
+                showInLegend:false
             },
             series: [ theSeries ]
         });
@@ -107,13 +112,17 @@
                 text: 'Linkage to Treatment'
             },
             xAxis: {
-                categories: [fac_model.pos_name, "Started Art"]
+                categories: [fac_model.pos_name, "Started Art"],
+                gridLineWidth: 0,
+                minorGridLineWidth: 0
             },
             yAxis: {
                 min: 0,
                 title: {
                     text: 'Number of CLients'
-                }
+                },
+                gridLineWidth: 0,
+                minorGridLineWidth: 0
             },
             tooltip: {
                 pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',

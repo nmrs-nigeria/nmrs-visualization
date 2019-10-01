@@ -8,6 +8,16 @@ public class Series {
 	
 	private List<Integer> data = null;
 	
+	private List<Double> dataDouble = null;
+	
+	public List<Double> getDataDouble() {
+		return dataDouble;
+	}
+	
+	public void setDataDouble(List<Double> dataDouble) {
+		this.dataDouble = dataDouble;
+	}
+	
 	public String getName() {
 		return name;
 	}
