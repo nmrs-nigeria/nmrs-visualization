@@ -1,3 +1,4 @@
+
 <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
 <br>
@@ -137,6 +138,11 @@
                         enabled: false
                     }
                 });
+
+                //forcefully adjusting the positions the last stacked plot points to not be too far away from other plot points
+                var t = jq('rect.highcharts-point');
+                jq(t[4]).attr('x', 640);
+                jq(t[5]).attr('x', 640);
             },
             error: function (e)
             {
