@@ -14,7 +14,6 @@ import org.springframework.stereotype.Component;
 /**
  * Contains module's config.
  */
-@Component("visualization.VisualizationConfig")
 public class VisualizationConfig {
 	
 	public final static String MODULE_PRIVILEGE = "Visualization Privilege";
