@@ -97,7 +97,7 @@
 		<repository>
 			<id>bintray-nmrs-maven</id>
 			<name>nmrs-maven</name>
-			<url>https://api.bintray.com/maven/nmrs/maven/openmrs-module-nigeriaemr/;publish=1</url>
+			<url>https://api.bintray.com/maven/nmrs/maven/openmrs-module-visualization/;publish=1</url>
 		</repository>
 	</distributionManagement>
 </project>
