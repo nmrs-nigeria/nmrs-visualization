@@ -18,9 +18,9 @@
 	<url>https://wiki.openmrs.org/x/FQ4z</url>
 
 	<scm>
-		<connection>scm:git:git@github.com:openmrs/openmrs-module-visualization.git</connection>
-		<developerConnection>scm:git:git@github.com:openmrs/openmrs-module-visualization.git</developerConnection>
-		<url>https://github.com/openmrs/openmrs-module-visualization/</url>
+		<connection>scm:git:https://github.com/nmrs-nigeria/nmrs-visualization.git</connection>
+		<developerConnection>scm:git:https://github.com/nmrs-nigeria/nmrs-visualization.git</developerConnection>
+		<url>https://github.com/nmrs-nigeria/nmrs-visualization.git/</url>
 	</scm>
 
 	<modules>
