@@ -5,7 +5,7 @@
 	<!-- Base Module Properties -->
 	<id>visualization</id>
 	<name>Visualization</name>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<package>org.openmrs.module.visualization</package>
 	<author>root</author>
 	<description>
