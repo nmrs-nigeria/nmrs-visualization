@@ -93,11 +93,12 @@
 			</plugin>
 		</plugins>
 	</build>
+
 	<distributionManagement>
-		<repository>
-			<id>bintray-nmrs-maven</id>
-			<name>nmrs-maven</name>
-			<url>https://api.bintray.com/maven/nmrs/maven/openmrs-module-visualization/;publish=1</url>
-		</repository>
+        <repository>
+            <id>bintray-nmrs-nigeria-maven</id>
+            <name>nmrs-nigeria-maven</name>
+            <url>https://api.bintray.com/maven/nmrs-nigeria/maven/openmrs-module-visualization/;publish=1</url>
+            </repository>
 	</distributionManagement>
 </project>
